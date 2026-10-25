@@ -64,3 +64,20 @@ Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie et les
 - Après un changement Flutter, lancer `flutter analyze` et les tests ciblés avec `flutter test test/<fichier>.dart` dans `brainy/` ; lancer `flutter test` pour le palier complet.
 - Après un changement documentaire, lancer `node scripts/verifier-docs.mjs` et, si une roadmap ou une tâche change, `node scripts/verifier-contenu-roadmap.mjs` depuis la racine.
 - Lancer les vérifications ciblées en fin de tâche ; exécuter la suite complète à la fin d'un palier.
+
+## Travailler économe
+
+- Traiter une tâche par session. Lire `AGENTS.md`, `docs/tasks/Txx.md`, `docs/tasks/_PRINCIPES.md`, son contrat dans `docs/` et les seuls fichiers de code concernés.
+- Chercher dans des chemins précis ; ne pas afficher de gros fichiers entiers. Exclure `node_modules/`, `.next/`, `.dart_tool/`, `build/` et les fichiers générés.
+- Grouper les changements liés dans une passe. Ne pas relire les fichiers juste écrits.
+- Ne pas régénérer les fichiers de verrouillage ni changer les dépendances sans accord.
+- Employer un raisonnement moyen par défaut, bas pour les textes EN/FR et petites retouches, élevé pour architecture, migration ou sécurité. Ce choix dépend de la configuration de la session.
+- Demander avant d'élargir la tâche ; signaler une dépendance manquante au lieu de la contourner.
+- En fin de tâche, mettre à jour le fichier Txx et sa ligne dans l'index, puis résumer en dix lignes au plus : fichiers, vérifications et décisions à prendre.
+
+## Reprise après interruption
+
+- Lire `docs/REPRISE_CODEX.md`, puis `git status --short` et `git log --oneline -5` dans le dépôt concerné, ou lancer `node scripts/etat-reprise.mjs` à la racine. Reprendre à « Prochaine action ».
+- Réécrire le journal après chaque étape et avant un build long, une migration ou une action non réversible : intention avant, résultat après. Commiter souvent ; `wip:` est permis ; ne jamais commiter de secrets.
+- Rendre migrations et scripts relançables sans dégât. Après une coupure, vérifier les fichiers modifiés ; restaurer depuis Git et refaire l'étape seulement si un fichier est corrompu.
+- En fin de tâche, noter « aucune tâche en cours », actualiser le statut de l'index et faire le commit final. Si le contexte du fil est perdu, suivre le journal, pas la mémoire de la conversation.
