@@ -50,3 +50,17 @@ Garder la collection comme conteneur unique. Les objets et objets-variables appa
 Les unités, objets et références, transferts, vues, tâches, agenda et premières formules, analyses, graphiques, modèles et liens entre entrées sont livrés avec les limites indiquées dans [l'état d'implémentation](docs/ETAT_IMPLEMENTATION.md). Les stocks, prévisions et mises en relation restent futurs. Ne pas présenter une idée future comme disponible.
 
 Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie et les décisions ouvertes. Pour une tâche Txx, lire uniquement `docs/tasks/Txx.md` et `docs/tasks/_PRINCIPES.md` après leur création ; avant cela, consulter [la feuille de route](ROADMAP_BRAINY.md).
+
+## Carte du dépôt
+
+- API `api/` : GraphQL dans `src/collections/*resolver.ts` et `src/collections/*.input.ts` (authentification dans `src/auth/`) ; modèles MongoDB dans `src/collections/*.schema.ts` et `src/auth/user.schema.ts` ; messages EN/FR près des services et modèles de départ dans `src/collections/` ; tests de fumée dans `scripts/`.
+- Web `brainy_web_app/` : appels GraphQL dans `lib/api.ts`, modèles et messages EN/FR dans `lib/brainy.ts` ; écran principal dans `app/brainy-app.tsx`, autres écrans dans `app/` ; aucune suite de tests autonome repérée, contrôles par lint, typage, build et `api/scripts/web-smoke.mjs`.
+- Flutter `brainy/` : appels GraphQL et modèles dans `lib/collections_api.dart`, textes EN/FR dans `lib/app_strings.dart` ; écran principal dans `lib/workspace_screen.dart` ; tests dans `test/`.
+
+## Vérifications
+
+- Après un changement API, lancer `npm run typecheck` dans `api/` ; pour le schéma ou un parcours GraphQL, lancer le test de fumée concerné avec Compose, par exemple `docker compose exec -T api npm run smoke:collections` ou `smoke:auth` depuis la racine.
+- Après un changement web, lancer `npm run lint`, `npx tsc --noEmit` puis `npm run build` dans `brainy_web_app/` selon le risque ; pour le proxy de session, lancer `npm run smoke:web` dans `api/` avec MongoDB et Next.js actifs.
+- Après un changement Flutter, lancer `flutter analyze` et les tests ciblés avec `flutter test test/<fichier>.dart` dans `brainy/` ; lancer `flutter test` pour le palier complet.
+- Après un changement documentaire, lancer `node scripts/verifier-docs.mjs` et, si une roadmap ou une tâche change, `node scripts/verifier-contenu-roadmap.mjs` depuis la racine.
+- Lancer les vérifications ciblées en fin de tâche ; exécuter la suite complète à la fin d'un palier.

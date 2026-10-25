@@ -1,12 +1,12 @@
 # Journal de reprise
 
-Mis à jour : 2026-10-25 05:19 (Africa/Lagos)
+Mis à jour : 2026-10-25 05:23 (Africa/Lagos)
 Branche : `chore/optimisation-codex`
-Dernier commit validé : `aad858c` — tailles et redondances de référence
+Dernier commit validé : `59be4da` — guide allégé
 Opération en cours : optimisation documentaire de Codex
-Étapes terminées : 0–2
-Étape en cours : 3 — carte du dépôt et commandes de vérification
-Fichiers en cours de modification : `AGENTS.md`
-Vérifications faites : `AGENTS.md` réduit de 10 463 à 8 236 octets ; détails déplacés vers `docs/ETAT_IMPLEMENTATION.md`
+Étapes terminées : 0–3
+Étape en cours : 4 — découper `ROADMAP_BRAINY.md` en fichiers par tâche
+Fichiers en cours de modification : `ROADMAP_BRAINY.md`, `docs/tasks/`
+Vérifications faites : chemins de code et de tests vérifiés ; carte et commandes ajoutées à `AGENTS.md` (10 052 octets)
 Décisions en attente du propriétaire : aucune
-Prochaine action : vérifier les chemins réels des trois sous-projets et ajouter leur carte et leurs commandes ciblées à `AGENTS.md`.
+Prochaine action : copier mot pour mot chaque définition T01–T33 dans `docs/tasks/`, puis construire l'index court sans perdre les lignes de référence.
