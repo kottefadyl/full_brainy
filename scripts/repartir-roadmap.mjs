@@ -42,7 +42,7 @@ const principlesPath = join(destination, '_PRINCIPES.md');
 if (!existsSync(principlesPath)) writeFileSync(principlesPath, `# Principes communs des tâches\n\n${principles.join('\n\n')}\n`, 'utf8');
 
 const archivePath = join(destination, '_HISTORIQUE.md');
-if (!existsSync(archivePath)) writeFileSync(archivePath, `# Archive des lignes hors définitions de tâches\n\nTexte conservé mot pour mot depuis le commit \`5bc19fc\`. Ce fichier contient l'état initial, les suivis, les portes de livraison et les références.\n\n${lines.filter((_, index) => !consumed.has(index)).join('\n').trim()}\n`, 'utf8');
+if (!existsSync(archivePath)) writeFileSync(archivePath, `# Archive des lignes hors définitions de tâches\n\nTexte conservé mot pour mot depuis le commit \`5bc19fc\`. Les liens ci-dessous sont du texte historique et leurs chemins étaient relatifs à la racine.\n\n~~~~markdown\n${lines.filter((_, index) => !consumed.has(index)).join('\n').trim()}\n~~~~\n`, 'utf8');
 
 const stageNames = new Map([...old.matchAll(/^### Étape ([A-Z]) — (.+)$/gm)].map((item) => [item[1], item[2]]));
 const index = ['# Brainy — index des tâches', '', 'Lire les [principes communs](docs/tasks/_PRINCIPES.md) pour la méthode et la définition de fini. Les états détaillés et le texte historique restent dans [le suivi conservé](docs/tasks/_HISTORIQUE.md).', ''];

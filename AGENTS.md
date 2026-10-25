@@ -62,7 +62,8 @@ Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie et les
 - Après un changement API, lancer `npm run typecheck` dans `api/` ; pour le schéma ou un parcours GraphQL, lancer le test de fumée concerné avec Compose, par exemple `docker compose exec -T api npm run smoke:collections` ou `smoke:auth` depuis la racine.
 - Après un changement web, lancer `npm run lint`, `npx tsc --noEmit` puis `npm run build` dans `brainy_web_app/` selon le risque ; pour le proxy de session, lancer `npm run smoke:web` dans `api/` avec MongoDB et Next.js actifs.
 - Après un changement Flutter, lancer `flutter analyze` et les tests ciblés avec `flutter test test/<fichier>.dart` dans `brainy/` ; lancer `flutter test` pour le palier complet.
-- Après un changement documentaire, lancer `node scripts/verifier-docs.mjs` et, si une roadmap ou une tâche change, `node scripts/verifier-contenu-roadmap.mjs` depuis la racine.
+- Après un changement documentaire, lancer `node scripts/verifier-docs.mjs` depuis la racine pour contrôler les liens et les tâches.
+- Après un changement de roadmap ou de tâche, lancer `node scripts/verifier-contenu-roadmap.mjs` pour comparer avec le commit de référence.
 - Lancer les vérifications ciblées en fin de tâche ; exécuter la suite complète à la fin d'un palier.
 
 ## Travailler économe

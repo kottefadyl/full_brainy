@@ -1,6 +1,8 @@
 # Archive des lignes hors définitions de tâches
 
-Texte conservé mot pour mot depuis le commit `5bc19fc`. Ce fichier contient l'état initial, les suivis, les portes de livraison et les références.
+Texte conservé mot pour mot depuis le commit `5bc19fc`. Les liens ci-dessous sont du texte historique et leurs chemins étaient relatifs à la racine.
+
+~~~~markdown
 
 # Brainy — feuille de route de réalisation pour l'IA
 
@@ -175,3 +177,4 @@ Vérifications réalisées : `api/scripts/analysis-smoke.mjs` passe sur l'API lo
 - [Microsoft — event sourcing](https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing) : considérer ce motif seulement si ses avantages justifient sa complexité ; un registre de mouvements métier n'impose pas de l'adopter pour toute l'application.
 
 **Ne pas exécuter cette feuille de route d'un seul bloc.** Livrer et vérifier chaque palier, mesurer les usages, puis ajuster le suivant sans perdre la philosophie de Brainy : l'utilisateur décrit ses propres données et choisit comment les exploiter.
+~~~~

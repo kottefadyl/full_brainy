@@ -2,7 +2,7 @@
 
 Read [AGENTS.md](AGENTS.md) for the current product description and business rules before changing the app.
 
-The ordered plan and the status of tasks T01–T05 are in [ROADMAP_BRAINY.md](ROADMAP_BRAINY.md). The [inventory](docs/T01_INVENTAIRE.md), [UX and language guide](docs/T02_UX_LANGUES.md), and [data contract](docs/T03_CONTRAT_DONNEES.md) explain the current foundation.
+The ordered task index is in [ROADMAP_BRAINY.md](ROADMAP_BRAINY.md); each task has its own file in `docs/tasks/` with [shared principles](docs/tasks/_PRINCIPES.md). The [inventory](docs/T01_INVENTAIRE.md), [UX and language guide](docs/T02_UX_LANGUES.md), and [data contract](docs/T03_CONTRAT_DONNEES.md) explain the current foundation.
 
 Brainy has a Next.js web app and a Flutter mobile/desktop app, backed by a NestJS GraphQL API and MongoDB. People can sign in, create named collections, define multiple data formats with their own fields, and write entries that sync through their account.
 
