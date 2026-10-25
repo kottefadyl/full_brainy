@@ -49,7 +49,7 @@ Garder la collection comme conteneur unique. Les objets et objets-variables appa
 
 Les unités, objets et références, transferts, vues, tâches, agenda et premières formules, analyses, graphiques, modèles et liens entre entrées sont livrés avec les limites indiquées dans [l'état d'implémentation](docs/ETAT_IMPLEMENTATION.md). Les stocks, prévisions et mises en relation restent futurs. Ne pas présenter une idée future comme disponible.
 
-Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie et les décisions ouvertes. Pour une tâche Txx, lire uniquement `docs/tasks/Txx.md` et `docs/tasks/_PRINCIPES.md` après leur création ; avant cela, consulter [la feuille de route](ROADMAP_BRAINY.md).
+Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie et les décisions ouvertes. Pour une tâche Txx, lire uniquement `docs/tasks/Txx.md` et `docs/tasks/_PRINCIPES.md` ; [l'index](ROADMAP_BRAINY.md) donne les dépendances et l'état.
 
 ## Carte du dépôt
 
