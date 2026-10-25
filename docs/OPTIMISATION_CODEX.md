@@ -30,11 +30,20 @@ Le journal `docs/REPRISE_CODEX.md` a été créé à l'étape 0 (695 octets, 13 
 
 ## Tailles après
 
-À mesurer à l'étape 8.
+| Fichier | Avant (octets / lignes) | Après (octets / lignes) |
+| --- | ---: | ---: |
+| `AGENTS.md` | 10 463 / 55 | 9 718 / 79 |
+| `ROADMAP_BRAINY.md` | 49 865 / 274 | 5 885 / 73 |
+| `README.md` | 8 474 / 68 | 8 541 / 68 |
+| `COLLECTIONS_DIRECTION.md` | 15 996 / 119 | 15 996 / 119 |
+
+La roadmap courante a diminué de 88 % ; ses 33 tâches se trouvent dans `docs/tasks/T01.md` à `T33.md` (chaque fichier fait moins de 1 633 octets). Les principes et jalons sont dans `docs/tasks/_PRINCIPES.md` et le texte historique non lié à une tâche dans `docs/tasks/_HISTORIQUE.md`. Toutes les lignes non vides de la roadmap de référence sont retrouvées par le vérificateur. La direction visuelle et linguistique d'origine d'`AGENTS.md` est conservée dans `docs/EXPERIENCE_BRAINY.md` ; l'ancien état des idées et les limites de livraison sont dans `docs/ETAT_IMPLEMENTATION.md`. Les règles métier actives restent dans `AGENTS.md`.
+
+Le dépôt racine créé pour cette opération suit uniquement les documents, scripts et `.gitignore`. `api/`, `brainy/` et `brainy_web_app/` demeurent trois dépôts séparés, déjà modifiés avant cette optimisation ; aucun de leurs fichiers n'a été édité pendant cette opération.
 
 ## Contradictions et décisions
 
-À compléter au contrôle final, sans modifier les règles métier.
+Aucune contradiction nouvelle entre les règles métier actives n'a été trouvée. Trois descriptions historiques demandent de la prudence : la formule « vue ou action future » de l'ancien guide est datée puisque des vues sont livrées ; la liste des types de champ du `README.md` omet encore la référence d'objet présente dans le guide ; l'ancien jalon T14–T17 parle de formules sans dépendances de transfert alors que l'état T21 décrit leur ajout ultérieur. Ces textes ont été conservés ou signalés sans réécrire une décision produit. Le propriétaire peut décider d'actualiser le résumé du `README.md` ; aucun changement de comportement n'en découle ici.
 
 ## Réglages Codex confirmés le 25 octobre 2026
 

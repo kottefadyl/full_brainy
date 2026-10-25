@@ -36,12 +36,9 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 
 ## Expérience et langage
 
-- Pour chaque nouvel écran ou changement visuel, s'inspirer des plus belles interfaces de Fedora Linux : composition aérée, hiérarchie nette, formes douces, palette harmonieuse et détails soignés. L'ensemble doit être beau, moderne et facile à utiliser, sans copier une interface Fedora à l'identique.
-- Privilégier des couleurs douces et des fonds pastel très légers pour distinguer les formats de données. Ajouter de légères touches de transparence aux surfaces appropriées, comme les panneaux ou les fenêtres, avec parcimonie. Garder le texte, les icônes et les actions bien lisibles sur ces fonds, en thème clair comme en thème sombre si celui-ci est proposé.
-- Conserver cette même direction visuelle sur le web Next.js et sur Flutter mobile/ordinateur. Adapter les espacements et les contrôles à chaque taille d'écran ; la beauté ne doit pas compliquer la navigation, la saisie ou l'accessibilité.
-- Favoriser des libellés compréhensibles, des choix progressifs et des exemples concrets. Les novices doivent pouvoir commencer avec un seul champ ; les utilisateurs avancés peuvent mélanger plusieurs types de champs et plusieurs formats de données.
-- L'interface, les erreurs et les dates affichées sont disponibles en anglais et en français. La saisie française des nombres accepte la virgule décimale ; les valeurs sont normalisées pour le stockage.
-- Préserver la séparation entre un **format de données** (structure et couleur), une **entrée** (valeurs enregistrées) et une éventuelle **vue ou action** future (façon d'exploiter ces valeurs).
+- Sur les deux clients, suivre la direction [visuelle et linguistique](docs/EXPERIENCE_BRAINY.md) : sobriété Fedora sans copie, hiérarchie claire, fonds pastel, lisibilité et accessibilité sur tout écran.
+- Permettre aux novices de commencer avec un champ ; garder les choix avancés progressifs. Fournir interface, erreurs et dates en anglais et français ; accepter la virgule décimale française et normaliser le stockage.
+- Séparer **format de données** (structure et couleur), **entrée** (valeurs) et vue ou action (exploitation).
 
 ## Direction et état de livraison
 
@@ -53,32 +50,29 @@ Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie et les
 
 ## Carte du dépôt
 
-- API `api/` : GraphQL dans `src/collections/*resolver.ts` et `src/collections/*.input.ts` (authentification dans `src/auth/`) ; modèles MongoDB dans `src/collections/*.schema.ts` et `src/auth/user.schema.ts` ; messages EN/FR près des services et modèles de départ dans `src/collections/` ; tests de fumée dans `scripts/`.
-- Web `brainy_web_app/` : appels GraphQL dans `lib/api.ts`, modèles et messages EN/FR dans `lib/brainy.ts` ; écran principal dans `app/brainy-app.tsx`, autres écrans dans `app/` ; aucune suite de tests autonome repérée, contrôles par lint, typage, build et `api/scripts/web-smoke.mjs`.
-- Flutter `brainy/` : appels GraphQL et modèles dans `lib/collections_api.dart`, textes EN/FR dans `lib/app_strings.dart` ; écran principal dans `lib/workspace_screen.dart` ; tests dans `test/`.
+- `api/` : GraphQL `src/collections/*resolver.ts`, `*.input.ts` et `src/auth/` ; MongoDB `*.schema.ts` ; messages EN/FR dans les services ; fumées `scripts/`.
+- `brainy_web_app/` : GraphQL `lib/api.ts`, modèles/traductions `lib/brainy.ts`, écran `app/brainy-app.tsx` ; pas de tests autonomes, fumée web dans `api/scripts/web-smoke.mjs`.
+- `brainy/` : GraphQL/modèles `lib/collections_api.dart`, traductions `lib/app_strings.dart`, écran `lib/workspace_screen.dart`, tests `test/`.
 
 ## Vérifications
 
-- Après un changement API, lancer `npm run typecheck` dans `api/` ; pour le schéma ou un parcours GraphQL, lancer le test de fumée concerné avec Compose, par exemple `docker compose exec -T api npm run smoke:collections` ou `smoke:auth` depuis la racine.
-- Après un changement web, lancer `npm run lint`, `npx tsc --noEmit` puis `npm run build` dans `brainy_web_app/` selon le risque ; pour le proxy de session, lancer `npm run smoke:web` dans `api/` avec MongoDB et Next.js actifs.
-- Après un changement Flutter, lancer `flutter analyze` et les tests ciblés avec `flutter test test/<fichier>.dart` dans `brainy/` ; lancer `flutter test` pour le palier complet.
-- Après un changement documentaire, lancer `node scripts/verifier-docs.mjs` depuis la racine pour contrôler les liens et les tâches.
-- Après un changement de roadmap ou de tâche, lancer `node scripts/verifier-contenu-roadmap.mjs` pour comparer avec le commit de référence.
-- Lancer les vérifications ciblées en fin de tâche ; exécuter la suite complète à la fin d'un palier.
+- API : `npm run typecheck` dans `api/` ; pour GraphQL, fumée `docker compose exec -T api npm run smoke:collections` ou `smoke:auth` à la racine.
+- Web : `npm run lint`, `npx tsc --noEmit`, `npm run build` dans `brainy_web_app/` ; proxy : `npm run smoke:web` dans `api/` avec services actifs.
+- Flutter : `flutter analyze`, puis `flutter test test/<fichier>.dart` dans `brainy/` ; `flutter test` au palier.
+- Documentation : `node scripts/verifier-docs.mjs` ; roadmap : `node scripts/verifier-contenu-roadmap.mjs` à la racine.
+- Fin de tâche : contrôles ciblés ; fin de palier : suite complète. Voir aussi les « Checks » du [README](README.md).
 
 ## Travailler économe
 
-- Traiter une tâche par session. Lire `AGENTS.md`, `docs/tasks/Txx.md`, `docs/tasks/_PRINCIPES.md`, son contrat dans `docs/` et les seuls fichiers de code concernés.
-- Chercher dans des chemins précis ; ne pas afficher de gros fichiers entiers. Exclure `node_modules/`, `.next/`, `.dart_tool/`, `build/` et les fichiers générés.
-- Grouper les changements liés dans une passe. Ne pas relire les fichiers juste écrits.
-- Ne pas régénérer les fichiers de verrouillage ni changer les dépendances sans accord.
-- Employer un raisonnement moyen par défaut, bas pour les textes EN/FR et petites retouches, élevé pour architecture, migration ou sécurité. Ce choix dépend de la configuration de la session.
-- Demander avant d'élargir la tâche ; signaler une dépendance manquante au lieu de la contourner.
-- En fin de tâche, mettre à jour le fichier Txx et sa ligne dans l'index, puis résumer en dix lignes au plus : fichiers, vérifications et décisions à prendre.
+- Une tâche par session : lire ce guide, `Txx.md`, `_PRINCIPES.md`, le contrat utile et les seuls fichiers concernés.
+- Chercher par chemin et motif ; éviter les fichiers entiers et exclure `node_modules`, `.next`, `.dart_tool`, `build` et le généré.
+- Grouper les changements ; ne pas relire le texte écrit ; ne pas changer verrous ou dépendances sans accord.
+- Raisonnement moyen par défaut, bas pour petits textes/écrans, élevé pour architecture, migration ou sécurité, selon la session.
+- Demander avant d'élargir ; signaler les dépendances manquantes. Fin de tâche : actualiser Txx et l'index, puis résumer fichiers, contrôles et décisions en dix lignes au plus.
 
 ## Reprise après interruption
 
-- Lire `docs/REPRISE_CODEX.md`, puis `git status --short` et `git log --oneline -5` dans le dépôt concerné, ou lancer `node scripts/etat-reprise.mjs` à la racine. Reprendre à « Prochaine action ».
-- Réécrire le journal après chaque étape et avant un build long, une migration ou une action non réversible : intention avant, résultat après. Commiter souvent ; `wip:` est permis ; ne jamais commiter de secrets.
-- Rendre migrations et scripts relançables sans dégât. Après une coupure, vérifier les fichiers modifiés ; restaurer depuis Git et refaire l'étape seulement si un fichier est corrompu.
-- En fin de tâche, noter « aucune tâche en cours », actualiser le statut de l'index et faire le commit final. Si le contexte du fil est perdu, suivre le journal, pas la mémoire de la conversation.
+- Au départ : lire `docs/REPRISE_CODEX.md`, `git status --short`, `git log --oneline -5` ou lancer `node scripts/etat-reprise.mjs` ; suivre « Prochaine action ».
+- Mettre le journal à jour après chaque étape et avant build long, migration ou action irréversible ; noter intention puis résultat. Commiter souvent (`wip:` permis), sans secrets.
+- Garder les scripts relançables. Après coupure, vérifier les fichiers ; restaurer depuis Git seulement ceux qui sont corrompus.
+- À la fin : statut de tâche et index à jour, journal « aucune tâche en cours », commit final. Le journal prime sur la mémoire du fil.
