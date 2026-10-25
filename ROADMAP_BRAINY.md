@@ -48,18 +48,18 @@ Lire les [principes communs](docs/tasks/_PRINCIPES.md) pour la méthode et la d�
 | --- | --- | --- | --- | --- |
 | T21 | Moteur de formules typées et sûr | Dépendances : T05, T08, T12, T13. | parcours utilisable avec limites documentées | [T21](docs/tasks/T21.md) |
 | T22 | Agrégats et analyses commerciales/statistiques | Dépendances : T21, T06, T18. | parcours utilisable avec limites documentées | [T22](docs/tasks/T22.md) |
-| T23 | Graphiques lisibles | Dépendances : T22. | parcours utilisable avec limites documentées | [T23](docs/tasks/T23.md) |
+| T23 | Graphiques lisibles | Dépendances : T22. | terminée | [T23](docs/tasks/T23.md) |
 
-Validation du 2026-10-25 : la fumée API T21–T22 passe, dont 10 005 entrées et deux pages distinctes de sources. Le contrôle Flutter ne signale que des remarques de style ; le parcours graphique visuel T23 reste à rejouer. Détails dans les fiches de tâche.
+Validation du 2026-10-25 : la fumée API T21–T23 passe, dont 10 005 entrées, deux pages distinctes de sources et le poids par produit avec son nom et son unité. T23 a été rejoué dans un navigateur et par tests de widgets Flutter à 320 et 1 000 px. Détails dans les fiches de tâche.
 
 ## Étape F — modèles concrets, sans types de collection rigides
 
 | Tâche | Titre | Dépendances | Statut | Lien |
 | --- | --- | --- | --- | --- |
-| T24 | Modèles de départ et parcours progressif | Dépendances du socle : T02, T05. Extensions après leurs capacités : T19, T21–T23, T26 et T27. | parcours utilisable avec limites documentées | [T24](docs/tasks/T24.md) |
-| T25 | Écriture de livre et collecte de liens | Dépendances : T03, T05, T06, T18, T24. | parcours utilisable avec limites documentées | [T25](docs/tasks/T25.md) |
+| T24 | Modèles de départ et parcours progressif | Dépendances du socle : T02, T05. Extensions après leurs capacités : T19, T21–T23, T26 et T27. | terminée | [T24](docs/tasks/T24.md) |
+| T25 | Écriture de livre et collecte de liens | Dépendances : T03, T05, T06, T18, T24. | terminée | [T25](docs/tasks/T25.md) |
 
-Validation du 2026-10-25 : la fumée API couvre les modèles Livre et les liens entre entrées ; le test Flutter d'export de livre avait déjà passé. Les parcours visuels T24–T25 restent à rejouer sur les clients.
+Validation du 2026-10-25 : la fumée API couvre les modèles Livre et les liens entre entrées. T24 a été rejoué sur le web et Flutter, y compris la création manuelle. T25 passe pour les liens entre entrées, la recherche, l'export ciblé et l'ouverture/copie d'URL depuis Flutter. Détails dans les fiches de tâche.
 | T26 | Boutique et mouvements de stock | Dépendances : T08–T13, T21–T24. | prévue | [T26](docs/tasks/T26.md) |
 | T27 | Mesures, recherche, tableaux de bord et prévisions de domaine | Dépendances : T08, T21–T24. | prévue | [T27](docs/tasks/T27.md) |
 
