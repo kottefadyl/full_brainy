@@ -34,4 +34,12 @@ Le journal `docs/REPRISE_CODEX.md` a été créé à l'étape 0 (695 octets, 13 
 
 ## Contradictions et décisions
 
-À compléter après le découpage, sans modifier les règles métier.
+À compléter au contrôle final, sans modifier les règles métier.
+
+## Réglages Codex confirmés le 25 octobre 2026
+
+La [référence officielle de configuration](https://learn.chatgpt.com/docs/config-file/config-reference) confirme que `.codex/config.toml` peut contenir des réglages propres à un projet **de confiance**. Elle documente `model_reasoning_effort`, `model_auto_compact_token_limit` (seuil absolu en jetons), `agents.max_concurrent_threads_per_session` et `project_doc_max_bytes`. Les [règles de priorité](https://learn.chatgpt.com/docs/config-file/config-basic) placent les options du projet sous les options passées explicitement à la session.
+
+Proposition à valider par le propriétaire, **non appliquée** : dans `.codex/config.toml`, utiliser `model_reasoning_effort = "medium"` et `[agents] max_concurrent_threads_per_session = 1` ou `2` si plusieurs agents sont utiles. Pour viser un compactage vers 60–70 % de la fenêtre, calculer d'abord le nombre de jetons du modèle réellement utilisé puis définir `model_auto_compact_token_limit` avec cette valeur absolue ; ne pas supposer une taille de contexte universelle. Garder les exclusions de fichiers générés dans `.gitignore` et dans les recherches ciblées ; aucun réglage Codex de « fichiers ignorés » n'a été confirmé pour cet usage.
+
+Aucun modèle, seuil de compactage ni réglage global de Codex n'a été changé. Le choix par tâche entre raisonnement bas, moyen et élevé reste une consigne de travail dans `AGENTS.md`, car un défaut de projet unique ne varie pas automatiquement selon le type de tâche.

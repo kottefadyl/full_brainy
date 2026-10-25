@@ -1,3 +1,15 @@
 .env
 .npm-cache/
 .tools/
+**/node_modules/
+**/.next/
+**/build/
+**/.dart_tool/
+**/dist/
+**/*.tsbuildinfo
+**/.flutter-plugins-dependencies
+**/firebase-debug.log
+# The applications retain their own Git repositories.
+/api/
+/brainy/
+/brainy_web_app/
