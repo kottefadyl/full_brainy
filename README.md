@@ -27,6 +27,12 @@ The API exposes `updateProfile`, `collectionsList`, `createCollection`, `addColl
 
 The Flutter client uses `http://localhost:3000/graphql` on desktop and `http://10.0.2.2:3000/graphql` on the Android emulator. For a phone, remote API, or a different port, pass `--dart-define=API_URL=https://your-host/graphql` to `flutter run` or `flutter build`. The Next.js app forwards web requests to the API server-side. Set `GRAPHQL_API_URL` in `brainy_web_app/.env.local` when the API is not at `http://127.0.0.1:3000/graphql`. Production apps should use HTTPS.
 
+## Try the demo charts
+
+With the local API and web app running, sign in at `http://localhost:3001`. The repeatable `docker compose exec -T api node scripts/demo-seed.mjs` command fills the sole local account with seven collections named `Démo · ...`; it refuses to choose an account when more than one exists. Existing demo entries are kept, while missing dated observations may be added on a later day.
+
+Select `Démo · Observations météo`, open **Calculs et graphiques** (the chart icon in Flutter), then choose **Graphique rapide**. This shows the daily temperature curve in °C. `Démo · Boutique` shows daily sales totals in EUR, and `Démo · Santé personnelle` shows daily resting pulse in bpm. In **Affichage**, choose **Barres** to compare the same values as a bar chart. The table below each chart lists the underlying values. These observations and sales are fictional.
+
 For local development without Docker, run `npm ci` and `npm run start:dev` in `api/`, with `MONGODB_URI` pointing to MongoDB and `FIREBASE_PROJECT_ID=brainy-6d65c` set in the process environment.
 
 ## GraphQL authentication
