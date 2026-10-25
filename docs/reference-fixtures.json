@@ -1,0 +1,7 @@
+[
+  {"collection":"Mon livre","format":"Note","color":"#EEF5FF","fields":[{"name":"Titre","kind":"TITLE"},{"name":"Contenu","kind":"TEXT"},{"name":"Date","kind":"DATE"}],"entry":{"Titre":"Chapitre 1","Contenu":"Une idée de scène à retrouver.","Date":"2026-10-21"}},
+  {"collection":"Liens utiles","format":"Lien","color":"#EDF9F3","fields":[{"name":"Titre","kind":"TITLE"},{"name":"Adresse","kind":"LINK"},{"name":"Commentaire","kind":"TEXT"}],"entry":{"Titre":"Documentation","Adresse":"https://example.com","Commentaire":"À relire plus tard."}},
+  {"collection":"Agenda personnel","format":"Tâche","color":"#FFF5EB","fields":[{"name":"Titre","kind":"TITLE"},{"name":"Date prévue","kind":"DATE"},{"name":"Heure prévue","kind":"TIME"},{"name":"État","kind":"TEXT"}],"entry":{"Titre":"Réviser","Date prévue":"2026-10-22","Heure prévue":"09:30","État":"À faire"}},
+  {"collection":"Boutique","format":"Mouvement","color":"#F4F0FF","fields":[{"name":"Titre","kind":"TITLE"},{"name":"Prix","kind":"NUMBER","unit":"EUR"},{"name":"Quantité","kind":"NUMBER"},{"name":"Sens","kind":"TEXT"}],"entry":{"Titre":"Vente","Prix":"12.50","Quantité":"2","Sens":"Sortie"}},
+  {"collection":"Mesures","format":"Mesure","color":"#EAF8FA","fields":[{"name":"Titre","kind":"TITLE"},{"name":"Poids","kind":"NUMBER","unit":"kg"},{"name":"Date","kind":"DATE"},{"name":"Heure","kind":"TIME"}],"entry":{"Titre":"Échantillon A","Poids":"0.55","Date":"2026-10-21","Heure":"10:15"}}
+]
