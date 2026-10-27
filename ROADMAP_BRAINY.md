@@ -60,8 +60,8 @@ Validation du 2026-10-25 : la fumée API T21–T23 passe, dont 10 005 entrées, 
 | T25 | Écriture de livre et collecte de liens | Dépendances : T03, T05, T06, T18, T24. | terminée | [T25](docs/tasks/T25.md) |
 
 Validation du 2026-10-25 : la fumée API couvre les modèles Livre et les liens entre entrées. T24 a été rejoué sur le web et Flutter, y compris la création manuelle. T25 passe pour les liens entre entrées, la recherche, l'export ciblé et l'ouverture/copie d'URL depuis Flutter. Détails dans les fiches de tâche.
-| T26 | Boutique et mouvements de stock | Dépendances : T08–T13, T21–T24. | prévue | [T26](docs/tasks/T26.md) |
-| T27 | Mesures, recherche, tableaux de bord et prévisions de domaine | Dépendances : T08, T21–T24. | prévue | [T27](docs/tasks/T27.md) |
+| T26 | Boutique et mouvements de stock | Dépendances : T08–T13, T21–T24. | terminée le 2026-10-27 | [T26](docs/tasks/T26.md) |
+| T27 | Mesures, recherche, tableaux de bord et prévisions de domaine | Dépendances : T08, T21–T24. | terminée le 2026-10-27 | [T27](docs/tasks/T27.md) |
 
 ## Étape G — organisation, gros volumes et exploitation
 
