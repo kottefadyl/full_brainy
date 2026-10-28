@@ -19,6 +19,18 @@
       "expected": ["saisie en deux gestes après configuration", "nouvelle entrée distincte", "date du jour", "totaux et cumuls par période"]
     },
     {
+      "id": "R4",
+      "name": "Recette à trois niveaux",
+      "collection": "Recettes",
+      "objects": ["Pain", "Pâte", "Farine"],
+      "relations": [
+        { "parent": "Pain", "component": "Pâte", "quantity": "3", "unit": "item" },
+        { "parent": "Pâte", "component": "Farine", "quantity": "4", "unit": "item", "mode": "SNAPSHOT" }
+      ],
+      "values": { "Farine.Cost": "2 USD" },
+      "expected": ["coût du Pain = 24 USD", "modification du coût de Farine ne modifie pas l'instantané", "cycle refusé", "copie remappe toutes les relations"]
+    },
+    {
       "id": "R5",
       "name": "Météo locale",
       "collection": "Station météo",
@@ -49,6 +61,7 @@
         { "at": "2026-04-10T10:00:00Z", "value": "4.25" },
         { "at": "2026-04-12T14:00:00Z", "value": "4.18", "reason": "Ré-étalonnage du spectromètre" }
       ],
+      "relations": { "kind": "ASSOCIATION", "from": "Expérience", "to": "Échantillon", "expected": "plusieurs expériences peuvent référencer plusieurs échantillons" },
       "expected": ["relecture asOfDate retourne 4.25 au 11 avril et 4.18 après", "historique des révisions conservé", "conversion nombre vers mesure sans perte"]
     },
     {
@@ -57,7 +70,8 @@
       "collection": "Indicateurs locaux",
       "fields": ["Région", "Date", "Naissances", "Population"],
       "analysis": { "operation": "RATE_PER_N", "rateBase": 1000, "measure": "Naissances", "denominator": "Population" },
-      "expected": ["taux pour 1 000 habitants calculé explicitement", "refus si dénominateur nul ou absent"]
+      "hierarchy": { "path": ["Pays", "Région", "Ville"], "populations": [30, 20, 10], "expectedTotal": 60 },
+      "expected": ["taux pour 1 000 habitants calculé explicitement", "refus si dénominateur nul ou absent", "cumul hiérarchique = 60", "cycle parent-enfant refusé"]
     },
     {
       "id": "R10",

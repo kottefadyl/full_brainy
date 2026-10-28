@@ -54,6 +54,14 @@ Un `Object` serait une entrée identifiable d'un format local ; `OBJECT_REF` sto
 
 ## Compatibilité par version de client
 
+### Extensions T37 et T29
+
+`EntryRelation` est une arête locale stockée séparément : `collectionId`, `fromEntryId`, `toEntryId`, `kind`, `quantity`, `unit`, `snapshotValue`, `snapshotUnit`, `snapshotFieldId`, `deletedAt`. Les anciennes entrées et les liens libres restent lisibles sans migration. Le verrou de graphe porté par la collection sérialise les changements de relations ; un verrou abandonné expire après deux minutes. Les lectures refusent un cycle et une profondeur supérieure à 32 ; le parcours de 10 000 nœuds est testé.
+
+`SaveEntryInput.clientMutationId` rend la création rejouable après réponse réseau incertaine. `SaveEntryInput.expectedUpdatedAt` protège la modification contre un état périmé ; l'ancien client peut continuer sans ces champs, tandis que les nouveaux clients les envoient. La sauvegarde d’espace T29 emploie des documents BSON versionnés et une somme SHA-256, vérifie le propriétaire et les collisions, puis restaure par lots rejouables. Les prévisions T27 sont calculées à la demande et ne possèdent pas de document persistant à sauvegarder ; leurs données sources, définitions et historique sont inclus dans l’espace.
+
+### Compatibilité des clients
+
 | Client | Lecture des anciennes entrées | Lecture des nouveaux types | Écriture |
 | --- | --- | --- | --- |
 | Ancien client | Oui, via `value` | Peut voir `value`, sans éditeur spécialisé ; ne peut créer un type inconnu | API valide toujours le format actuel et peut refuser une valeur incompatible |

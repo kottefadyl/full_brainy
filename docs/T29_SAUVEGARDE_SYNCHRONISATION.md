@@ -1,0 +1,9 @@
+# T29 — Contrat sauvegarde et synchronisation
+
+Décision produit du 2026-10-28 : la création et l’édition d’entrées sans réseau sont nécessaires sur web, mobile et ordinateur. Les modifications hors ligne restent privées sur l’appareil jusqu’à synchronisation. L’interface indique le nombre d’opérations en attente, une erreur réseau et tout conflit. Une édition concurrente n’est jamais arbitrée automatiquement.
+
+Chaque création porte un `clientMutationId` stable. Le serveur retourne la même entrée lors d’une nouvelle tentative avec cette clé ; un index unique empêche le doublon concurrent. Chaque modification porte la même clé et l’`expectedUpdatedAt` de la dernière version vue. Le serveur refuse une version différente et conserve les deux contenus à comparer dans le client. Les effets de stock T26 gardent leur clé d’idempotence propre et ne sont jamais générés implicitement par la file d’entrées.
+
+La file est isolée par compte. Elle conserve les valeurs locales et l’ordre des opérations. Après reprise du réseau, une seule opération est envoyée à la fois ; une réponse certaine retire l’opération, une réponse incertaine réessaie avec la même clé, un conflit suspend la file et demande une décision visible. Les identifiants temporaires ne sont utilisés que dans l’interface locale ; le serveur attribue l’identité définitive à la création. Les pièces jointes, liens d’objets et effets de stock exigent une connexion tant que leur reprise vérifiée n’est pas implémentée.
+
+Une sauvegarde complète versionnée inclut collections et définitions, entrées et révisions, références et instantanés, relations, mouvements, règles, audit et provenance. L’import vérifie le propriétaire, la version, les identifiants et les collisions avant écriture ; la restauration de test doit comparer les comptes et les liens internes. Les fichiers de sauvegarde sont des données privées et ne sont pas envoyés à un tiers.
