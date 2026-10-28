@@ -18,8 +18,8 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 ## Compte et profil
 
 - L'utilisateur s'inscrit ou se connecte avec son adresse e-mail et son mot de passe, ou avec Google lorsque Firebase est configuré.
-- À la première connexion sans profil complété, Brainy demande le nom, la profession, le poste actuel, le domaine d'études, les centres d'intérêt et les loisirs. Profession, poste et études sont facultatifs ; il faut au moins un centre d'intérêt ou un loisir. Le profil reste modifiable.
-- Ces informations sont privées et préparées pour une éventuelle mise en relation entre utilisateurs. La mise en relation n'est pas encore disponible ; ne pas présenter le profil comme public.
+- À la première connexion sans profil complété, Brainy demande le nom, la profession, le poste actuel, le domaine d'études, les centres d'intérêt et les loisirs. Profession, poste et études sont facultatifs ; il faut au moins un centre d'intérêt ou un loisir (l'ajustement A1 prévoit de rendre centres d'intérêt et loisirs facultatifs sur décision produit tant que T33 n'est pas livrée). Le profil reste modifiable.
+- Ces informations sont privées et préparées pour une éventuelle mise en relation entre utilisateurs ([T33](docs/tasks/T33.md)). La mise en relation n'est pas encore disponible ; ne pas présenter le profil comme public.
 - Les collections et entrées appartiennent au compte connecté. L'API contrôle cet accès.
 
 ## Collections, formats de données et entrées
@@ -33,46 +33,45 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 7. Les anciennes collections sans formats de données sont rattachées à un format de données général afin de préserver leurs entrées.
 8. Un format de données existant peut être renommé, recevoir de nouveaux champs ou changer l'ordre des champs. Un champ contenant des valeurs enregistrées ne peut pas être supprimé ni changer de type ou d'unité ; ses choix existants restent disponibles. L'API utilise une version de format pour refuser une modification sur un état périmé.
 9. Une collection peut posséder des unités locales et des formats de données marqués comme modèles d’objets. Un objet est une entrée nommée d’un de ces formats, avec identité stable, caractéristiques, duplication et historique de modifications. Un modèle proposé par Brainy est copié dans la collection choisie. Convertir un format déjà rempli en modèle d’objets demande un aperçu et une confirmation ; une entrée sans titre ne peut devenir objet. La duplication conserve le nom saisi. L’action « Utiliser dans une entrée » crée un résumé figé dans un format de données ordinaire avec un lien interne vers l’objet source. Un champ de référence typé permet aussi de choisir un ou plusieurs objets dans une entrée, en mode valeur actuelle ou instantané ; un objet-variable utilise ces références sans créer de stock.
+10. Une collection peut définir des règles de mouvements de stock explicites et idempotentes (entrée, sortie, transfert, correction avec aperçu avant validation et stock courant dérivé des mouvements, [T26](docs/tasks/T26.md)) ainsi que des premières prévisions explicables (moyenne ou tendance linéaire avec période tenue à l'écart, [T27](docs/tasks/T27.md)), toujours séparées des observations réelles.
 
 ## Expérience et langage
 
-- Sur les deux clients, suivre la direction [visuelle et linguistique](docs/EXPERIENCE_BRAINY.md) : sobriété Fedora sans copie, hiérarchie claire, fonds pastel, lisibilité et accessibilité sur tout écran.
-- Permettre aux novices de commencer avec un champ ; garder les choix avancés progressifs. Fournir interface, erreurs et dates en anglais et français ; accepter la virgule décimale française et normaliser le stockage.
-- Séparer **format de données** (structure et couleur), **entrée** (valeurs) et vue ou action (exploitation).
+- Sur les deux clients, suivre la direction [visuelle et linguistique](docs/EXPERIENCE_BRAINY.md) : sobriété Fedora sans copie, hiérarchie claire, thèmes clair et sombre soignés, fonds pastel, lisibilité et accessibilité sur tout écran.
+- Pour toute tâche UI/UX, lire et appliquer `.agents/skills/brainy-ui-ux/SKILL.md` ; vérifier le rendu clair/sombre et le parcours principal, puis signaler les vérifications non exécutées.
+- Permettre aux novices de commencer avec un champ ; garder les choix avancés progressifs et masquer le jargon technique (ex. « objet-variable ») derrière des libellés naturels. Fournir interface, erreurs et dates en anglais et français ; accepter la virgule décimale française et normaliser le stockage.
+- Séparer **format de données** (structure et couleur), **entrée** (valeurs) et vue, règle ou action (exploitation).
 
-## Direction et état de livraison
+## Direction et état de livraison (1.0 livré jusqu'à T27 ; 1.1 planifié de T34 à T45)
 
-Garder la collection comme conteneur unique. Les objets et objets-variables appartiennent d'abord à une collection ; leur copie, partage ou déplacement vers une autre collection, comme celui d'un format de données, exige un choix explicite de la cible. Ne pas créer de « types de collection » permanents.
+Garder la collection comme conteneur unique. Les objets et objets-variables appartiennent d'abord à une collection ; leur copie, partage ou déplacement vers une autre collection, comme celui d'un format de données, exige un choix explicite de la cible. Ne pas créer de « types de collection » permanents ni promettre de conformité légale, médicale, fiscale ou industrielle.
 
-Les unités, objets et références, transferts, vues, tâches, agenda et premières formules, analyses, graphiques, modèles et liens entre entrées sont livrés avec les limites indiquées dans [l'état d'implémentation](docs/ETAT_IMPLEMENTATION.md). Les stocks, prévisions et mises en relation restent futurs. Ne pas présenter une idée future comme disponible.
+Le socle **T01 à T27** (unités, objets, références, transferts, vues, tâches, agenda, rappels, formules, analyses, graphiques, modèles, liens entre entrées, mouvements de stock locaux et premières prévisions) est livré avec les limites décrites dans [l'état d'implémentation](docs/ETAT_IMPLEMENTATION.md). Les tâches **T28 à T33** (droits, sauvegarde/hors-ligne, traitements asynchrones, charge, connecteurs, mise en relation) et les **primitives Brainy 1.1 de T34 à T45** (capture rapide, opérations d'analyse extensibles, champ mesure, relations/composition, géographie, classifications, flux d'états, collecte tierce en quarantaine, registre non modifiable, sensibilité/seuils d'agrégat, données lourdes S3 et paquets de domaine) restent à livrer selon l'ordre fusionné de [l'index](ROADMAP_BRAINY.md). Ne jamais présenter une tâche prévue comme déjà disponible.
 
-Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie et les décisions ouvertes. Pour une tâche Txx, lire uniquement `docs/tasks/Txx.md` et `docs/tasks/_PRINCIPES.md` ; [l'index](ROADMAP_BRAINY.md) donne les dépendances et l'état.
+Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie 1.0/1.1 et les décisions ouvertes. Pour exécuter une tâche `Txx`, lire uniquement `docs/tasks/Txx.md` et `docs/tasks/_PRINCIPES.md`.
 
-## Carte du dépôt
+## Carte du dépôt et règle de modularité
 
-- `api/` : GraphQL `src/collections/*resolver.ts`, `*.input.ts` et `src/auth/` ; MongoDB `*.schema.ts` ; messages EN/FR dans les services ; fumées `scripts/`.
-- `brainy_web_app/` : GraphQL `lib/api.ts`, modèles/traductions `lib/brainy.ts`, écran `app/brainy-app.tsx` ; pas de tests autonomes, fumée web dans `api/scripts/web-smoke.mjs`.
-- `brainy/` : GraphQL/modèles `lib/collections_api.dart`, traductions `lib/app_strings.dart`, écran `lib/workspace_screen.dart`, tests `test/`.
+- `api/` (dépôt Git propre) : GraphQL `src/collections/*resolver.ts`, `*.input.ts` et `src/auth/` ; MongoDB `*.schema.ts` ; logique `collections.service.ts`, `unit_math.ts`, `time_math.ts` ; fumées `scripts/`.
+- `brainy_web_app/` (dépôt Git propre) : GraphQL `lib/api.ts`, modèles/traductions `lib/brainy.ts`, écran `app/brainy-app.tsx` et dialogues `app/*-dialog.tsx` ; fumée `api/scripts/web-smoke.mjs`.
+- `brainy/` (dépôt Git propre) : API/modèles `lib/collections_api.dart`, traductions `lib/app_strings.dart`, écran `lib/workspace_screen.dart` et vues dédiées `lib/*.dart`, tests `test/`.
+- **Anti-monolithe obligatoire :** ne pas alourdir `workspace_screen.dart` (> 4 400 lignes), `brainy-app.tsx` ni `collections.service.ts`. Isoler toute nouvelle capacité (T34–T45, T28–T33) dans un fichier dédié par domaine ou composant et le brancher par une interface minimale.
 
 ## Vérifications
 
-- API : `npm run typecheck` dans `api/` ; pour GraphQL, fumée `docker compose exec -T api npm run smoke:collections` ou `smoke:auth` à la racine.
-- Web : `npm run lint`, `npx tsc --noEmit`, `npm run build` dans `brainy_web_app/` ; proxy : `npm run smoke:web` dans `api/` avec services actifs.
-- Flutter : `flutter analyze`, puis `flutter test test/<fichier>.dart` dans `brainy/` ; `flutter test` au palier.
+- API : `npm run typecheck` dans `api/` ; fumées `docker compose exec -T api npm run smoke:collections`, `smoke:auth` ou `smoke:stock-forecast` à la racine.
+- Web : `npm run lint`, `npx tsc --noEmit`, `npm run build` dans `brainy_web_app/` ; proxy : `npm run smoke:web` dans `api/`.
+- Flutter : `dart analyze <fichiers_modifiés>` (ou `flutter analyze`), puis `flutter test test/<fichier>.dart` dans `brainy/` ; `flutter test` complet au palier.
 - Documentation : `node scripts/verifier-docs.mjs` ; roadmap : `node scripts/verifier-contenu-roadmap.mjs` à la racine.
-- Fin de tâche : contrôles ciblés ; fin de palier : suite complète. Voir aussi les « Checks » du [README](README.md).
+- Fin de tâche : contrôles ciblés sur les seuls fichiers touchés ; fin de palier : suite complète. Voir aussi les « Checks » du [README](README.md).
 
-## Travailler économe
+## Travailler économe et à plusieurs IA (sans conflit)
 
-- Une tâche par session : lire ce guide, `Txx.md`, `_PRINCIPES.md`, le contrat utile et les seuls fichiers concernés.
-- Chercher par chemin et motif ; éviter les fichiers entiers et exclure `node_modules`, `.next`, `.dart_tool`, `build` et le généré.
-- Grouper les changements ; ne pas relire le texte écrit ; ne pas changer verrous ou dépendances sans accord.
-- Raisonnement moyen par défaut, bas pour petits textes/écrans, élevé pour architecture, migration ou sécurité, selon la session.
-- Demander avant d'élargir ; signaler les dépendances manquantes. Fin de tâche : actualiser Txx et l'index, puis résumer fichiers, contrôles et décisions en dix lignes au plus.
-
-## Reprise après interruption
-
-- Au départ : lire `docs/REPRISE_CODEX.md`, `git status --short`, `git log --oneline -5` ou lancer `node scripts/etat-reprise.mjs` ; suivre « Prochaine action ».
-- Mettre le journal à jour après chaque étape et avant build long, migration ou action irréversible ; noter intention puis résultat. Commiter souvent (`wip:` permis), sans secrets.
-- Garder les scripts relançables. Après coupure, vérifier les fichiers ; restaurer depuis Git seulement ceux qui sont corrompus.
-- À la fin : statut de tâche et index à jour, journal « aucune tâche en cours », commit final. Le journal prime sur la mémoire du fil.
+- **Une tâche par session :** lancer d'abord `node scripts/etat-reprise.mjs` (1 seul appel inspecte le journal et les 4 dépôts Git). Lire ensuite uniquement ce guide, `docs/tasks/Txx.md`, `docs/tasks/_PRINCIPES.md` et les plages de lignes utiles des fichiers concernés.
+- **Économie de jetons :** chercher par chemin et motif précis ; ne jamais lire de gros fichiers en entier (`StartLine`/`EndLine` obligatoires sur les gros fichiers) ; exclure `node_modules`, `.next`, `.dart_tool`, `build` ; grouper les éditions ; ne pas relire un fichier qui vient d'être écrit ; ne toucher ni aux dépendances ni aux verrous sans accord.
+- **Raisonnement adapté :** bas pour textes EN/FR et retouches UI ; moyen par défaut ; élevé uniquement pour architecture, migrations ou sécurité (T28, T29, T35–T37, T42, T43).
+- **Coordination Multi-IA et reprise (`docs/REPRISE_CODEX.md`) :**
+  1. Garder `docs/REPRISE_CODEX.md` **sous 2 Kio** en le réécrivant sur place (l'historique détaillé vit dans Git et `docs/tasks/`).
+  2. Au début d'une intervention, y inscrire l'`Agent actif`, la `Tâche verrouillée`, les `Fichiers réservés` et l'intention. Deux IA travaillant en parallèle doivent réserver des fichiers disjoints ; à tour de rôle, la seconde IA reprend exactement à la ligne `Prochaine action :` sans refaire les étapes validées.
+  3. Mettre à jour le journal après chaque sous-étape et **avant** tout build long, migration ou action irréversible. Commiter dans le sous-dépôt concerné (`api/`, `brainy_web_app/`, `brainy/`) et à la racine (`wip:` permis, jamais de secrets).
+  4. En fin de tâche : actualiser `docs/tasks/Txx.md` et `ROADMAP_BRAINY.md`, remettre le journal à `Aucune tâche en cours`, commiter et répondre en 10 lignes au plus.

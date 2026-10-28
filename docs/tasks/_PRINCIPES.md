@@ -57,3 +57,47 @@ L'interface doit rester belle, calme, rapide et accessible. Un novice peut crée
 - [Microsoft — event sourcing](https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing) : considérer ce motif seulement si ses avantages justifient sa complexité ; un registre de mouvements métier n'impose pas de l'adopter pour toute l'application.
 
 **Ne pas exécuter cette feuille de route d'un seul bloc.** Livrer et vérifier chaque palier, mesurer les usages, puis ajuster le suivant sans perdre la philosophie de Brainy : l'utilisateur décrit ses propres données et choisit comment les exploiter.
+
+## 8. Extension Brainy 1.1 (T34 à T45) — Positionnement et règles 11 à 18
+
+**Positionnement 1.1 :** Brainy est l'établi de données structurées des particuliers, des petites équipes et des chercheurs, et une porte d'entrée vers des systèmes spécialisés (import, export, connecteurs). La largeur vient de primitives composables et de paquets de domaine partageables. La profondeur réglementaire (comptabilité légale certifiée, dossier patient certifié, essais cliniques réglementés, trading, pipelines génomiques) reste hors périmètre ou passe par des intégrations. **Ne jamais promettre une conformité** légale, médicale, fiscale ou industrielle. Voir [l'épreuve des 50 domaines et les scénarios R1–R10](../ANNEXE_50_DOMAINES.md).
+
+11. **Une mesure n'est pas un simple nombre.** Valeur absente, zéro, valeur estimée et valeur mesurée sont quatre cas distincts. L'incertitude et la qualité sont facultatives ; ne jamais les inventer.
+12. **Opérations déclarées.** Toute opération d'analyse déclare ses types et unités acceptés, son tri requis et son traitement des valeurs absentes. En cas d'incompatibilité, refuser avec un message clair plutôt que produire un résultat trompeur. Aucun code fourni par l'utilisateur n'est exécuté.
+13. **Géographie sur choix.** Une position précise est une donnée sensible. Aucun appel à un fond de carte tiers ni géocodage sans choix explicite de l'utilisateur.
+14. **Les tiers sans compte n'ont jamais de droit de lecture.** Leurs soumissions arrivent en quarantaine par défaut et leur lien est révocable.
+15. **Preuve n'est pas certification.** Un registre non modifiable fournit de la traçabilité ; il ne se présente pas comme conforme à une loi ou à une norme.
+16. **Confidentialité imposée par l'API.** Les seuils d'agrégat et les exclusions de champs sensibles sont appliqués côté serveur, pas seulement dans l'interface. Ne jamais présenter cela comme de l'anonymisation ; documenter les limites de recoupement.
+17. **Paquets de domaine : copie locale uniquement.** Un paquet ne contient ni code exécutable, ni données d'utilisateur, ni pièces privées. Son installation respecte la règle 1 (copie locale avec aperçu).
+18. **Pas de type de collection permanent.** Aucun paquet, modèle ou flux d'états ne doit enfermer une collection dans un domaine.
+
+### Définition de fini et méthode 1.1
+- Avant de coder une tâche T34–T45, écrire son contrat court dans `docs/` (ex. `docs/T35_OPERATIONS_ANALYSE.md`) et compléter `docs/T03_CONTRAT_DONNEES.md` si le contrat de base change.
+- Alimenter `docs/reference-fixtures-1-1.json` avec les scénarios [R1 à R10](../ANNEXE_50_DOMAINES.md) concernés, isolés des données des utilisateurs.
+- Étendre systématiquement l'export et l'import (T07) aux nouveaux éléments (ajustement A10) et préserver les parcours simples (une note à un seul champ reste un parcours complet).
+- **Modularité obligatoire (anti-conflit IA et économie de jetons) :** ne jamais faire grossir `brainy/lib/workspace_screen.dart`, `brainy_web_app/app/brainy-app.tsx` ni `api/src/collections/collections.service.ts`. Chaque nouvelle primitive ou vue doit être isolée dans son propre fichier de service/composant/widget et branchée par une interface minimale.
+
+### Ajustements transverses (A1 à A10)
+- **A1 (Profil)** : rendre centres d'intérêt et loisirs facultatifs tant que T33 n'existe pas (décision produit à valider ou appliquer avant T33).
+- **A2 (Terminologie)** : garder « data format » / « format de données » jusqu'à décision produit issue des tests novices ; masquer le jargon technique (ex. « objet-variable ») derrière des formulations guidées dans l'interface.
+- **A3 (T11, T12 → T37)** : conserver des identifiants et cardinalités prêts pour hiérarchie et composition.
+- **A4 (T22 → T35)** : structurer l'agrégateur comme un registre d'opérations versionné.
+- **A5 (T26 → T42)** : aligner le registre de mouvements de stock de T26 avec le contrat de registre non modifiable de T42.
+- **A6 (T32 ← T36)** : utiliser le champ mesure de T36 pour les flux de capteurs et sources externes.
+- **A7 (T28 → T41, T43)** : unifier le modèle de droits pour couvrir les liens de contribution (T41) et la sensibilité (T43).
+- **A8 (T24 → T45)** : faire adopter aux modèles de départ le format de paquet de T45.
+- **A9 (Documentation & ID)** : aligner `README.md` avec l'état livré et remplacer `com.example.brainy` avant publication publique.
+- **A10 (T07)** : étendre export/import à chaque nouvelle primitive (mesure, position, relations, codes, états).
+
+### Paliers de livraison 1.1 et hors périmètre
+
+| Palier | Tâches | Démonstration attendue |
+| --- | --- | --- |
+| 1.1-A Cas fondateurs | T34 | Un lien se garde en trois gestes avec son contexte ; une vente quotidienne se saisit en deux gestes. |
+| 1.1-B Analyse et mesure | T35, T36 | Les mesures ont un statut, une incertitude et des opérations fiables ; les relevés donnent des consommations. |
+| 1.1-C Espace, relations, vocabulaires | T37, T38, T39 | Recettes et nomenclatures calculent un coût ; les données s'affichent sur carte ; les classifications regroupent les chiffres. |
+| 1.1-D Processus et collecte | T40, T41 | Des tâches sont assignées à des comptes ; des tiers contribuent sans compte, avec quarantaine. |
+| 1.1-E Preuve et confidentialité | T42, T43 | Un registre détecte l'altération ; un agrégat sensible sous le seuil n'est jamais retourné. |
+| 1.1-F Volume et extension | T44, T45 | Les gros fichiers sont référencés ; des paquets de domaine s'installent dans un autre compte. |
+
+**Hors périmètre de 1.1 :** temps réel strict et ingestion industrielle à très haut débit ; trading et analyse de marchés ; comptabilité légale certifiée et fiscalité ; dossier patient certifié et essais cliniques réglementés ; pipelines génomiques et traitement d'images satellite ; simulation numérique et apprentissage automatique.

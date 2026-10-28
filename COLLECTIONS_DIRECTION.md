@@ -1,6 +1,6 @@
 # Évolution des collections Brainy — proposition produit
 
-**Statut : proposition partiellement mise en œuvre.** Les unités locales et les premiers objets structurés d’une collection sont disponibles. Les références typées, les objets-variables, les calculs, les vues temporelles et les rappels restent des pistes à réaliser. La logique métier actuelle est dans [AGENTS.md](AGENTS.md).
+**Statut : socle 1.0 (T01–T27) mis en œuvre ; extension 1.1 (T34–T45) et gouvernance/volume (T28–T33) planifiées.** Les unités locales, objets structurés, références typées, objets-variables, valeurs actuelles et figées, transferts entre collections, vues (liste, tableau, tâches, agenda), rappels, formules arithmétiques, analyses simples, graphiques, modèles de départ, liens entre entrées, registre local de mouvements de stock (T26) et premières prévisions explicables (T27) sont disponibles. La logique métier livrée est dans [AGENTS.md](AGENTS.md) et [l'état d'implémentation](docs/ETAT_IMPLEMENTATION.md).
 
 ## Choix recommandé
 
@@ -109,10 +109,35 @@ Un format de données peut aussi être copié ou partagé avec une collection ch
 ## Principes d'expérience
 
 - Utiliser le même concept sur le web Next.js et les applications Flutter mobile et ordinateur, en anglais et en français.
-- Montrer les options progressivement. La création d'une collection doit rester rapide même pour quelqu'un qui veut seulement écrire une note.
+- Montrer les options progressivement. La création d'une collection doit rester rapide même pour quelqu'un qui veut seulement écrire une note, et la capture quotidienne d'un lien ou d'une vente doit tenir en deux ou trois gestes (T34).
+- Masquer la mécanique abstraite (comme « objet-variable » ou les identifiants de schéma) derrière des formulations naturelles dans l'interface (ex. *« Utiliser une propriété de l'objet choisi »*), et regrouper les types de champs spécialisés (mesure, composition, géographie, classification, flux d'états) dans des options avancées ou des paquets de départ.
 - Permettre de revenir sur le modèle de départ ou sur les capacités activées sans perdre les entrées.
 - Séparer clairement la saisie des données, leur présentation et leur traitement dans l'interface et dans le langage utilisé.
 
+## Extension Brainy 1.1 : primitives universelles et paquets de domaine (T34 à T45)
+
+Brainy 1.1 étend la portée du noyau (**collection → formats de données → entrées**) pour couvrir aussi bien les usages quotidiens rapides que les suivis scientifiques, statistiques, géographiques et de processus, **sans jamais créer de type de collection permanent ni promettre une conformité légale, médicale, fiscale ou industrielle**. Voir [l'épreuve des 50 domaines et les scénarios R1–R10](docs/ANNEXE_50_DOMAINES.md).
+
+| Primitive 1.1 | Rôle métier | Tâche |
+| --- | --- | --- |
+| Capture et saisie rapides | Garder un lien avec contexte en ≤ 3 gestes ; saisir une opération fréquente en ≤ 2 gestes | [T34](docs/tasks/T34.md) |
+| Registre d'opérations d'analyse | Médiane, percentiles, écart-type, taux pour $N$, tableau croisé, cumul, moyenne glissante, différence de compteur | [T35](docs/tasks/T35.md) |
+| Champ « mesure » | Valeur + unité + statut (mesurée, estimée, calculée, absente), incertitude, qualité, source et historique de révisions | [T36](docs/tasks/T36.md) |
+| Relations généralisées | Hiérarchie parent-enfant sans cycle, plusieurs-à-plusieurs et composition multi-niveaux avec quantité/unité | [T37](docs/tasks/T37.md) |
+| Géographie sur choix | Position (WGS84, précision) et zone ; carte et distances sans appel tiers ni géocodage implicite | [T38](docs/tasks/T38.md) |
+| Codes et classifications | Vocabulaire contrôlé local et hiérarchique, libellés EN/FR, codes obsolètes préservés, import CSV | [T39](docs/tasks/T39.md) |
+| Flux d'états et validations | États, transitions autorisées, champs requis par état, assignation à un compte et historique | [T40](docs/tasks/T40.md) |
+| Collecte tierce sans compte | Formulaire public révocable, sans aucun droit de lecture, avec arrivée obligatoire en quarantaine | [T41](docs/tasks/T41.md) |
+| Registre non modifiable | Mode ajout seul, correction par contre-écriture liée, chaîne de hachage et vérification d'intégrité | [T42](docs/tasks/T42.md) |
+| Sensibilité et seuils d'agrégat | Champs ordinaires/personnels/sensibles ; exclusion par défaut des partages et seuil minimal d'effectif côté API | [T43](docs/tasks/T43.md) |
+| Données lourdes par référence | Pièces volumineuses sur stockage objet (S3), envoi repris par morceaux, lien signé et empreinte | [T44](docs/tasks/T44.md) |
+| Paquets de domaine | Modèles complets versionnés (formats, unités, codes, vues, opérations) installés par copie locale sans code exécutable | [T45](docs/tasks/T45.md) |
+
 ## Décisions encore ouvertes
 
-Avant toute implémentation, décider des premières opérations de calcul, de la portée des formules, des vues prioritaires, du comportement des rappels, du traitement des changements historiques et de la manière de modifier un format de données déjà utilisé. La portée des objets utilisateur est fixée : **une collection précise**, avec réutilisation choisie vers d'autres collections. Vérifier ensuite les conséquences pour l'API, la synchronisation, la migration des données et les trois expériences d'écran. Le plan d'exécution détaillé est dans [ROADMAP_BRAINY.md](ROADMAP_BRAINY.md).
+Le socle T01–T27 a fixé la portée locale des objets, les transferts explicites, le moteur de formules (T21), les analyses et graphiques (T22–T23), les mouvements de stock (T26) et les premières prévisions (T27). Trois décisions produit restent ouvertes pour la suite (détaillées dans [les principes communs](docs/tasks/_PRINCIPES.md)) :
+1. **A1 (Profil à l'inscription)** : rendre les centres d'intérêt et les loisirs facultatifs tant que la mise en relation ([T33](docs/tasks/T33.md)) n'est pas livrée.
+2. **A2 (Terminologie)** : tester « format de données » / « data format » auprès de novices (alternatives : fiche, modèle d'entrée, structure) avant toute modification.
+3. **T42 (Registre et droit à l'effacement)** : définir comment concilier le registre en ajout seul avec l'effacement ou l'anonymisation de données personnelles.
+
+Le plan d'exécution complet (T01 à T45) et l'ordre fusionné recommandé sont dans [ROADMAP_BRAINY.md](ROADMAP_BRAINY.md).

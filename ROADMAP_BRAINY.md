@@ -63,14 +63,50 @@ Validation du 2026-10-25 : la fumée API couvre les modèles Livre et les liens 
 | T26 | Boutique et mouvements de stock | Dépendances : T08–T13, T21–T24. | terminée le 2026-10-27 | [T26](docs/tasks/T26.md) |
 | T27 | Mesures, recherche, tableaux de bord et prévisions de domaine | Dépendances : T08, T21–T24. | terminée le 2026-10-27 | [T27](docs/tasks/T27.md) |
 
-## Étape G — organisation, gros volumes et exploitation
+Validation du 2026-10-27 : `docker compose exec -T api npm run smoke:stock-forecast` couvre T26 et T27 (aperçu, idempotence, transfert, retour, rapport sourcé, modèles de mesures et prévision distincte des faits). Détails dans les fiches T26 et T27.
+
+## Étape G — organisation, gros volumes et exploitation (1.0)
 
 | Tâche | Titre | Dépendances | Statut | Lien |
 | --- | --- | --- | --- | --- |
-| T28 | Droits, audit et collaboration | Dépendances : T15, T17, T03. | prévue | [T28](docs/tasks/T28.md) |
+| T28 | Droits, audit et collaboration | Dépendances : T15, T17, T03. | terminée le 2026-10-28 | [T28](docs/tasks/T28.md) |
 | T29 | Sauvegarde, reprise et synchronisation | Dépendances : T07, T26–T28. | prévue | [T29](docs/tasks/T29.md) |
 | T30 | Chargement massif et traitements asynchrones | Dépendances : T06, T07, T22, T26–T28. | prévue | [T30](docs/tasks/T30.md) |
 | T31 | Mesures de charge et architecture adaptée | Dépendances : T30. | prévue | [T31](docs/tasks/T31.md) |
-| T32 | Connecteurs et données industrielles | Dépendances : T28–T31. | prévue | [T32](docs/tasks/T32.md) |
+| T32 | Connecteurs et données industrielles | Dépendances : T28–T31, T36 (A6). | prévue | [T32](docs/tasks/T32.md) |
 | T33 | Mise en relation entre personnes (axe séparé) | Dépendances : T28 et décision produit sur consentement. | prévue | [T33](docs/tasks/T33.md) |
+
+## Étapes H à M — Brainy 1.1 : primitives universelles et paquets de domaine
+
+Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les règles 11 à 18, les ajustements A1–A10 et la règle de modularité, ainsi que [l'épreuve des 50 domaines et les scénarios R1–R10](docs/ANNEXE_50_DOMAINES.md).
+
+| Tâche | Titre | Dépendances | Statut | Lien |
+| --- | --- | --- | --- | --- |
+| T34 | Capture rapide et saisie rapide (Étape H) | Dépendances : T06, T24, T25. | terminée le 2026-10-27 | [T34](docs/tasks/T34.md) |
+| T35 | Opérations d'analyse extensibles (Étape I) | Dépendances : T21, T22, T18. | terminée le 2026-10-27 | [T35](docs/tasks/T35.md) |
+| T36 | Type de champ « mesure » (Étape I) | Dépendances : T04, T05, T08, T13, T35. | terminée le 2026-10-28 | [T36](docs/tasks/T36.md) |
+| T37 | Relations généralisées (Étape J) | Dépendances : T11, T12, T13, T14, T21. | prévue | [T37](docs/tasks/T37.md) |
+| T38 | Géographie (Étape J) | Dépendances : T05, T18, T22. | prévue | [T38](docs/tasks/T38.md) |
+| T39 | Listes de codes et classifications (Étape J) | Dépendances : T04, T05, T17, T37. | prévue | [T39](docs/tasks/T39.md) |
+| T40 | Flux d'états et validations (Étape K) | Dépendances : T19, T20, T28. | prévue | [T40](docs/tasks/T40.md) |
+| T41 | Collecte par des tiers sans compte (Étape K) | Dépendances : T03, T04, T05, T28, T30. | prévue | [T41](docs/tasks/T41.md) |
+| T42 | Registre non modifiable (Étape L) | Dépendances : T26, T28, T29. | prévue | [T42](docs/tasks/T42.md) |
+| T43 | Niveaux de sensibilité et seuils d'agrégat (Étape L) | Dépendances : T15, T22, T28. | prévue | [T43](docs/tasks/T43.md) |
+| T44 | Données lourdes par référence (Étape M) | Dépendances : T07, T30, T31. | prévue | [T44](docs/tasks/T44.md) |
+| T45 | Paquets de domaine partageables (Étape M) | Dépendances : T14, T17, T24, T35–T39. | prévue | [T45](docs/tasks/T45.md) |
+
+## Ordre d'exécution fusionné recommandé (après T27)
+
+Les dépendances de **T34, T35, T36, T37, T38, T39** et **T28** sont déjà terminées. Pour maximiser la valeur produit, réduire le coût en jetons IA et permettre à 2 IA de travailler sans conflit :
+
+1. **Vague 1 — Usage quotidien & primitives de données (sans attendre T32/T33)** :
+   - **T34 (Capture & saisie rapide)** : gain immédiat au quotidien (scénarios R1, R2) ; isoler l'UI dans des composants dédiés et alléger `workspace_screen.dart` au passage.
+   - **T35 (Opérations d'analyse extensibles)** → **T36 (Champ « mesure »)** : cœur scientifique et statistique (scénarios R2, R5, R6, R9, R10).
+   - **T37 (Relations généralisées)** → **T39 (Classifications)** et **T38 (Géographie)** : hiérarchies, recettes/nomenclatures et cartes (scénarios R4, R5, R8, R9).
+2. **Vague 2 — Gouvernance, synchronisation, preuves et collecte** :
+   - **T28 (Droits & audit)** → débloque **T29 (Sauvegarde & synchro hors ligne)**, **T40 (Flux d'états)**, **T42 (Registre non modifiable)** et **T43 (Sensibilité & seuils d'agrégat)**.
+   - **T30 (Traitements asynchrones)** → **T41 (Collecte par des tiers)**, **T31 (Mesures de charge)** et **T44 (Données lourdes S3)**.
+3. **Vague 3 — Assemblage et ouvertures finales** :
+   - **T45 (Paquets de domaine partageables)**, puis **T32 (Connecteurs industriels appuyés sur T36)** et enfin **T33 (Mise en relation sur consentement)**.
+
 

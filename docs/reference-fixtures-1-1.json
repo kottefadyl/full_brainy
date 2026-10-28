@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "R1",
+      "name": "Liens avec contexte",
+      "collection": "Carnet de liens",
+      "fields": ["Titre", "Lien", "Note", "Source"],
+      "capture": { "url": "https://example.org/article?ref=brainy", "note": "Lire pour le jardin", "source": "Navigateur" },
+      "expected": ["lien conservé tel quel", "note recherchable par jardin", "doublon signalé", "date de création affichée"]
+    },
+    {
+      "id": "R2",
+      "name": "Ventes d'eau quotidiennes",
+      "collection": "Ventes d'eau",
+      "fields": ["Date", "Quantité", "Montant"],
+      "quickEntry": { "quantity": "2", "amount": "3,50", "date": "today" },
+      "analysis": { "operations": ["SUM", "CUMULATIVE", "MOVING_AVERAGE", "CROSSTAB"], "groups": ["DAY", "MONTH"] },
+      "expected": ["saisie en deux gestes après configuration", "nouvelle entrée distincte", "date du jour", "totaux et cumuls par période"]
+    },
+    {
+      "id": "R5",
+      "name": "Météo locale",
+      "collection": "Station météo",
+      "fields": ["Station", "Date", "Température", "Pression"],
+      "measure": {
+        "field": "Température",
+        "unit": "°C",
+        "readings": [
+          { "date": "2026-05-01", "value": "18.5", "status": "MEASURED", "instrument": "Sonde PT100", "uncertainty": "0.2" },
+          { "date": "2026-05-02", "value": "19.0", "status": "ESTIMATED", "instrument": "Interpolation station voisine", "uncertainty": "1.0" },
+          { "date": "2026-05-03", "value": "", "status": "ABSENT", "instrument": "Panne capteur" },
+          { "date": "2026-05-04", "value": "21.5", "status": "MEASURED", "instrument": "Sonde PT100", "uncertainty": "0.2" }
+        ]
+      },
+      "expected": ["moyenne calcule sur valeurs réelles et estimées", "valeur absente ignorée", "présence d'estimées signalée", "incertitude propagée"]
+    },
+    {
+      "id": "R6",
+      "name": "Expériences de laboratoire",
+      "collection": "Laboratoire d'analyses",
+      "fields": ["Échantillon", "Date", "Concentration", "Opérateur"],
+      "measure": {
+        "field": "Concentration",
+        "unit": "mg/L",
+        "sample": { "value": "4.25", "uncertainty": "0.05", "uncertaintyType": "ABSOLUTE", "quality": "Certifié", "observedAt": "2026-04-10T09:30:00Z" }
+      },
+      "revisions": [
+        { "at": "2026-04-10T10:00:00Z", "value": "4.25" },
+        { "at": "2026-04-12T14:00:00Z", "value": "4.18", "reason": "Ré-étalonnage du spectromètre" }
+      ],
+      "expected": ["relecture asOfDate retourne 4.25 au 11 avril et 4.18 après", "historique des révisions conservé", "conversion nombre vers mesure sans perte"]
+    },
+    {
+      "id": "R9",
+      "name": "Démographie et taux par dénominateur",
+      "collection": "Indicateurs locaux",
+      "fields": ["Région", "Date", "Naissances", "Population"],
+      "analysis": { "operation": "RATE_PER_N", "rateBase": 1000, "measure": "Naissances", "denominator": "Population" },
+      "expected": ["taux pour 1 000 habitants calculé explicitement", "refus si dénominateur nul ou absent"]
+    },
+    {
+      "id": "R10",
+      "name": "Consommation d'énergie et d'eau du foyer",
+      "collection": "Compteur d'eau",
+      "fields": ["Date", "Index compteur (m³)", "Remise à zéro"],
+      "readings": [
+        { "date": "2026-01-01", "value": "100" },
+        { "date": "2026-02-01", "value": "115" },
+        { "date": "2026-03-01", "value": "135" }
+      ],
+      "analysis": { "operation": "SUCCESSIVE_DIFF", "groupBy": "MONTH", "trend": "LINEAR_TREND" },
+      "expected": ["consommation mensuelle 15 m³ puis 20 m³", "remise à zéro gérée explicitement", "tendance linéaire avec pente et période"]
+    }
+  ]
+}
