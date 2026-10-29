@@ -54,6 +54,12 @@ Un `Object` serait une entrée identifiable d'un format local ; `OBJECT_REF` sto
 
 ## Compatibilité par version de client
 
+### Extensions T38 et T39
+
+`Collection.codeLists` contient des listes locales versionnées. `CollectionField.codeListId` désigne une liste de la même collection pour un champ `CODE` ; `EntryValue.value` conserve le code stable. Le libellé EN/FR et l'état actif sont lus depuis la liste, y compris lorsqu'un code est devenu obsolète. La fusion explicite réécrit les valeurs concernées après aperçu. L'import T07 crée les listes avant les formats de données qui les référencent.
+
+`POSITION` conserve dans `EntryValue.value` un JSON WGS84 `{latitude, longitude, accuracy?}` ; `ZONE` conserve un cercle `{type:"Circle",center:[longitude,latitude],radiusMeters}` ou un polygone `{type:"Polygon",coordinates:[[longitude,latitude],...]}`. L'API valide les bornes et les géométries ; la carte lit les entrées par pages. Les anciens clients gardent la chaîne `value` et les données restent exportables sans migration.
+
 ### Extensions T37 et T29
 
 `EntryRelation` est une arête locale stockée séparément : `collectionId`, `fromEntryId`, `toEntryId`, `kind`, `quantity`, `unit`, `snapshotValue`, `snapshotUnit`, `snapshotFieldId`, `deletedAt`. Les anciennes entrées et les liens libres restent lisibles sans migration. Le verrou de graphe porté par la collection sérialise les changements de relations ; un verrou abandonné expire après deux minutes. Les lectures refusent un cycle et une profondeur supérieure à 32 ; le parcours de 10 000 nœuds est testé.

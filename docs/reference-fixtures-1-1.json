@@ -65,11 +65,20 @@
       "expected": ["relecture asOfDate retourne 4.25 au 11 avril et 4.18 après", "historique des révisions conservé", "conversion nombre vers mesure sans perte"]
     },
     {
+      "id": "R8",
+      "name": "Points et zones sans fond externe",
+      "collection": "Sites locaux",
+      "position": { "latitude": 6.5244, "longitude": 3.3792, "accuracy": 12 },
+      "zone": { "type": "Circle", "center": [3.3792, 6.5244], "radiusMeters": 1000 },
+      "expected": ["coordonnées WGS84 conservées après export et import GeoJSON", "distance affichée en kilomètres", "point compté dans la zone", "carte paginée sans service tiers"]
+    },
+    {
       "id": "R9",
       "name": "Démographie et taux par dénominateur",
       "collection": "Indicateurs locaux",
       "fields": ["Région", "Date", "Naissances", "Population"],
       "analysis": { "operation": "RATE_PER_N", "rateBase": 1000, "measure": "Naissances", "denominator": "Population" },
+      "classification": { "list": "Territoires", "codes": [ { "code": "pays", "labelEn": "Country", "labelFr": "Pays" }, { "code": "region", "parentCode": "pays", "labelEn": "Region", "labelFr": "Région" }, { "code": "ville", "parentCode": "region", "labelEn": "City", "labelFr": "Ville" } ], "groupDepth": 1 },
       "hierarchy": { "path": ["Pays", "Région", "Ville"], "populations": [30, 20, 10], "expectedTotal": 60 },
       "expected": ["taux pour 1 000 habitants calculé explicitement", "refus si dénominateur nul ou absent", "cumul hiérarchique = 60", "cycle parent-enfant refusé"]
     },
