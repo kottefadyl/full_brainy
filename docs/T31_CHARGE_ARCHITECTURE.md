@@ -30,11 +30,11 @@ Pour la mesure ciblée, les dates sont réparties sur dix ans. La plage de janvi
 
 Le palier d'un million a été répété avec cinq appels pour chaque opération lourde. Les meilleurs p95 observés sur les opérations courantes varient avec la chaleur du cache et la charge de Docker ; le tableau conserve le passage complet avec cinq échantillons analytiques. Les mesures ne permettent pas de promettre un temps constant pour une analyse de toute la collection : une telle analyse dépasse le plafond et doit être resserrée.
 
-## Coût observé et budgets proposés
+## Coût observé et budgets validés
 
 Au million, MongoDB rapportait environ 468,6 Mo de données logiques, 66,9 Mo de stockage compressé et 175,8 Mo d'index, soit 242,7 Mo alloués aux données compressées et aux index sur ce banc. L'index ajouté représente environ 30 Mo par million d'entrées par rapport au premier passage. Ces statistiques sont celles de la collection MongoDB partagée et comprennent sa capacité réutilisée ; elles sont un ordre de grandeur, pas une facture. Les données de test ont été supprimées. Un tarif mensuel nécessite le fournisseur, la région, les sauvegardes et le profil de trafic du déploiement cible.
 
-Proposition à approuver, pour le matériel ci-dessus et les scénarios mesurés :
+Budgets approuvés par l'utilisateur le 2026-10-29, pour le matériel ci-dessus et les scénarios mesurés :
 
 | Charge | Page, recherche, écriture p95 | Aperçu et mise à jour de format p95 | Analyse et prévision p95 | Stockage MongoDB alloué |
 | ---: | ---: | ---: | ---: | ---: |
