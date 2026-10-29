@@ -23,7 +23,11 @@ if (-not $failures.Contains('API build')) {
 Invoke-Check 'Web lint' (Join-Path $projectRoot 'brainy_web_app') 'npm' @('run', 'lint')
 Invoke-Check 'Web TypeScript' (Join-Path $projectRoot 'brainy_web_app') 'npx' @('tsc', '--noEmit')
 Invoke-Check 'Web build' (Join-Path $projectRoot 'brainy_web_app') 'npm' @('run', 'build')
-Invoke-Check 'Flutter analysis' (Join-Path $projectRoot 'brainy') 'dart' @('analyze', 'lib/collections_api.dart', 'lib/collection_transfer.dart', 'lib/entry_clipboard.dart', 'lib/insights_dialog.dart', 'lib/workspace_screen.dart', 'lib/classification_screen.dart', 'lib/geo_field_input.dart', 'lib/geo_map_view.dart', 'lib/app_strings.dart')
+$dartCommand = (Get-Command dart -ErrorAction Stop).Source
+$dartExecutable = if ([IO.Path]::GetExtension($dartCommand) -eq '.bat') {
+  Join-Path (Split-Path -Parent $dartCommand) 'cache/dart-sdk/bin/dart.exe'
+} else { $dartCommand }
+Invoke-Check 'Flutter analysis' (Join-Path $projectRoot 'brainy') $dartExecutable @('analyze', 'lib/collections_api.dart', 'lib/collection_transfer.dart', 'lib/entry_clipboard.dart', 'lib/insights_dialog.dart', 'lib/workspace_screen.dart', 'lib/classification_screen.dart', 'lib/geo_field_input.dart', 'lib/geo_map_view.dart', 'lib/app_strings.dart')
 Invoke-Check 'Documentation' $projectRoot 'node' @('scripts/verifier-docs.mjs')
 Invoke-Check 'Roadmap' $projectRoot 'node' @('scripts/verifier-contenu-roadmap.mjs')
 
