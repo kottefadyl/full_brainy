@@ -71,7 +71,7 @@ Validation du 2026-10-27 : `docker compose exec -T api npm run smoke:stock-forec
 | --- | --- | --- | --- | --- |
 | T28 | Droits, audit et collaboration | Dépendances : T15, T17, T03. | terminée le 2026-10-28 | [T28](docs/tasks/T28.md) |
 | T29 | Sauvegarde, reprise et synchronisation | Dépendances : T07, T26–T28. | terminée le 2026-10-28 | [T29](docs/tasks/T29.md) |
-| T30 | Chargement massif et traitements asynchrones | Dépendances : T06, T07, T22, T26–T28. | prévue | [T30](docs/tasks/T30.md) |
+| T30 | Chargement massif et traitements asynchrones | Dépendances : T06, T07, T22, T26–T28. | terminée le 2026-10-29 | [T30](docs/tasks/T30.md) |
 | T31 | Mesures de charge et architecture adaptée | Dépendances : T30. | prévue | [T31](docs/tasks/T31.md) |
 | T32 | Connecteurs et données industrielles | Dépendances : T28–T31, T36 (A6). | prévue | [T32](docs/tasks/T32.md) |
 | T33 | Mise en relation entre personnes (axe séparé) | Dépendances : T28 et décision produit sur consentement. | prévue | [T33](docs/tasks/T33.md) |
