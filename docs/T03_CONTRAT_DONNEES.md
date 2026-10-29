@@ -66,6 +66,10 @@ Un `Object` serait une entrée identifiable d'un format local ; `OBJECT_REF` sto
 
 `SaveEntryInput.clientMutationId` rend la création rejouable après réponse réseau incertaine. `SaveEntryInput.expectedUpdatedAt` protège la modification contre un état périmé ; l'ancien client peut continuer sans ces champs, tandis que les nouveaux clients les envoient. La sauvegarde d’espace T29 emploie des documents BSON versionnés et une somme SHA-256, vérifie le propriétaire et les collisions, puis restaure par lots rejouables. Les prévisions T27 sont calculées à la demande et ne possèdent pas de document persistant à sauvegarder ; leurs données sources, définitions et historique sont inclus dans l’espace.
 
+### Extension T41 — contributions externes
+
+`Entry.contributionLinkId` et `Entry.contributionReceivedAt` sont facultatifs. Ils identifient une entrée acceptée depuis un lien de contribution et conservent sa date de réception, distincte de sa date de création. Les anciennes entrées restent inchangées. `ContributionLink` et `ContributionSubmission` sont des documents séparés : les réponses en attente ne sont jamais des `Entry`. La sauvegarde d’espace inclut ces documents ; la restauration accepte aussi les archives antérieures sans ces deux listes.
+
 ### Compatibilité des clients
 
 | Client | Lecture des anciennes entrées | Lecture des nouveaux types | Écriture |

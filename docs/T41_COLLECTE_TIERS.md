@@ -1,0 +1,11 @@
+# T41 — Collecte par des tiers sans compte
+
+Un propriétaire crée un lien lié à un format de données et à un sous-ensemble de champs. Le secret aléatoire du lien n'est montré qu'à la création ; seul son SHA-256 est conservé. Le lien expire, se révoque immédiatement et limite les soumissions à 10 par minute. Il ne donne aucun droit de lecture de collection. Les types de champs publics sont limités aux valeurs simples ; les pièces jointes, références et champs composés ne sont pas exposés.
+
+La page publique reçoit seulement le nom du format de données, les champs choisis et les textes d'information et de consentement EN/FR. Une réponse requiert le consentement, au moins une valeur et, si l'anonymat est désactivé, une adresse de contact. L'API impose une taille de 16 Kio et applique la validation normale des entrées. La réponse et un secret de reçu sont stockés hors des entrées. Le secret de reçu permet au répondant d'exporter ou de supprimer ses données. Les refus et corrections sont journalisés ; une acceptation idempotente crée une entrée avec provenance et date de réception. Le propriétaire peut également exporter ou effacer les réponses.
+
+Le dédoublonnage est une décision explicite du propriétaire : une réponse peut être rejetée en indiquant l'identifiant d'une autre réponse. Aucune fusion automatique ni identité vérifiée n'est inférée de l'adresse de contact. Les champs de pondération et d'échantillon sont des champs ordinaires facultatifs du format de données.
+
+Pour permettre l'effacement après acceptation, un format de données contenant des entrées externes ne peut devenir modèle d'objets et ces entrées ne peuvent produire de mouvements de stock. L'effacement retire aussi les relations et liens portés par l'entrée acceptée. Dans Flutter, configurer `WEB_APP_URL` à la construction pour produire un lien partageable vers le web déployé ; le défaut local cible l'émulateur Android ou `localhost:3001` sur ordinateur.
+
+La migration de stockage est additive : deux collections MongoDB supplémentaires et des champs optionnels sur les entrées. Les anciennes données restent lisibles. Le retour arrière consiste à retirer les nouveaux résolveurs, sans supprimer les réponses ni les entrées acceptées.

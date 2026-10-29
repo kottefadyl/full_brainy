@@ -70,7 +70,8 @@
       "collection": "Sites locaux",
       "position": { "latitude": 6.5244, "longitude": 3.3792, "accuracy": 12 },
       "zone": { "type": "Circle", "center": [3.3792, 6.5244], "radiusMeters": 1000 },
-      "expected": ["coordonnées WGS84 conservées après export et import GeoJSON", "distance affichée en kilomètres", "point compté dans la zone", "carte paginée sans service tiers"]
+      "contribution": { "dataFormat": "Relevé de terrain", "publicFields": ["Observation", "Date", "Site"], "anonymous": true, "initialStatus": "PENDING", "acceptedProvenance": "external contribution" },
+      "expected": ["coordonnées WGS84 conservées après export et import GeoJSON", "distance affichée en kilomètres", "point compté dans la zone", "carte paginée sans service tiers", "réponse anonyme en quarantaine avant acceptation", "lien révoqué refuse immédiatement une nouvelle réponse", "reçu privé permet export et effacement"]
     },
     {
       "id": "R9",
