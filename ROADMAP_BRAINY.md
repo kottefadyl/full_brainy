@@ -88,7 +88,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T37 | Relations généralisées (Étape J) | Dépendances : T11, T12, T13, T14, T21. | terminée le 2026-10-28 | [T37](docs/tasks/T37.md) |
 | T38 | Géographie (Étape J) | Dépendances : T05, T18, T22. | terminée le 2026-10-29 | [T38](docs/tasks/T38.md) |
 | T39 | Listes de codes et classifications (Étape J) | Dépendances : T04, T05, T17, T37. | terminée le 2026-10-29 | [T39](docs/tasks/T39.md) |
-| T40 | Flux d'états et validations (Étape K) | Dépendances : T19, T20, T28. | prévue | [T40](docs/tasks/T40.md) |
+| T40 | Flux d'états et validations (Étape K) | Dépendances : T19, T20, T28. | terminée le 2026-10-29 | [T40](docs/tasks/T40.md) |
 | T41 | Collecte par des tiers sans compte (Étape K) | Dépendances : T03, T04, T05, T28, T30. | prévue | [T41](docs/tasks/T41.md) |
 | T42 | Registre non modifiable (Étape L) | Dépendances : T26, T28, T29. | prévue | [T42](docs/tasks/T42.md) |
 | T43 | Niveaux de sensibilité et seuils d'agrégat (Étape L) | Dépendances : T15, T22, T28. | prévue | [T43](docs/tasks/T43.md) |
