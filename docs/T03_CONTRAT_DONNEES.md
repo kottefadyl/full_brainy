@@ -11,6 +11,8 @@ Date : 21 octobre 2026. Ce document fixe la transition du noyau existant et les 
 
 ## Valeur d'entrée v2
 
+Depuis T42, `CollectionFormat.appendOnly` active le registre sur un format de données vide. `Entry.ledgerSequence`, `ledgerPreviousHash`, `ledgerHash` et `correctionOf` identifient les écritures scellées ; les empreintes de valeurs et les champs masqués restent internes. Les têtes de chaîne et les traces de masquage font partie de la sauvegarde T29. Voir [le contrat T42](T42_REGISTRE.md) pour les règles de correction, d'effacement et de vérification.
+
 `EntryValue.value: String!` reste présent pour les anciens clients. Les champs facultatifs typés de v2 sont `numberValue` (chaîne décimale canonique, sans perte monétaire par conversion flottante), `booleanValue`, `selectedValues`, `durationSeconds`, `dateValue` et `dateTimeValue` (ISO 8601 en UTC). L'unité d'un nombre vient toujours de `CollectionField.unit` ; une valeur historique ne doit pas changer d'unité sans migration contrôlée. La recherche et les calculs futurs liront les propriétés typées et convertiront les anciennes chaînes lors d'un traitement de migration idempotent.
 
 Exemple de document d'entrée :

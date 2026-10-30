@@ -138,6 +138,6 @@ Brainy 1.1 étend la portée du noyau (**collection → formats de données → 
 Le socle T01–T27 a fixé la portée locale des objets, les transferts explicites, le moteur de formules (T21), les analyses et graphiques (T22–T23), les mouvements de stock (T26) et les premières prévisions (T27). Trois décisions produit restent ouvertes pour la suite (détaillées dans [les principes communs](docs/tasks/_PRINCIPES.md)) :
 1. **A1 (Profil à l'inscription)** : rendre les centres d'intérêt et les loisirs facultatifs tant que la mise en relation ([T33](docs/tasks/T33.md)) n'est pas livrée.
 2. **A2 (Terminologie)** : tester « format de données » / « data format » auprès de novices (alternatives : fiche, modèle d'entrée, structure) avant toute modification.
-3. **T42 (Registre et droit à l'effacement)** : définir comment concilier le registre en ajout seul avec l'effacement ou l'anonymisation de données personnelles.
+3. **T42 (Registre et droit à l'effacement) — décidé le 2026-10-29** : masquer les champs choisis, conserver les montants numériques et une trace chaînée, selon [le contrat T42](docs/T42_REGISTRE.md).
 
 Le plan d'exécution complet (T01 à T45) et l'ordre fusionné recommandé sont dans [ROADMAP_BRAINY.md](ROADMAP_BRAINY.md).
