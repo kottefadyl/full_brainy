@@ -91,7 +91,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T40 | Flux d'états et validations (Étape K) | Dépendances : T19, T20, T28. | terminée le 2026-10-29 | [T40](docs/tasks/T40.md) |
 | T41 | Collecte par des tiers sans compte (Étape K) | Dépendances : T03, T04, T05, T28, T30. | terminée le 2026-10-29 | [T41](docs/tasks/T41.md) |
 | T42 | Registre non modifiable (Étape L) | Dépendances : T26, T28, T29. | terminée le 2026-10-30 | [T42](docs/tasks/T42.md) |
-| T43 | Niveaux de sensibilité et seuils d'agrégat (Étape L) | Dépendances : T15, T22, T28. | prévue | [T43](docs/tasks/T43.md) |
+| T43 | Niveaux de sensibilité et seuils d'agrégat (Étape L) | Dépendances : T15, T22, T28. | terminée le 2026-10-30 | [T43](docs/tasks/T43.md) |
 | T44 | Données lourdes par référence (Étape M) | Dépendances : T07, T30, T31. | prévue | [T44](docs/tasks/T44.md) |
 | T45 | Paquets de domaine partageables (Étape M) | Dépendances : T14, T17, T24, T35–T39. | prévue | [T45](docs/tasks/T45.md) |
 
@@ -108,5 +108,4 @@ Les dépendances de **T34, T35, T36, T37, T38, T39** et **T28** sont déjà term
    - **T30 (Traitements asynchrones)** → **T41 (Collecte par des tiers)**, **T31 (Mesures de charge)** et **T44 (Données lourdes S3)**.
 3. **Vague 3 — Assemblage et ouvertures finales** :
    - **T45 (Paquets de domaine partageables)**, puis **T32 (Connecteurs industriels appuyés sur T36)** et enfin **T33 (Mise en relation sur consentement)**.
-
 
