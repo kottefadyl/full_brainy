@@ -4,18 +4,25 @@ Réconcilier avec le thème existant avant modification. Centraliser les valeurs
 
 | Rôle | Clair | Sombre doux |
 |---|---|---|
-| canvas | #F5F6F8 | #1B1D22 |
-| surface | #FFFFFF | #24272E |
-| surface élevée | #FFFFFF | #2D313A |
-| hover neutre | #E9EDF3 | #353B46 |
+| canvas | #F5F6F8 | #111317 |
+| barre latérale | #EDF0F5 | #0D0F13 |
+| surface | #FFFFFF | #1A1D23 |
+| surface élevée | #FFFFFF | #22262D |
+| dialogue | #FFFFFF | #272B33 |
+| hover neutre | #E9EDF3 | #2A2F38 |
 | texte principal | #20242C | #F1F3F7 |
-| texte secondaire | #545E6D | #B5BECC |
-| séparateur décoratif | #DDE2EA | #3E4653 |
-| bord contrôle nécessaire | #778293 | #7B8799 |
+| texte secondaire | #545E6D | #AAB3C2 |
+| séparateur décoratif | #DDE2EA | #2A2F38 |
+| bord contrôle nécessaire | #778293 | #7A8597 |
 | action primaire | #2463CE | #96BDFF |
 | texte sur action | #FFFFFF | #142443 |
 | focus | #2463CE | #A9CBFF |
 | texte danger | #B42332 | #FFADB5 |
+| succès | #1B7A45 | #7FD6A4 |
+| avertissement | #8A5A00 | #F2C26B |
+| accent doux / sélection | rgba(36,99,206,.10) | rgba(150,189,255,.14) |
+
+La phase 0 web définit les huit séries graphiques dans `brainy_web_app/app/theme.css` et les 24 fonds/repères clair et sombre dans `brainy_web_app/lib/format-colors.ts`. Le repère clair reprend la teinte de la surface sombre correspondante. Le stockage des couleurs pastel ne change pas. Ces valeurs sont la référence de parité pour Flutter lors d'une intervention dédiée.
 
 Mesurer après composition des états et transparences. Ne pas employer un séparateur décoratif comme seule limite d'un champ. Donner au focus un contour 2 unités avec décalage 2, ajuster si la surface adjacente le demande. Distinguer la sélection par fond + indicateur/forme et sémantique.
 
