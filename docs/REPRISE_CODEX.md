@@ -3,7 +3,8 @@
 - **Agent actif :** Aucun.
 - **Tâche verrouillée :** Aucune tâche en cours.
 - **Fichiers réservés :** Aucun.
-- **Dernière livraison :** Refonte web phase 1, commit `brainy_web_app` `799ccad` (phase 0 : `b5c9db6`). Coque, onglets, tiroir mobile et thème système/choix persistant.
-- **Modifications préexistantes à préserver :** `brainy_web_app/app/collection-tools-hub.tsx`, `app/workspace-tools-dialog.tsx` et `docker-compose.yml` à la racine.
-- **Vérifications :** Lint, TypeScript, build, documentation et contrastes réussis. Captures de composants réels avec données fictives à 390/1280 en clair/sombre, clavier, FR et repli sans débordement. Parcours connecté sur données réelles non vérifié faute de session de test.
-- **Prochaine action :** Attendre la demande explicite de phase 2 ; vérifier les écrans connectés avec une session disponible.
+- **Dernière livraison :** Correctifs visuels web de fin de phase 1, commit `brainy_web_app` `a1d4012` (phase 1 initiale : `799ccad`). Modales, analyse, couleurs des formats de données, fieldsets, actions désactivées et libellés corrigés.
+- **Modifications préexistantes préservées :** `brainy_web_app/app/collection-tools-hub.tsx`, `app/workspace-tools-dialog.tsx` et `docker-compose.yml` à la racine.
+- **Vérifications :** lint, TypeScript, build et documentation réussis. Chrome sur 11 vues de composants réels avec données fictives, en clair/sombre à 390/1280 ; zoom 200 % sans chevauchement de la grille ; 24 pastilles, flèches clavier et focus de summary vérifiés. Contraste mesuré des libellés touchés ≥5,6:1, des bordures des pastilles ≥3,27:1. La table de codes défile localement.
+- **Limites :** Parcours connecté non vérifié faute de session de test ; audit global des couleurs fixes encore incomplet dans les feuilles CSS historiques. Phase 2 non commencée.
+- **Prochaine action :** Aucune tâche verrouillée.
