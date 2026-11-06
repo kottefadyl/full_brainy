@@ -2,6 +2,8 @@
 
 Lire les [principes communs](docs/tasks/_PRINCIPES.md) pour la méthode et la définition de fini. Les états détaillés et le texte historique restent dans [le suivi conservé](docs/tasks/_HISTORIQUE.md).
 
+Suivi visuel du 2026-11-06 : refonte web Phase 2b vérifiée sur 48 configurations Chrome clair/sombre et par fumée web. Coque, cartes de formats de données, sélecteurs, mouvement et graphiques ; preuves et limites de validation dans [T02](docs/tasks/T02.md#refonte-web--phase-2b-6-novembre-2026).
+
 ## Étape A — consolider le noyau existant
 
 | Tâche | Titre | Dépendances | Statut | Lien |
