@@ -1,15 +1,15 @@
 ﻿# Journal de coordination et reprise Multi-IA
 
-Agent actif : Aucun.
+Agent actif : aucun.
 Tâche verrouillée : Aucune tâche en cours.
-Fichiers réservés : Aucun.
-Dernière livraison : Phase 2b web, 6 novembre 2026, commit `brainy_web_app` `ad54ad9`.
+Fichiers réservés : aucun.
 
-- Livré : coque à défilement indépendant, cartes de formats de données teintées, menus et ajout d’entrée, repères d’outils, sélecteurs clavier, noms des 24 couleurs EN/FR, dates Stock, chiffres clés et courbes lisibles, mouvement réduit corrigé.
-- Vérifications : lint, TypeScript, build production ; 48 configurations Chrome clair/sombre 320/390/640/1280, 24 couleurs, clavier, Échap imbriqué, tiroir et défilement ; fumée web Docker avec nettoyage ; documentation et conservation de roadmap.
-- Contrastes minimaux : métadonnées 5,15:1 ; contours des boutons 3,41:1 ; focus 4,91:1. Axes à 13 px sur mobile.
-- Preuves et limites : `docs/tasks/T02.md`. Banc reproductible : `brainy_web_app/scripts/visual/phase-two-b/`. Captures locales dans `.visual-checks/phase-two-b/`. Serveur dev et Chrome de recette arrêtés ; route temporaire retirée du build.
-- Non vérifié : parcours connecté complet dans Chrome, parité Flutter de cette phase, audit exhaustif des sélecteurs et graphiques multiséries/daltonisme.
-- Changements préexistants préservés : `collection-tools-hub.tsx`, `workspace-tools-dialog.tsx`, `docker-compose.yml`, déplacement/modification du skill UI.
+Dernière intervention : T02, identité bleue et cartes affinées, 6 novembre 2026.
+- Web `66b9a98` : navigation bleue, accents rouges discrets, cartes avec champs dépliables, entrées compactes, survol et focus.
+- Flutter `7cee216` : mêmes repères, composants et thèmes extraits, dates compactes dans la liste, détail complet.
+- Vérifié : 48 configurations Chrome, lint/TypeScript/build ; analyse Dart ; 10 parcours et 3 tests ciblés ; 12 captures natives Windows et 8 Android clair/sombre ; documentation et roadmap.
+- Preuves et limites : `docs/tasks/T02.md`. Bancs : `brainy_web_app/scripts/visual/phase-two-b/` et `brainy/tool/IDENTITY_PREVIEW.md`. Captures locales ignorées sous `.visual-checks/`.
+- Limites : pas de téléphone physique ni de parcours connecté complet rejoué ; texte doublé et mouvement réduit Flutter vérifiés par tests de widgets.
+- Préexistants préservés : web `collection-tools-hub.tsx`, `workspace-tools-dialog.tsx` ; racine `docker-compose.yml`, déplacement/modification du skill UI.
 
-Prochaine action : aucune reprise technique en attente pour la Phase 2b ; choisir la prochaine tâche avec l’utilisateur.
+Prochaine action : attendre la prochaine demande utilisateur ; aucune action de livraison en attente.

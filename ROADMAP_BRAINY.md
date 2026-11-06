@@ -4,6 +4,8 @@ Lire les [principes communs](docs/tasks/_PRINCIPES.md) pour la méthode et la d�
 
 Suivi visuel du 2026-11-06 : refonte web Phase 2b vérifiée sur 48 configurations Chrome clair/sombre et par fumée web. Coque, cartes de formats de données, sélecteurs, mouvement et graphiques ; preuves et limites de validation dans [T02](docs/tasks/T02.md#refonte-web--phase-2b-6-novembre-2026).
 
+Complément visuel du 2026-11-06 : navigation bleue, cartes affinées et survols cohérents web/Flutter ; rendu natif Windows/Android et tests ciblés vérifiés. Voir [T02](docs/tasks/T02.md#identité-bleue-et-cartes-affinées--6-novembre-2026).
+
 ## Étape A — consolider le noyau existant
 
 | Tâche | Titre | Dépendances | Statut | Lien |
