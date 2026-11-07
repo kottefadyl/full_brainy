@@ -5,96 +5,343 @@
       "id": "R1",
       "name": "Liens avec contexte",
       "collection": "Carnet de liens",
-      "fields": ["Titre", "Lien", "Note", "Source"],
-      "capture": { "url": "https://example.org/article?ref=brainy", "note": "Lire pour le jardin", "source": "Navigateur" },
-      "expected": ["lien conservé tel quel", "note recherchable par jardin", "doublon signalé", "date de création affichée"]
+      "fields": [
+        "Titre",
+        "Lien",
+        "Note",
+        "Source"
+      ],
+      "capture": {
+        "url": "https://example.org/article?ref=brainy",
+        "note": "Lire pour le jardin",
+        "source": "Navigateur"
+      },
+      "expected": [
+        "lien conservé tel quel",
+        "note recherchable par jardin",
+        "doublon signalé",
+        "date de création affichée"
+      ]
     },
     {
       "id": "R2",
       "name": "Ventes d'eau quotidiennes",
       "collection": "Ventes d'eau",
-      "fields": ["Date", "Quantité", "Montant"],
-      "quickEntry": { "quantity": "2", "amount": "3,50", "date": "today" },
-      "analysis": { "operations": ["SUM", "CUMULATIVE", "MOVING_AVERAGE", "CROSSTAB"], "groups": ["DAY", "MONTH"] },
-      "expected": ["saisie en deux gestes après configuration", "nouvelle entrée distincte", "date du jour", "totaux et cumuls par période"]
+      "fields": [
+        "Date",
+        "Quantité",
+        "Montant"
+      ],
+      "quickEntry": {
+        "quantity": "2",
+        "amount": "3,50",
+        "date": "today"
+      },
+      "analysis": {
+        "operations": [
+          "SUM",
+          "CUMULATIVE",
+          "MOVING_AVERAGE",
+          "CROSSTAB"
+        ],
+        "groups": [
+          "DAY",
+          "MONTH"
+        ]
+      },
+      "expected": [
+        "saisie en deux gestes après configuration",
+        "nouvelle entrée distincte",
+        "date du jour",
+        "totaux et cumuls par période"
+      ]
     },
     {
       "id": "R4",
       "name": "Recette à trois niveaux",
       "collection": "Recettes",
-      "objects": ["Pain", "Pâte", "Farine"],
-      "relations": [
-        { "parent": "Pain", "component": "Pâte", "quantity": "3", "unit": "item" },
-        { "parent": "Pâte", "component": "Farine", "quantity": "4", "unit": "item", "mode": "SNAPSHOT" }
+      "objects": [
+        "Pain",
+        "Pâte",
+        "Farine"
       ],
-      "values": { "Farine.Cost": "2 USD" },
-      "expected": ["coût du Pain = 24 USD", "modification du coût de Farine ne modifie pas l'instantané", "cycle refusé", "copie remappe toutes les relations"]
+      "relations": [
+        {
+          "parent": "Pain",
+          "component": "Pâte",
+          "quantity": "3",
+          "unit": "item"
+        },
+        {
+          "parent": "Pâte",
+          "component": "Farine",
+          "quantity": "4",
+          "unit": "item",
+          "mode": "SNAPSHOT"
+        }
+      ],
+      "values": {
+        "Farine.Cost": "2 USD"
+      },
+      "expected": [
+        "coût du Pain = 24 USD",
+        "modification du coût de Farine ne modifie pas l'instantané",
+        "cycle refusé",
+        "copie remappe toutes les relations"
+      ]
     },
     {
       "id": "R5",
       "name": "Météo locale",
       "collection": "Station météo",
-      "fields": ["Station", "Date", "Température", "Pression"],
+      "fields": [
+        "Station",
+        "Date",
+        "Température",
+        "Pression"
+      ],
       "measure": {
         "field": "Température",
         "unit": "°C",
         "readings": [
-          { "date": "2026-05-01", "value": "18.5", "status": "MEASURED", "instrument": "Sonde PT100", "uncertainty": "0.2" },
-          { "date": "2026-05-02", "value": "19.0", "status": "ESTIMATED", "instrument": "Interpolation station voisine", "uncertainty": "1.0" },
-          { "date": "2026-05-03", "value": "", "status": "ABSENT", "instrument": "Panne capteur" },
-          { "date": "2026-05-04", "value": "21.5", "status": "MEASURED", "instrument": "Sonde PT100", "uncertainty": "0.2" }
+          {
+            "date": "2026-05-01",
+            "value": "18.5",
+            "status": "MEASURED",
+            "instrument": "Sonde PT100",
+            "uncertainty": "0.2"
+          },
+          {
+            "date": "2026-05-02",
+            "value": "19.0",
+            "status": "ESTIMATED",
+            "instrument": "Interpolation station voisine",
+            "uncertainty": "1.0"
+          },
+          {
+            "date": "2026-05-03",
+            "value": "",
+            "status": "ABSENT",
+            "instrument": "Panne capteur"
+          },
+          {
+            "date": "2026-05-04",
+            "value": "21.5",
+            "status": "MEASURED",
+            "instrument": "Sonde PT100",
+            "uncertainty": "0.2"
+          }
         ]
       },
-      "expected": ["moyenne calcule sur valeurs réelles et estimées", "valeur absente ignorée", "présence d'estimées signalée", "incertitude propagée"]
+      "expected": [
+        "moyenne calcule sur valeurs réelles et estimées",
+        "valeur absente ignorée",
+        "présence d'estimées signalée",
+        "incertitude propagée"
+      ]
     },
     {
       "id": "R6",
       "name": "Expériences de laboratoire",
       "collection": "Laboratoire d'analyses",
-      "fields": ["Échantillon", "Date", "Concentration", "Opérateur"],
+      "fields": [
+        "Échantillon",
+        "Date",
+        "Concentration",
+        "Opérateur"
+      ],
       "measure": {
         "field": "Concentration",
         "unit": "mg/L",
-        "sample": { "value": "4.25", "uncertainty": "0.05", "uncertaintyType": "ABSOLUTE", "quality": "Certifié", "observedAt": "2026-04-10T09:30:00Z" }
+        "sample": {
+          "value": "4.25",
+          "uncertainty": "0.05",
+          "uncertaintyType": "ABSOLUTE",
+          "quality": "Certifié",
+          "observedAt": "2026-04-10T09:30:00Z"
+        }
       },
       "revisions": [
-        { "at": "2026-04-10T10:00:00Z", "value": "4.25" },
-        { "at": "2026-04-12T14:00:00Z", "value": "4.18", "reason": "Ré-étalonnage du spectromètre" }
+        {
+          "at": "2026-04-10T10:00:00Z",
+          "value": "4.25"
+        },
+        {
+          "at": "2026-04-12T14:00:00Z",
+          "value": "4.18",
+          "reason": "Ré-étalonnage du spectromètre"
+        }
       ],
-      "relations": { "kind": "ASSOCIATION", "from": "Expérience", "to": "Échantillon", "expected": "plusieurs expériences peuvent référencer plusieurs échantillons" },
-      "expected": ["relecture asOfDate retourne 4.25 au 11 avril et 4.18 après", "historique des révisions conservé", "conversion nombre vers mesure sans perte"]
+      "relations": {
+        "kind": "ASSOCIATION",
+        "from": "Expérience",
+        "to": "Échantillon",
+        "expected": "plusieurs expériences peuvent référencer plusieurs échantillons"
+      },
+      "expected": [
+        "relecture asOfDate retourne 4.25 au 11 avril et 4.18 après",
+        "historique des révisions conservé",
+        "conversion nombre vers mesure sans perte"
+      ]
     },
     {
       "id": "R8",
       "name": "Points et zones sans fond externe",
       "collection": "Sites locaux",
-      "position": { "latitude": 6.5244, "longitude": 3.3792, "accuracy": 12 },
-      "zone": { "type": "Circle", "center": [3.3792, 6.5244], "radiusMeters": 1000 },
-      "contribution": { "dataFormat": "Relevé de terrain", "publicFields": ["Observation", "Date", "Site"], "anonymous": true, "initialStatus": "PENDING", "acceptedProvenance": "external contribution" },
-      "expected": ["coordonnées WGS84 conservées après export et import GeoJSON", "distance affichée en kilomètres", "point compté dans la zone", "carte paginée sans service tiers", "réponse anonyme en quarantaine avant acceptation", "lien révoqué refuse immédiatement une nouvelle réponse", "reçu privé permet export et effacement"]
+      "position": {
+        "latitude": 6.5244,
+        "longitude": 3.3792,
+        "accuracy": 12
+      },
+      "zone": {
+        "type": "Circle",
+        "center": [
+          3.3792,
+          6.5244
+        ],
+        "radiusMeters": 1000
+      },
+      "contribution": {
+        "dataFormat": "Relevé de terrain",
+        "publicFields": [
+          "Observation",
+          "Date",
+          "Site"
+        ],
+        "anonymous": true,
+        "initialStatus": "PENDING",
+        "acceptedProvenance": "external contribution"
+      },
+      "expected": [
+        "coordonnées WGS84 conservées après export et import GeoJSON",
+        "distance affichée en kilomètres",
+        "point compté dans la zone",
+        "carte paginée sans service tiers",
+        "réponse anonyme en quarantaine avant acceptation",
+        "lien révoqué refuse immédiatement une nouvelle réponse",
+        "reçu privé permet export et effacement"
+      ]
     },
     {
       "id": "R9",
       "name": "Démographie et taux par dénominateur",
       "collection": "Indicateurs locaux",
-      "fields": ["Région", "Date", "Naissances", "Population"],
-      "analysis": { "operation": "RATE_PER_N", "rateBase": 1000, "measure": "Naissances", "denominator": "Population" },
-      "classification": { "list": "Territoires", "codes": [ { "code": "pays", "labelEn": "Country", "labelFr": "Pays" }, { "code": "region", "parentCode": "pays", "labelEn": "Region", "labelFr": "Région" }, { "code": "ville", "parentCode": "region", "labelEn": "City", "labelFr": "Ville" } ], "groupDepth": 1 },
-      "hierarchy": { "path": ["Pays", "Région", "Ville"], "populations": [30, 20, 10], "expectedTotal": 60 },
-      "expected": ["taux pour 1 000 habitants calculé explicitement", "refus si dénominateur nul ou absent", "cumul hiérarchique = 60", "cycle parent-enfant refusé"]
+      "fields": [
+        "Région",
+        "Date",
+        "Naissances",
+        "Population"
+      ],
+      "analysis": {
+        "operation": "RATE_PER_N",
+        "rateBase": 1000,
+        "measure": "Naissances",
+        "denominator": "Population"
+      },
+      "classification": {
+        "list": "Territoires",
+        "codes": [
+          {
+            "code": "pays",
+            "labelEn": "Country",
+            "labelFr": "Pays"
+          },
+          {
+            "code": "region",
+            "parentCode": "pays",
+            "labelEn": "Region",
+            "labelFr": "Région"
+          },
+          {
+            "code": "ville",
+            "parentCode": "region",
+            "labelEn": "City",
+            "labelFr": "Ville"
+          }
+        ],
+        "groupDepth": 1
+      },
+      "hierarchy": {
+        "path": [
+          "Pays",
+          "Région",
+          "Ville"
+        ],
+        "populations": [
+          30,
+          20,
+          10
+        ],
+        "expectedTotal": 60
+      },
+      "expected": [
+        "taux pour 1 000 habitants calculé explicitement",
+        "refus si dénominateur nul ou absent",
+        "cumul hiérarchique = 60",
+        "cycle parent-enfant refusé"
+      ]
     },
     {
       "id": "R10",
       "name": "Consommation d'énergie et d'eau du foyer",
       "collection": "Compteur d'eau",
-      "fields": ["Date", "Index compteur (m³)", "Remise à zéro"],
-      "readings": [
-        { "date": "2026-01-01", "value": "100" },
-        { "date": "2026-02-01", "value": "115" },
-        { "date": "2026-03-01", "value": "135" }
+      "fields": [
+        "Date",
+        "Index compteur (m³)",
+        "Remise à zéro"
       ],
-      "analysis": { "operation": "SUCCESSIVE_DIFF", "groupBy": "MONTH", "trend": "LINEAR_TREND" },
-      "expected": ["consommation mensuelle 15 m³ puis 20 m³", "remise à zéro gérée explicitement", "tendance linéaire avec pente et période"]
+      "readings": [
+        {
+          "date": "2026-01-01",
+          "value": "100"
+        },
+        {
+          "date": "2026-02-01",
+          "value": "115"
+        },
+        {
+          "date": "2026-03-01",
+          "value": "135"
+        }
+      ],
+      "analysis": {
+        "operation": "SUCCESSIVE_DIFF",
+        "groupBy": "MONTH",
+        "trend": "LINEAR_TREND"
+      },
+      "expected": [
+        "consommation mensuelle 15 m³ puis 20 m³",
+        "remise à zéro gérée explicitement",
+        "tendance linéaire avec pente et période"
+      ]
+    },
+    {
+      "id": "P45",
+      "name": "Paquets de domaine pilotes (T45)",
+      "packages": [
+        "brainy.notes-links",
+        "brainy.expenses",
+        "brainy.simple-sales",
+        "brainy.local-weather",
+        "brainy.shop",
+        "brainy.measurements"
+      ],
+      "steps": [
+        "aperçu puis installation de chaque pilote dans une nouvelle collection",
+        "Ventes simples : 3 × 2,5 € donne un total de 7,5",
+        "Dépenses : code FOOD.GROCERIES sous FOOD",
+        "Boutique : unité locale ctn12 et trois règles de stock IN, OUT, TRANSFER",
+        "export depuis un compte, installation dans un autre sans aucune entrée",
+        "mise à jour 1.0.0 → 1.1.0 par ajouts seulement, puis détachement sans perte"
+      ],
+      "expected": [
+        "aucune valeur saisie dans le fichier exporté",
+        "format de paquet 2 refusé clairement",
+        "clé script refusée comme code exécutable",
+        "signature modifiée refusée",
+        "échec d’installation sans collection résiduelle"
+      ],
+      "smoke": "docker compose exec -T api npm run smoke:domain-packages"
     }
   ]
 }

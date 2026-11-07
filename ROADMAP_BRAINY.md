@@ -101,7 +101,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T42 | Registre non modifiable (Étape L) | Dépendances : T26, T28, T29. | terminée le 2026-10-30 | [T42](docs/tasks/T42.md) |
 | T43 | Niveaux de sensibilité et seuils d'agrégat (Étape L) | Dépendances : T15, T22, T28. | terminée le 2026-10-30 | [T43](docs/tasks/T43.md) |
 | T44 | Données lourdes par référence (Étape M) | Dépendances : T07, T30, T31. | prévue | [T44](docs/tasks/T44.md) |
-| T45 | Paquets de domaine partageables (Étape M) | Dépendances : T14, T17, T24, T35–T39. | prévue | [T45](docs/tasks/T45.md) |
+| T45 | Paquets de domaine partageables (Étape M) | Dépendances : T14, T17, T24, T35–T39. | terminée le 2026-11-07 | [T45](docs/tasks/T45.md) |
 
 ## Ordre d'exécution fusionné recommandé (après T27)
 

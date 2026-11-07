@@ -1,12 +1,16 @@
 # Journal de coordination et reprise Multi-IA
 
+## Session A — T02 (en pause)
 Agent actif : Claude (reprise de Codex), 7 novembre 2026.
-Tâche verrouillée : T02 — thème sombre charbon inspiré de la référence utilisateur.
-Fichiers réservés : brainy_web_app/app/*.css (+ nouveau design-system.css), app/layout.tsx, composants visuels web, documentation T02.
-Intention : clair plus coloré et animé (professionnel), polices, vérification EN/FR de toutes les vues web.
+Tâche verrouillée : T02 — thème sombre charbon.
+Fichiers réservés : brainy_web_app/app/*.css, app/layout.tsx, collection-tools-hub.tsx, workspace-tools-dialog.tsx, documentation T02.
+Prochaine action : clavier/focus et panneaux d’outils web ; sélecteur de date localisé ; puis aligner Flutter.
 
-Commits : web design-system (Claude) après a3a4cec ; Flutter a4bc92b. Preuves dans docs/tasks/T02.md.
-Validé : 12 configurations Chrome, contrastes/clavier, ESLint/TypeScript et build web ; analyse Dart, trois tests ciblés, build et 18 captures Windows. Documents et conservation de la roadmap vérifiés.
-Limites : aucun rendu Android ni parcours connecté complet rejoué pour cette dernière palette.
-Préexistants conservés : collection-tools-hub.tsx, workspace-tools-dialog.tsx, docker-compose.yml, déplacement/modification du skill UI.
-Prochaine action : clavier/focus et panneaux d’outils web ; sélecteur de date localisé ; puis aligner Flutter (jetons, accents, polices, logo).
+## Session B — T45
+Agent actif : Claude, 7 novembre 2026.
+Tâche verrouillée : T45 — paquets de domaine partageables.
+Fichiers réservés : api/src/collections/domain-package*.ts, collections.module.ts, api/scripts/domain-package-smoke.mjs, api/package.json (script), brainy_web_app/app/domain-packages-dialog.tsx, lib/domain-packages.ts, branchement minimal brainy-app.tsx, brainy/lib/domain_package*.dart, branchement minimal workspace_screen.dart, docs/T45_PAQUETS_DOMAINE.md, docs/tasks/T45.md, ROADMAP_BRAINY.md, docs/reference-fixtures-1-1.json.
+Intention : contrat, API, fumée, web, Flutter, documentation.
+Validé : contrat, module API, fumée smoke:domain-packages (6 pilotes, export, MAJ, détachement, signature, refus).
+Web : commit 0c488c2 (dialogue, menu Gérer, lien modèles ; lint, tsc, build, 16 captures CDP).
+Prochaine action : Flutter (domain_packages_sheet.dart + branchement), puis documentation.
