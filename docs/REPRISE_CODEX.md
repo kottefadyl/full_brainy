@@ -1,15 +1,13 @@
-﻿# Journal de coordination et reprise Multi-IA
+# Journal de coordination et reprise Multi-IA
 
 Agent actif : aucun.
-Tâche verrouillée : Aucune tâche en cours.
-Fichiers réservés : aucun.
+T?che verrouill?e : Aucune t?che en cours.
+Fichiers r?serv?s : aucun.
 
-Dernière intervention : T02, identité bleue et cartes affinées, 6 novembre 2026.
-- Web `66b9a98` : navigation bleue, accents rouges discrets, cartes avec champs dépliables, entrées compactes, survol et focus.
-- Flutter `7cee216` : mêmes repères, composants et thèmes extraits, dates compactes dans la liste, détail complet.
-- Vérifié : 48 configurations Chrome, lint/TypeScript/build ; analyse Dart ; 10 parcours et 3 tests ciblés ; 12 captures natives Windows et 8 Android clair/sombre ; documentation et roadmap.
-- Preuves et limites : `docs/tasks/T02.md`. Bancs : `brainy_web_app/scripts/visual/phase-two-b/` et `brainy/tool/IDENTITY_PREVIEW.md`. Captures locales ignorées sous `.visual-checks/`.
-- Limites : pas de téléphone physique ni de parcours connecté complet rejoué ; texte doublé et mouvement réduit Flutter vérifiés par tests de widgets.
-- Préexistants préservés : web `collection-tools-hub.tsx`, `workspace-tools-dialog.tsx` ; racine `docker-compose.yml`, déplacement/modification du skill UI.
+Termin? le 7 novembre 2026 : T02 ? reprise des menus et de la banni?re, identit? bleu glacier web/Flutter. Menus de cartes non rogn?s, langue et gestion lisibles, banni?re ?largie et contraste mobile corrig?.
+Commits : web d7769c6 ; Flutter 244eede. Preuves et limites dans docs/tasks/T02.md.
+Valid? : lint, TypeScript, build web ; 48 configurations Chrome et 12 banni?res/menus ; analyse Dart et 13 tests ; builds Windows/Android, 18 captures Windows et 12 Android ; documentation et conservation de la roadmap.
+Limites : donn?es fictives, aucun parcours connect? complet ni t?l?phone physique pour cette retouche.
 
-Prochaine action : attendre la prochaine demande utilisateur ; aucune action de livraison en attente.
+Pr?existants conserv?s hors commits : collection-tools-hub.tsx, workspace-tools-dialog.tsx, docker-compose.yml, d?placement/modification du skill UI.
+Prochaine action : attendre la prochaine demande utilisateur ; aucune ?tape T02 restante.

@@ -6,6 +6,8 @@ Suivi visuel du 2026-11-06 : refonte web Phase 2b vérifiée sur 48 configuratio
 
 Complément visuel du 2026-11-06 : navigation bleue, cartes affinées et survols cohérents web/Flutter ; rendu natif Windows/Android et tests ciblés vérifiés. Voir [T02](docs/tasks/T02.md#identité-bleue-et-cartes-affinées--6-novembre-2026).
 
+Retouche du 2026-11-07 : identité bleu glacier web/Flutter, bannière élargie, menus de cartes non rognés et sélecteurs de langue lisibles. Recette, preuves et limites dans [T02](docs/tasks/T02.md#bleu-glacier-et-menus--7-novembre-2026).
+
 ## Étape A — consolider le noyau existant
 
 | Tâche | Titre | Dépendances | Statut | Lien |
