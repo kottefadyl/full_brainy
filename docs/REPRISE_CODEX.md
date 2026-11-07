@@ -1,13 +1,12 @@
 # Journal de coordination et reprise Multi-IA
 
 Agent actif : aucun.
-T?che verrouill?e : Aucune t?che en cours.
-Fichiers r?serv?s : aucun.
+Tâche verrouillée : Aucune tâche en cours.
+Fichiers réservés : aucun.
+Terminé le 7 novembre 2026 : T02 — bleu #084BC4, variante plus sombre de l’image utilisateur, sur navigation et bannière web/Flutter. Texte et contrôles contrastés.
 
-Termin? le 7 novembre 2026 : T02 ? reprise des menus et de la banni?re, identit? bleu glacier web/Flutter. Menus de cartes non rogn?s, langue et gestion lisibles, banni?re ?largie et contraste mobile corrig?.
-Commits : web d7769c6 ; Flutter 244eede. Preuves et limites dans docs/tasks/T02.md.
-Valid? : lint, TypeScript, build web ; 48 configurations Chrome et 12 banni?res/menus ; analyse Dart et 13 tests ; builds Windows/Android, 18 captures Windows et 12 Android ; documentation et conservation de la roadmap.
-Limites : donn?es fictives, aucun parcours connect? complet ni t?l?phone physique pour cette retouche.
-
-Pr?existants conserv?s hors commits : collection-tools-hub.tsx, workspace-tools-dialog.tsx, docker-compose.yml, d?placement/modification du skill UI.
-Prochaine action : attendre la prochaine demande utilisateur ; aucune ?tape T02 restante.
+Commits : web 23f1de5 ; Flutter a4bc92b. Preuves dans docs/tasks/T02.md.
+Validé : 12 configurations Chrome, contrastes/clavier, ESLint/TypeScript et build web ; analyse Dart, trois tests ciblés, build et 18 captures Windows. Documents et conservation de la roadmap vérifiés.
+Limites : aucun rendu Android ni parcours connecté complet rejoué pour cette dernière palette.
+Préexistants conservés : collection-tools-hub.tsx, workspace-tools-dialog.tsx, docker-compose.yml, déplacement/modification du skill UI.
+Prochaine action : attendre la prochaine demande utilisateur ; aucune étape restante.

@@ -8,6 +8,8 @@ Complément visuel du 2026-11-06 : navigation bleue, cartes affinées et survols
 
 Retouche du 2026-11-07 : identité bleu glacier web/Flutter, bannière élargie, menus de cartes non rognés et sélecteurs de langue lisibles. Recette, preuves et limites dans [T02](docs/tasks/T02.md#bleu-glacier-et-menus--7-novembre-2026).
 
+Ajustement ultérieur du 2026-11-07 : bleu de référence assombri en `#084BC4` sur demande utilisateur ; [recette ciblée T02](docs/tasks/T02.md#bleu-de-référence-assombri--7-novembre-2026).
+
 ## Étape A — consolider le noyau existant
 
 | Tâche | Titre | Dépendances | Statut | Lien |
