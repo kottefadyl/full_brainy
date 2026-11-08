@@ -4,7 +4,10 @@
 Agent actif : Claude (reprise de Codex), 7 novembre 2026.
 Tâche verrouillée : T02 — thème sombre charbon.
 Fichiers réservés : brainy_web_app/app/*.css, app/layout.tsx, collection-tools-hub.tsx, workspace-tools-dialog.tsx, documentation T02.
-Prochaine action : API, web, Flutter commités ; docs T32 (tâche, roadmap, état), vérifs docs, commit racine, libérer le verrou.
+Prochaine action : clavier/focus et panneaux d’outils web ; sélecteur de date localisé ; puis aligner Flutter.
 
-## Session B
-Aucune tâche en cours. T32 terminée le 2026-11-08 (api b9cd268, web f7e696c+5fa5cd0, Flutter 3a24f7d+02429d5) ; détails dans docs/tasks/T32.md. Note pour A : collection-tools-hub.tsx a reçu une carte « Sources de données ».
+## Session B — T44 (en cours)
+Agent actif : Claude Opus 5.5, 8 novembre 2026.
+Tâche verrouillée : T44 — données lourdes par référence.
+Fichiers réservés : api/src/collections/large-file.*, entry/collection schema (champ référence), api/scripts/large-file-smoke.mjs ; web lib/large-files.ts, app/large-file-*.tsx ; Flutter lib/large_file_*.dart ; docs T44.
+Prochaine action : choisir le stockage objet (décision utilisateur), puis contrat docs/T44_DONNEES_LOURDES.md.
