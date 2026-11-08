@@ -47,3 +47,5 @@ Le budget de coût est ici un plafond de stockage et un gabarit de 8 vCPU/8,27 G
 ## Rétention et suite
 
 Les collections, entrées et pièces jointes personnelles restent conservées jusqu'à suppression explicite par leur propriétaire ; aucun archivage automatique n'est introduit. Les résultats d'analyse et de prévision sont calculés à la demande et ne créent pas de copie durable. Les données temporaires du banc sont effacées après chaque exécution. L'archivage automatique par domaine demande une décision produit avant implémentation, car Brainy ne connaît pas la valeur ni les obligations de conservation des données de l'utilisateur. La séparation des stockages sera réévaluée si un futur banc avec concurrence, pièces jointes ou gros calculs dépasse les budgets approuvés.
+
+Mise à jour du 2026-11-08 : le plafond de 100 000 entrées est retiré par [T22](tasks/T22.md), qui donne aussi les durées mesurées à un million d’entrées.
