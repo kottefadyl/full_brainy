@@ -6,8 +6,5 @@ Tâche verrouillée : T02 — thème sombre charbon.
 Fichiers réservés : brainy_web_app/app/*.css, app/layout.tsx, collection-tools-hub.tsx, workspace-tools-dialog.tsx, documentation T02.
 Prochaine action : clavier/focus et panneaux d’outils web ; sélecteur de date localisé ; puis aligner Flutter.
 
-## Session B — T44 (en cours)
-Agent actif : Claude Opus 5.5, 8 novembre 2026.
-Tâche verrouillée : T44 — données lourdes par référence.
-Fichiers réservés : api/src/collections/large-file.*, entry/collection schema (champ référence), api/scripts/large-file-smoke.mjs ; web lib/large-files.ts, app/large-file-*.tsx ; Flutter lib/large_file_*.dart ; docs T44.
-Prochaine action : choisir le stockage objet (décision utilisateur), puis contrat docs/T44_DONNEES_LOURDES.md.
+## Session B## Session B
+Aucune tâche en cours. T44 terminée le 2026-11-08 (api 0ed7df2, web ecf9cd8, Flutter a806985) ; détails dans docs/tasks/T44.md. Stockage local S3 : service `s3` (VersityGW) dans docker-compose. Note pour A : nouveau fichier app/large-files.css (glob *.css réservé, aucun fichier existant modifié).
