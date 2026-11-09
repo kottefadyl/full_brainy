@@ -38,6 +38,7 @@ services:
       CORS_ORIGIN: ${CORS_ORIGIN:-}
       MONGODB_URI: mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-password}@mongodb:27017/brainy?authSource=admin
       CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: "1000"
       WATCHPACK_POLLING: "true"
       # T44 — S3-compatible storage for large files (VersityGW locally).
       S3_ENDPOINT: ${S3_ENDPOINT:-http://s3:7070}
