@@ -59,7 +59,7 @@ Lire [la direction produit](COLLECTIONS_DIRECTION.md) pour la philosophie 1.0/1.
 
 ## Vérifications
 
-- API : `npm run typecheck` dans `api/` ; fumées `docker compose exec -T api npm run smoke:collections`, `smoke:auth` ou `smoke:stock-forecast` à la racine.
+- API : `npm run typecheck` dans `api/` ; fumées `npm run smoke:collections`, `smoke:auth` ou `smoke:stock-forecast` dans `api/`, API démarrée (`node scripts/dev-local.mjs` à la racine ; MongoDB est un service local).
 - Web : `npm run lint`, `npx tsc --noEmit`, `npm run build` dans `brainy_web_app/` ; proxy : `npm run smoke:web` dans `api/`.
 - Flutter : `dart analyze <fichiers_modifiés>` (ou `flutter analyze`), puis `flutter test test/<fichier>.dart` dans `brainy/` ; `flutter test` complet au palier.
 - Documentation : `node scripts/verifier-docs.mjs` ; roadmap : `node scripts/verifier-contenu-roadmap.mjs` à la racine.
