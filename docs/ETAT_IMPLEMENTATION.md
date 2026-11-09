@@ -9,3 +9,9 @@ Les limites et la suite du plan sont précisées dans [ROADMAP_BRAINY.md](../ROA
 **Règle produit fixée :** chaque objet, unité, classification, paquet et objet-variable appartient d'abord à une collection précise ; sa réutilisation dans une autre collection demande une action explicite de copie, de partage ou de déplacement vers une collection choisie. Ne jamais créer de « types de collection » permanents, ne jamais promettre de conformité légale, médicale, fiscale ou industrielle, et ne jamais exposer une capacité future comme existante sans implémentation cohérente dans l'API et les deux clients.
 
 La proposition produit et les décisions ouvertes (A1, A2, T42) sont dans [COLLECTIONS_DIRECTION.md](../COLLECTIONS_DIRECTION.md) et [les principes communs](tasks/_PRINCIPES.md).
+
+## Modèle KT personal (9 novembre 2026)
+
+Le modèle `kt_personal` crée un format de données à deux champs, date et montant, pour noter un bilan de ventes par jour. Il enregistre sur la collection une configuration `periodTotals` (format de données, champ date, champ montant) : ce n'est pas un type de collection, seulement un réglage que ce modèle est le seul à définir. Quand elle existe, web et Flutter affichent en haut de la collection les totaux de la semaine (lundi à dimanche), du mois et de l'année, avec une saisie directe et la date du jour pré-remplie. Les sommes viennent de `analyseCollection` (`SUM`). Fumée : `smoke:kt-personal`.
+
+**Limites.** Le montant n'a pas d'unité. Deux saisies pour un même jour s'additionnent. Une copie de la collection ne reprend pas le panneau, et il disparaît si le champ date ou montant est retiré.
