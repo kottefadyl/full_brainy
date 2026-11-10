@@ -1,0 +1,96 @@
+# One hobby per line: English | French. Generated into web and Flutter by generate.mjs.
+Archery | Tir à l’arc
+Baking | Pâtisserie
+Basketball | Basket-ball
+Beekeeping | Apiculture
+Birdwatching | Observation des oiseaux
+Blogging | Blog
+Board games | Jeux de société
+Bodybuilding | Musculation
+Bowling | Bowling
+Boxing | Boxe
+Calligraphy | Calligraphie
+Camping | Camping
+Canoeing | Canoë
+Card games | Jeux de cartes
+Ceramics | Céramique
+Chess | Échecs
+Choir singing | Chant choral
+Climbing | Escalade
+Coding | Programmation
+Collecting | Collection
+Comics reading | Lecture de BD
+Cooking | Cuisine
+Cosplay | Cosplay
+Crochet | Crochet
+Crossword puzzles | Mots croisés
+Cycling | Vélo
+Dancing | Danse
+Drawing | Dessin
+DIY | Bricolage
+Embroidery | Broderie
+Fishing | Pêche
+Fitness | Remise en forme
+Football (soccer) | Football
+Gaming | Jeux vidéo
+Gardening | Jardinage
+Golf | Golf
+Guitar | Guitare
+Gymnastics | Gymnastique
+Handball | Handball
+Hiking | Randonnée
+Home brewing | Brassage amateur
+Horse riding | Équitation
+Ice skating | Patinage
+Jigsaw puzzles | Puzzles
+Jogging | Jogging
+Journaling | Journal intime
+Karaoke | Karaoké
+Kayaking | Kayak
+Knitting | Tricot
+Language learning | Apprentissage des langues
+Martial arts | Arts martiaux
+Meditation | Méditation
+Model building | Maquettisme
+Motorcycling | Moto
+Mountain biking | VTT
+Origami | Origami
+Painting | Peinture
+Photography | Photographie
+Piano | Piano
+Pilates | Pilates
+Playing music | Pratique musicale
+Podcasting | Podcast
+Poetry | Poésie
+Pottery | Poterie
+Reading | Lecture
+Road trips | Road trips
+Rugby | Rugby
+Running | Course à pied
+Sailing | Voile
+Scrapbooking | Scrapbooking
+Scuba diving | Plongée sous-marine
+Sewing | Couture
+Singing | Chant
+Skateboarding | Skateboard
+Skiing | Ski
+Snowboarding | Snowboard
+Stamp collecting | Philatélie
+Stand-up paddle | Stand-up paddle
+Stargazing | Observation des étoiles
+Surfing | Surf
+Swimming | Natation
+Table tennis | Tennis de table
+Tennis | Tennis
+Theater | Théâtre
+Traveling | Voyages
+Video editing | Montage vidéo
+Volleyball | Volley-ball
+Volunteering | Bénévolat
+Walking | Marche
+Watching movies | Cinéma
+Watching series | Séries
+Wine tasting | Dégustation de vin
+Woodworking | Travail du bois
+Writing | Écriture
+Yoga | Yoga

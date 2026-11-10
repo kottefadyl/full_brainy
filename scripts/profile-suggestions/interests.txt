@@ -1,0 +1,99 @@
+# One interest per line: English | French. Generated into web and Flutter by generate.mjs.
+Agriculture | Agriculture
+Animals | Animaux
+Anthropology | Anthropologie
+Architecture | Architecture
+Art history | Histoire de l’art
+Artificial intelligence | Intelligence artificielle
+Astronomy | Astronomie
+Biology | Biologie
+Blockchain | Blockchain
+Books | Livres
+Business | Entreprise
+Cars | Automobile
+Chemistry | Chimie
+Cinema | Cinéma
+Climate | Climat
+Comics | Bandes dessinées
+Computer science | Informatique
+Cooking | Cuisine
+Cryptocurrency | Cryptomonnaies
+Culture | Culture
+Cybersecurity | Cybersécurité
+Data science | Science des données
+Design | Design
+Economics | Économie
+Education | Éducation
+Electronics | Électronique
+Energy | Énergie
+Engineering | Ingénierie
+Entrepreneurship | Entrepreneuriat
+Environment | Environnement
+Fashion | Mode
+Finance | Finance
+Food | Gastronomie
+Gaming | Jeux vidéo
+Gardening | Jardinage
+Genealogy | Généalogie
+Geography | Géographie
+Geology | Géologie
+Health | Santé
+History | Histoire
+Human rights | Droits humains
+Innovation | Innovation
+Interior design | Décoration intérieure
+Investing | Investissement
+Languages | Langues
+Law | Droit
+Leadership | Leadership
+Literature | Littérature
+Management | Management
+Marketing | Marketing
+Mathematics | Mathématiques
+Medicine | Médecine
+Mental health | Santé mentale
+Movies | Films
+Museums | Musées
+Music | Musique
+Mythology | Mythologie
+Nature | Nature
+Neuroscience | Neurosciences
+News | Actualité
+Nutrition | Nutrition
+Oceans | Océans
+Open source | Logiciel libre
+Parenting | Parentalité
+Personal development | Développement personnel
+Personal finance | Finances personnelles
+Philosophy | Philosophie
+Photography | Photographie
+Physics | Physique
+Podcasts | Podcasts
+Politics | Politique
+Productivity | Productivité
+Programming | Programmation
+Psychology | Psychologie
+Public health | Santé publique
+Real estate | Immobilier
+Religion | Religion
+Renewable energy | Énergies renouvelables
+Robotics | Robotique
+Science | Sciences
+Science fiction | Science-fiction
+Social justice | Justice sociale
+Sociology | Sociologie
+Space exploration | Exploration spatiale
+Spirituality | Spiritualité
+Sports | Sport
+Startups | Startups
+Sustainability | Développement durable
+Technology | Technologie
+Television | Télévision
+Theater | Théâtre
+Travel | Voyages
+Urbanism | Urbanisme
+Volunteering | Bénévolat
+Wellness | Bien-être
+Wildlife | Faune sauvage
+Wine | Vin
+Writing | Écriture

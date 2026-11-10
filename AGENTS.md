@@ -19,6 +19,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 
 - L'utilisateur s'inscrit ou se connecte avec son adresse e-mail et son mot de passe, ou avec Google lorsque Firebase est configuré.
 - À la première connexion sans profil complété, Brainy demande le nom, la profession, le poste actuel, le domaine d'études, les centres d'intérêt et les loisirs. Profession, poste et études sont facultatifs ; il faut au moins un centre d'intérêt ou un loisir (l'ajustement A1 prévoit de rendre centres d'intérêt et loisirs facultatifs sur décision produit tant que T33 n'est pas livrée). Le profil reste modifiable.
+- Photo de profil facultative (JPEG, PNG ou WebP, 1 Mio au plus, contrôlée par l'API) : les clients compressent en JPEG une photo plus lourde avant l'envoi. Profession et poste proposent une longue liste de métiers ; centres d'intérêt et loisirs, des listes de suggestions en puces. La saisie libre reste toujours permise. Les listes EN/FR se modifient dans `scripts/profile-suggestions/*.txt`, puis `node scripts/profile-suggestions/generate.mjs`.
 - Ces informations sont privées et préparées pour une éventuelle mise en relation entre utilisateurs ([T33](docs/tasks/T33.md)). La mise en relation n'est pas encore disponible ; ne pas présenter le profil comme public.
 - Les collections et entrées appartiennent au compte connecté. L'API contrôle cet accès.
 
