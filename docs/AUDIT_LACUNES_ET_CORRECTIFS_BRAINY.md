@@ -238,4 +238,4 @@ Ces décisions priment sur les objectifs ci-dessus.
 * **`T22/1`, 300 ms sur 1 000 000 d'entrées :** abandonné tant qu'aucun usage réel ne l'exige. Les calculs prennent 18 à 33 s et l'objectif imposerait des agrégats précalculés.
 * **`T23/2`, double axe Y :** abandonné. Les courbes multiples restent à faire.
 * **`T43/2`, bruit laplacien :** reporté. `T43/3` et `T43/1` livrés le 10 novembre 2026 ([T43](tasks/T43.md)).
-* **État au 10 novembre 2026 :** `T23/6` livré sur le web et Flutter (pas de SVG sur Flutter) ; `T23/1` partiel : aires empilées et jauge livrées, nuage de points et radar ouverts ([T23](tasks/T23.md)).
+* **État au 10 novembre 2026 :** `T23/6` livré sur le web et Flutter (pas de SVG sur Flutter) ; `T23/1` livré : aires empilées, jauge, nuage de points et radar ([T23](tasks/T23.md)).
