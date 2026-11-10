@@ -56,7 +56,7 @@ Ajustement ultérieur du 2026-11-07 : bleu de référence assombri en `#084BC4` 
 | --- | --- | --- | --- | --- |
 | T21 | Moteur de formules typées et sûr | Dépendances : T05, T08, T12, T13. | parcours utilisable avec limites documentées | [T21](docs/tasks/T21.md) |
 | T22 | Agrégats et analyses commerciales/statistiques | Dépendances : T21, T06, T18. | parcours utilisable avec limites documentées ; API massive et statistiques du 2026-11-08, exposées sur les deux clients | [T22](docs/tasks/T22.md) |
-| T23 | Graphiques lisibles | Dépendances : T22. | terminée | [T23](docs/tasks/T23.md) |
+| T23 | Graphiques lisibles | Dépendances : T22. | terminée ; T23/1 partiel (aires empilées et jauge livrées, nuage de points et radar ouverts) | [T23](docs/tasks/T23.md) |
 
 Validation du 2026-10-25 : la fumée API T21–T23 passe, dont 10 005 entrées, deux pages distinctes de sources et le poids par produit avec son nom et son unité. T23 a été rejoué dans un navigateur et par tests de widgets Flutter à 320 et 1 000 px. Détails dans les fiches de tâche.
 
