@@ -16,4 +16,14 @@ Chaque agrégat sensible, servi ou refusé, est consigné dans l’audit T28 ave
 - **BURST** : la même question est posée 10 fois en une heure ;
 - **PROBING** : 5 requêtes sensibles sont refusées en une heure, signe d’un sondage des règles.
 
-Une alerte d’un même motif n’est écrite qu’une fois par heure, par question et par personne. Ces alertes **ne bloquent rien** : le seuil et les refus restent la protection, et un ajout légitime d’entrée peut aussi déclencher DIFFERENCING. Le journal est lisible par l’API (`collectionAuditLogs`, 100 derniers événements, rôle éditeur ou propriétaire) ; aucun écran ne l’affiche encore. Logique dans `api/src/collections/sensitive-aggregate-watch.ts` ; fumée `npm run smoke:sensitivity`.
+Une alerte d’un même motif n’est écrite qu’une fois par heure, par question et par personne. Ces alertes **ne bloquent rien** : le seuil et les refus restent la protection, et un ajout légitime d’entrée peut aussi déclencher DIFFERENCING. Le journal est lisible par l’API (`collectionAuditLogs`, 100 derniers événements, rôle éditeur ou propriétaire) et affiché, depuis le 10 novembre 2026, dans la section Confidentialité du web et de Flutter : libellés naturels, motif des alertes en clair, clé technique omise, filtre « tout le journal ». Logique dans `api/src/collections/sensitive-aggregate-watch.ts` ; fumée `npm run smoke:sensitivity`.
+
+## Règle de k-anonymat (T43/1, 10 novembre 2026)
+
+Chaque ligne rendue par un agrégat sensible compte au moins k observations, k étant le seuil minimal de la collection. Plutôt que de refuser dès qu’un groupe est trop petit, l’API élargit le regroupement dans un ordre fixe, donc explicable :
+
+- **catégories** : les groupes sous k sont fusionnés en une seule ligne « Autres (n groupes regroupés) » lorsqu’ils sont au moins deux et atteignent k ensemble (un seul petit groupe resterait nommé par son absence) ; sinon le résultat devient un total unique ;
+- **jours** → mois → total unique ; **mois** → total unique ;
+- un total sous k, ou des observations omises (un complément soustractible), est refusé comme avant.
+
+La valeur d’une ligne fusionnée est exacte : somme des nombres ou des sommes, moyenne pondérée par les effectifs. Le résultat porte le regroupement final (`groupBy`) et son explication dit ce qui a été élargi. Cela reste un contrôle de divulgation, pas une anonymisation : des connaissances extérieures peuvent toujours permettre des inférences. Logique dans `api/src/collections/sensitivity.logic.ts` ; fumée R9 dans `npm run smoke:sensitivity`.
