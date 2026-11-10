@@ -7,3 +7,13 @@ Un partage de collection masque les champs sensibles par défaut, même si le me
 Le propriétaire choisit un seuil minimal d’effectif pour les analyses sensibles, avec une valeur initiale de 5. L’API applique ce seuil avant de rendre une ligne d’agrégat. Elle refuse les requêtes permettant des recoupements évidents par filtres, comparaisons, groupes complémentaires ou accès aux sources détaillées. Les résultats sont des contrôles de divulgation limités, **pas une anonymisation** : des connaissances extérieures et plusieurs exports peuvent encore permettre des inférences.
 
 Les scénarios R7 (données métier avec champs personnels) et R8 (positions précises) servent de fumées de validation. Les anciens schémas et archives restent lisibles ; les nouveaux réglages sont conservés dans les sauvegardes.
+
+## Requêtes répétées (T43/3, 10 novembre 2026)
+
+Chaque agrégat sensible, servi ou refusé, est consigné dans l’audit T28 avec une empreinte de la question (`queryKey`, 16 caractères hexadécimaux calculés sur le format de données, le champ, l’opération, les regroupements et les filtres demandés) et, s’il est servi, son nombre total d’observations. Aucune valeur n’est écrite. Trois motifs ajoutent une alerte `SENSITIVE_AGGREGATE_ALERT` :
+
+- **DIFFERENCING** : la même question, posée par la même personne dans les 24 heures, donne un total qui diffère de moins d’observations que le seuil ; soustraire les deux résultats peut isoler quelques entrées ;
+- **BURST** : la même question est posée 10 fois en une heure ;
+- **PROBING** : 5 requêtes sensibles sont refusées en une heure, signe d’un sondage des règles.
+
+Une alerte d’un même motif n’est écrite qu’une fois par heure, par question et par personne. Ces alertes **ne bloquent rien** : le seuil et les refus restent la protection, et un ajout légitime d’entrée peut aussi déclencher DIFFERENCING. Le journal est lisible par l’API (`collectionAuditLogs`, 100 derniers événements, rôle éditeur ou propriétaire) ; aucun écran ne l’affiche encore. Logique dans `api/src/collections/sensitive-aggregate-watch.ts` ; fumée `npm run smoke:sensitivity`.
