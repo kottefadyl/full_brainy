@@ -102,6 +102,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T43 | Niveaux de sensibilité et seuils d'agrégat (Étape L) | Dépendances : T15, T22, T28. | terminée le 2026-10-30 | [T43](docs/tasks/T43.md) |
 | T44 | Données lourdes par référence (Étape M) | Dépendances : T07, T30, T31. | terminée le 2026-11-08 | [T44](docs/tasks/T44.md) |
 | T45 | Paquets de domaine partageables (Étape M) | Dépendances : T14, T17, T24, T35–T39. | terminée le 2026-11-07 | [T45](docs/tasks/T45.md) |
+| T46 | Mode tableur des vues tableau (cellules, lignes, colonnes avec unité) | Dépendances : T03, T04. | terminée le 2026-11-10 (build web et Android à exécuter) | [T46](docs/tasks/T46.md) |
 
 ## Ordre d'exécution fusionné recommandé (après T27)
 

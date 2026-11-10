@@ -31,7 +31,8 @@ for (const document of documents) {
 }
 const index = readFileSync(join(root, 'ROADMAP_BRAINY.md'), 'utf8');
 const taskIds = [...index.matchAll(/^\| (T\d{2}) \|/gm)].map((match) => match[1]);
-if (taskIds.length !== 45 || new Set(taskIds).size !== 45) errors.push(`Roadmap index has ${taskIds.length} task rows, expected 45 unique rows`);
+// T46 (spreadsheet mode) was added on 2026-11-10; raise this count with each new task row.
+if (taskIds.length !== 46 || new Set(taskIds).size !== 46) errors.push(`Roadmap index has ${taskIds.length} task rows, expected 46 unique rows`);
 for (const id of taskIds) {
   const path = join(root, 'docs', 'tasks', `${id}.md`);
   if (!existsSync(path)) { errors.push(`${id} has no task file`); continue; }
