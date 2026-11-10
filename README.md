@@ -27,6 +27,8 @@ The API exposes `updateProfile`, `collectionsList`, `createCollection`, `addColl
 5. Run `node scripts/dev-local.mjs` from this directory. It starts S3 storage, the API and the web app; add `--no-s3` to skip storage. The GraphQL API is at `http://localhost:3000/graphql` and the web app at `http://localhost:3001`.
 6. For mobile or desktop, run `flutter pub get` and `flutter run -d windows` (or a mobile device ID) from `brainy/`.
 
+For hosting on Vercel's free plan, read [the Vercel notes](docs/DEPLOIEMENT_VERCEL.md): reminders, background processing, data sources and large files are frozen there.
+
 The Flutter client uses `http://localhost:3000/graphql` on desktop and `http://10.0.2.2:3000/graphql` on the Android emulator. For a phone, remote API, or a different port, pass `--dart-define=API_URL=https://your-host/graphql` to `flutter run` or `flutter build`. The Next.js app forwards web requests to the API server-side. Set `GRAPHQL_API_URL` in `brainy_web_app/.env.local` when the API is not at `http://127.0.0.1:3000/graphql`. Production apps should use HTTPS.
 
 ## Try the demo charts
