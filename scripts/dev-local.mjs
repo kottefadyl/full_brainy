@@ -72,7 +72,14 @@ const s3Binary = process.argv.includes('--no-s3') ? null : findS3Binary();
 if (s3Binary) {
   const dataDir = join(root, '.tools', 's3-data');
   mkdirSync(dataDir, { recursive: true });
-  start('S3 storage', s3Binary, ['--port', new URL(env.S3_ENDPOINT).host, 'posix', dataDir], {
+  // Windows file systems have no extended attributes: keep object metadata in a sidecar folder.
+  const metaArgs = [];
+  if (process.platform === 'win32') {
+    const metaDir = join(root, '.tools', 's3-meta');
+    mkdirSync(metaDir, { recursive: true });
+    metaArgs.push('--sidecar', metaDir);
+  }
+  start('S3 storage', s3Binary, ['--port', new URL(env.S3_ENDPOINT).host, 'posix', ...metaArgs, dataDir], {
     env: { ...process.env, ROOT_ACCESS_KEY_ID: env.S3_ACCESS_KEY, ROOT_SECRET_ACCESS_KEY: env.S3_SECRET_KEY, VGW_REGION: env.S3_REGION },
   });
 } else {
