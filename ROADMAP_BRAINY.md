@@ -109,6 +109,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T50 | Guide de bienvenue (5 pages, première collection guidée) | Dépendances : profil, T24. | terminée le 2026-11-11 (Android à vérifier) | [T50](docs/tasks/T50.md) |
 | T51 | Guide et formation (12 chapitres EN/FR, recherche, captures) | Dépendances : T50. | terminée le 2026-11-11 (Android à vérifier) | [T51](docs/tasks/T51.md) |
 | T52 | Collaborateurs par lien et collections partagées (lecture seule, lecture et écriture) | Dépendances : T28. | terminée le 2026-11-11 (Android et liens d'application à faire) | [T52](docs/tasks/T52.md) |
+| T53 | Auteur et dernier modificateur des entrées et formats de données (collections partagées) | Dépendances : T52. | terminée le 2026-11-11 (Android à vérifier) | [T53](docs/tasks/T53.md) |
 
 ## Ordre d'exécution fusionné recommandé (après T27)
 
