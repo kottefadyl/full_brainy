@@ -103,6 +103,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T44 | Données lourdes par référence (Étape M) | Dépendances : T07, T30, T31. | terminée le 2026-11-08 | [T44](docs/tasks/T44.md) |
 | T45 | Paquets de domaine partageables (Étape M) | Dépendances : T14, T17, T24, T35–T39. | terminée le 2026-11-07 | [T45](docs/tasks/T45.md) |
 | T46 | Mode tableur des vues tableau (cellules, lignes, colonnes avec unité) | Dépendances : T03, T04. | terminée le 2026-11-10 (Android à vérifier) | [T46](docs/tasks/T46.md) |
+| T47 | Modèle Livre, règles de parties (une entrée, parents) et vue livre | Dépendances : T03, T24, T37. | terminée le 2026-11-11 (Android et impression Flutter à faire) | [T47](docs/tasks/T47.md) |
 
 ## Ordre d'exécution fusionné recommandé (après T27)
 

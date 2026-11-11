@@ -35,6 +35,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 8. Un format de données existant peut être renommé, recevoir de nouveaux champs ou changer l'ordre des champs. Un champ contenant des valeurs enregistrées ne peut pas être supprimé ni changer de type ou d'unité ; ses choix existants restent disponibles. L'API utilise une version de format pour refuser une modification sur un état périmé.
 9. Une collection peut posséder des unités locales et des formats de données marqués comme modèles d’objets. Un objet est une entrée nommée d’un de ces formats, avec identité stable, caractéristiques, duplication et historique de modifications. Un modèle proposé par Brainy est copié dans la collection choisie. Convertir un format déjà rempli en modèle d’objets demande un aperçu et une confirmation ; une entrée sans titre ne peut devenir objet. La duplication conserve le nom saisi. L’action « Utiliser dans une entrée » crée un résumé figé dans un format de données ordinaire avec un lien interne vers l’objet source. Un champ de référence typé permet aussi de choisir un ou plusieurs objets dans une entrée, en mode valeur actuelle ou instantané ; un objet-variable utilise ces références sans créer de stock.
 10. Une collection peut définir des règles de mouvements de stock explicites et idempotentes (entrée, sortie, transfert, correction avec aperçu avant validation et stock courant dérivé des mouvements, [T26](docs/tasks/T26.md)) ainsi que des premières prévisions explicables (moyenne ou tendance linéaire avec période tenue à l'écart, [T27](docs/tasks/T27.md)), toujours séparées des observations réelles.
+11. Un format de données peut n'accepter qu'**une seule entrée** et limiter ses **parents autorisés** (relation parent-enfant de T37) ; l'API refuse les écarts. Le modèle Livre s'en sert ([T47](docs/tasks/T47.md)) ; sa **vue livre** n'existe que dans les collections créées depuis ce modèle (`templateId`, simple provenance) et une fois activée. La mise en forme y reste du Markdown léger dans le texte long.
 
 ## Expérience et langage
 
@@ -43,7 +44,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 - Permettre aux novices de commencer avec un champ ; garder les choix avancés progressifs et masquer le jargon technique (ex. « objet-variable ») derrière des libellés naturels. Fournir interface, erreurs et dates en anglais et français ; accepter la virgule décimale française et normaliser le stockage.
 - Séparer **format de données** (structure et couleur), **entrée** (valeurs) et vue, règle ou action (exploitation).
 
-## Direction et état de livraison (T01 à T32 et T34 à T45 livrés ; T33 prévue)
+## Direction et état de livraison (T01 à T32 et T34 à T47 livrés ; T33 prévue)
 
 Garder la collection comme conteneur unique. Les objets et objets-variables appartiennent d'abord à une collection ; leur copie, partage ou déplacement vers une autre collection, comme celui d'un format de données, exige un choix explicite de la cible. Ne pas créer de « types de collection » permanents ni promettre de conformité légale, médicale, fiscale ou industrielle.
 
