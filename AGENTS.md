@@ -27,7 +27,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 
 1. Une **collection** possède un nom. Elle sert de conteneur aux formats de données et aux entrées. Son nom peut être modifié ; sa suppression retire aussi ses entrées.
 2. Une collection possède de 1 à 24 **formats de données** nommés. Chaque format de données possède ses propres champs et une couleur pastel choisie obligatoirement dans la palette. Deux formats de données d'une même collection ne peuvent pas partager la même couleur. La couleur peut être changée plus tard.
-3. Un format de données possède de 1 à 30 champs. Les noms de champs sont uniques au sein de ce format, sans distinction de casse. Types disponibles : titre, date, nombre, heure, lien web, caractère unique, texte, texte long, oui/non, choix unique ou multiple, date et heure, durée, pièce jointe et référence d'objet. Un champ nombre peut être sans unité, utiliser une unité proposée ou une unité personnalisée. L'unité appartient à la définition du champ. Les pièces jointes sont limitées à 2 MiB par fichier et 8 MiB par entrée.
+3. Un format de données possède de 1 à 30 champs. Les noms de champs sont uniques au sein de ce format, sans distinction de casse. Types disponibles : titre, date, nombre, heure, lien web, caractère unique, texte, texte long, case à cocher (oui/non), choix unique ou multiple, date et heure, durée, pièce jointe et référence d'objet. Un champ nombre peut être sans unité, utiliser une unité proposée ou une unité personnalisée. L'unité appartient à la définition du champ. Les pièces jointes sont limitées à 2 MiB par fichier et 8 MiB par entrée.
 4. Lors de la création d'une **entrée**, l'utilisateur choisit un format de données de la collection et renseigne au moins un de ses champs. L'entrée ne contient que des valeurs des champs de ce format. Le format de données d'une entrée existante ne change pas lors de sa modification.
 5. L'entrée reprend le fond pastel de son format de données. La date de création doit être facile à repérer ; la date de modification apparaît si l'entrée a été modifiée. L'utilisateur peut modifier, supprimer et copier une entrée. La copie produit du texte lisible avec les champs renseignés et les unités des nombres.
 6. Les entrées se présentent comme des lignes compactes et lisibles, y compris sur petit écran. Le contenu complet reste accessible par l'édition et la copie, même si une valeur longue est abrégée dans la liste.
@@ -37,6 +37,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 10. Une collection peut définir des règles de mouvements de stock explicites et idempotentes (entrée, sortie, transfert, correction avec aperçu avant validation et stock courant dérivé des mouvements, [T26](docs/tasks/T26.md)) ainsi que des premières prévisions explicables (moyenne ou tendance linéaire avec période tenue à l'écart, [T27](docs/tasks/T27.md)), toujours séparées des observations réelles.
 11. Un format de données peut n'accepter qu'**une seule entrée** et limiter ses **parents autorisés** (relation parent-enfant de T37) ; l'API refuse les écarts. Le modèle Livre s'en sert ([T47](docs/tasks/T47.md)) ; sa **vue livre** n'existe que dans les collections créées depuis ce modèle (`templateId`, simple provenance) et une fois activée. La mise en forme y reste du Markdown léger dans le texte long.
 12. Dans une collection créée depuis le modèle « Liens conservés », un champ lien contenant une adresse web affiche un aperçu (image, titre, description, site) obtenu par l'API de façon sûre et mis en cache ([T48](docs/tasks/T48.md)).
+13. Le modèle « Liste de tâches » ajoute des vues Jour et Calendrier ([T49](docs/tasks/T49.md)) : chaque tâche est faite une seule fois sur une période ou revient (chaque jour, tous les N jours, certains jours, chaque semaine, chaque mois) ; une tâche qui revient se coche jour par jour et un jour oublié reste manqué. Ces vues n'existent que pour ce modèle.
 
 ## Expérience et langage
 
@@ -45,7 +46,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 - Permettre aux novices de commencer avec un champ ; garder les choix avancés progressifs et masquer le jargon technique (ex. « objet-variable ») derrière des libellés naturels. Fournir interface, erreurs et dates en anglais et français ; accepter la virgule décimale française et normaliser le stockage.
 - Séparer **format de données** (structure et couleur), **entrée** (valeurs) et vue, règle ou action (exploitation).
 
-## Direction et état de livraison (T01 à T32 et T34 à T48 livrés ; T33 prévue)
+## Direction et état de livraison (T01 à T32 et T34 à T49 livrés ; T33 prévue)
 
 Garder la collection comme conteneur unique. Les objets et objets-variables appartiennent d'abord à une collection ; leur copie, partage ou déplacement vers une autre collection, comme celui d'un format de données, exige un choix explicite de la cible. Ne pas créer de « types de collection » permanents ni promettre de conformité légale, médicale, fiscale ou industrielle.
 
