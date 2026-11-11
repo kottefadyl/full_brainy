@@ -31,8 +31,8 @@ for (const document of documents) {
 }
 const index = readFileSync(join(root, 'ROADMAP_BRAINY.md'), 'utf8');
 const taskIds = [...index.matchAll(/^\| (T\d{2}) \|/gm)].map((match) => match[1]);
-// T49 (task planner) was added on 2026-11-11; raise this count with each new task row.
-if (taskIds.length !== 49 || new Set(taskIds).size !== 49) errors.push(`Roadmap index has ${taskIds.length} task rows, expected 49 unique rows`);
+// T50 (welcome guide) was added on 2026-11-11; raise this count with each new task row.
+if (taskIds.length !== 50 || new Set(taskIds).size !== 50) errors.push(`Roadmap index has ${taskIds.length} task rows, expected 50 unique rows`);
 for (const id of taskIds) {
   const path = join(root, 'docs', 'tasks', `${id}.md`);
   if (!existsSync(path)) { errors.push(`${id} has no task file`); continue; }

@@ -106,6 +106,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T47 | Modèle Livre, règles de parties (une entrée, parents) et vue livre | Dépendances : T03, T24, T37. | terminée le 2026-11-11 (Android et impression Flutter à faire) | [T47](docs/tasks/T47.md) |
 | T48 | Aperçu des liens conservés (image, titre, description, site) | Dépendances : T24, T25. | terminée le 2026-11-11 (Android à vérifier) | [T48](docs/tasks/T48.md) |
 | T49 | Planning des tâches (vues Jour et Calendrier, tâches rotatives) et cases à cocher | Dépendances : T03, T19, T24. | terminée le 2026-11-11 (Android à vérifier) | [T49](docs/tasks/T49.md) |
+| T50 | Guide de bienvenue (5 pages, première collection guidée) | Dépendances : profil, T24. | terminée le 2026-11-11 (Android à vérifier) | [T50](docs/tasks/T50.md) |
 
 ## Ordre d'exécution fusionné recommandé (après T27)
 
