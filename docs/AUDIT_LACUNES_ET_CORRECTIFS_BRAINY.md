@@ -20,6 +20,8 @@ Chaque chantier est décomposé en sous-tâches normalisées (ex: `T02/1`, `T21/
 10. [T43 — Sensibilité, k-anonymat & Confidentialité différentielle](#10-t43--sensibilité-k-anonymat--confidentialité-différentielle)
 11. [ENV/1 — Correction du script de fumée fitness (port par défaut)](#11-env1--correction-du-script-de-fumée-fitness-port-par-défaut)
 12. [Feuille de route séquentielle pour Claude AI](#12-feuille-de-route-séquentielle-pour-claude-ai)
+13. [Décisions produit du 9 novembre 2026](#13-décisions-produit-du-9-novembre-2026)
+14. [Reste à faire et à corriger après T46 à T53](#14-reste-à-faire-et-à-corriger-après-t46-à-t53)
 
 ---
 
@@ -37,6 +39,9 @@ Chaque chantier est décomposé en sous-tâches normalisées (ex: `T02/1`, `T21/
 | **T38** | SIG / Cartographie | 🟠 Modéré | Grille mathématique WGS84 abstraite | Vraies tuiles OpenStreetMap, zoom/pan et cache hors-ligne. |
 | **T39** | Classifications | 🟠 Modéré | Listes plates locales limitées à 3 niveaux | Ingestion de référentiels normalisés (ISO, NAF, communes). |
 | **T43** | Protection de la vie privée | 🟢 Faible | Masquage visuel et seuil statique | Règle formelle de k-anonymat et bruit laplacien contrôlé. |
+| **AND** | Android (T46 à T53) | 🟠 Fort | Rien n'a été vérifié sur un appareil Android | Parcours complet sur Android, voir `AND/1`. |
+| **T52** | Collaborateurs | 🟡 Moyen | Le lien ouvre le site, pas l'application | App Links et finitions, voir `T52/1` à `T52/4`. |
+| **T53** | Auteurs des entrées | 🟢 Faible | Hors ligne et vue livre sans auteur | Voir `T53/1` à `T53/3`. |
 
 ---
 
@@ -239,3 +244,35 @@ Ces décisions priment sur les objectifs ci-dessus.
 * **`T23/2`, double axe Y :** abandonné. Les courbes multiples restent à faire.
 * **`T43/2`, bruit laplacien :** reporté. `T43/3` et `T43/1` livrés le 10 novembre 2026 ([T43](tasks/T43.md)).
 * **État au 10 novembre 2026 :** `T23/6` livré sur le web et Flutter (pas de SVG sur Flutter) ; `T23/1` livré : aires empilées, jauge, nuage de points et radar ([T23](tasks/T23.md)).
+
+---
+
+## 14. Reste à faire et à corriger après T46 à T53
+
+Ajouté le 11 novembre 2026 à partir des limites des fiches `docs/tasks/T46.md` à `T53.md`. Les identifiants servent à reprendre une sous-tâche sans relire toute la fiche.
+
+### À vérifier
+* **`AND/1` : Parcours Android réel** de T46 à T53 (tableur, livre, aperçus de liens, tâches, guide de bienvenue, guide et formation, collaborateurs, auteurs), avec grandes listes, pincement, `T23/1` et photo de profil.
+* **`T51/1` : Recapturer le guide** (`scripts/guide/capture.mjs`) quand l'interface change ; ajouter des captures en thème sombre et des captures Flutter natives.
+
+### Collaborateurs (T52)
+* **`T52/1` : Ouvrir l'application Android depuis le lien** `/invite/<jeton>` (App Links, `assetlinks.json` sur le domaine de production). Bloqué tant que le domaine n'est pas connu ; aujourd'hui le lien ouvre le site et Flutter accepte un lien collé.
+* **`T52/2` : Décider qui modifie les vues enregistrées** d'une collection partagée : aujourd'hui un collaborateur en lecture et écriture peut les créer et les supprimer.
+* **`T52/3` : Masquer l'onglet « Formats de données » et les actions de structure** pour un collaborateur, sur le web et Flutter (l'API les refuse déjà) ; masquer aussi, dans Flutter, la modification et la suppression d'entrées en lecture seule.
+* **`T52/4` : Remplacer l'adresse e-mail par le choix d'un collaborateur** dans le panneau de sensibilité (accès aux champs protégés, T28).
+
+### Auteurs des entrées (T53)
+* **`T53/1` : Afficher l'auteur des entrées hors ligne** dès leur création (aujourd'hui seulement après synchronisation).
+* **`T53/2` : Auteurs dans la vue livre** (T47), si le produit le souhaite.
+* **`T53/3` : Historique des modifications de format de données** par personne, si un jour d'autres personnes que le propriétaire peuvent modifier la structure.
+
+### Tableur, livre, liens, tâches, bienvenue (T46 à T50)
+* **`T46/1` : Tableur** : copier-coller de plages, poignée de recopie, tri et largeur de colonne réglable ; test avec un vrai lecteur d'écran.
+* **`T47/1` : Impression et PDF du livre sur Flutter** (nouvelle dépendance d'impression).
+* **`T47/2` : Livre web paginé à l'écran** et index renvoyant aux numéros de page.
+* **`T47/3` : Vue livre pour les anciennes collections Livre** (Chapitre/Scène/Note) et pour les formats de données ajoutés par l'utilisateur.
+* **`T47/4` : Règle « une seule entrée » modifiable dans l'éditeur de format de données** (aujourd'hui seulement par l'API).
+* **`T48/1` : Aperçus pour les collections « Liens conservés » créées avant le 11 novembre 2026** (sans provenance de modèle).
+* **`T49/1` : Saisie rapide Flutter adaptée à la Répétition** des tâches.
+* **`T49/2` : Fuseaux horaires à demi-heure** inconnus de Dart (retombent aujourd'hui sur UTC).
+* **`T50/1` : Les 24 couleurs dans le guide de bienvenue Flutter** (12 aujourd'hui).
