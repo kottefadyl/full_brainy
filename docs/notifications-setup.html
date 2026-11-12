@@ -108,8 +108,7 @@ GOOGLE_APPLICATION_CREDENTIALS=C:\Users\carefull\secrets\brainy-firebase.json</c
           <tr><th>Name</th><th>Value</th></tr>
           <tr><td><code>FIREBASE_PROJECT_ID</code></td><td><code>brainy-6d65c</code></td></tr>
           <tr><td><code>FIREBASE_SERVICE_ACCOUNT_JSON</code></td><td>The <strong>entire content</strong> of the <code>.json</code> file (open it in Notepad, copy everything, paste).</td></tr>
-          <tr><td><code>CRON_SECRET</code></td><td>The code from step 1.</td></tr>
-          <tr><td><code>BRAINY_FROZEN_MODULES</code></td><td><code>backgroundJobs,dataSources,largeFiles</code> (this switches reminders back on).</td></tr>
+          <tr><td><code>CRON_SECRET</code></td><td>The code from step 1. Setting it is what switches reminders on: do <strong>not</strong> add <code>BRAINY_FROZEN_MODULES</code>, which would also unfreeze the pictures/PDF rule.</td></tr>
         </table></div>
       </li>
       <li>Click <strong>Redeploy</strong>.</li>
