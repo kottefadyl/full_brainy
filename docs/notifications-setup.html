@@ -126,6 +126,17 @@ GOOGLE_APPLICATION_CREDENTIALS=C:\Users\carefull\secrets\brainy-firebase.json</c
   </section>
 
   <section>
+    <span class="tag required">Part 2b · Required for live updates</span>
+    <h2>Real-time synchronisation (Firestore)</h2>
+    <p>Changes made by other people appear without refreshing thanks to Cloud Firestore (free quota: 50,000 reads and 20,000 writes a day). It uses the same Firebase key as Part 1.</p>
+    <ol>
+      <li>In the Firebase console of <strong>brainy-6d65c</strong>, open <strong>Firestore Database → Create database</strong>, choose <strong>production mode</strong> and a European location (for example <code>eur3</code>).</li>
+      <li>Open the <strong>Rules</strong> tab, replace everything with the content of <code>d:\projectsrainyirestore.rules</code>, then click <strong>Publish</strong>.</li>
+      <li>That’s all: the API already has the key from Part 1. Open the same shared collection on two devices; a change on one appears on the other within about a second.</li>
+    </ol>
+  </section>
+
+  <section>
     <span class="tag optional">Part 3 · Optional</span>
     <h2>Email reminders (free)</h2>
     <p>If you skip this part, leave the <code>SMTP_</code> lines empty: only push is used.</p>

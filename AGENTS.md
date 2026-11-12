@@ -48,7 +48,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 - Permettre aux novices de commencer avec un champ ; garder les choix avancés progressifs et masquer le jargon technique (ex. « objet-variable ») derrière des libellés naturels. Fournir interface, erreurs et dates en anglais et français ; accepter la virgule décimale française et normaliser le stockage.
 - Séparer **format de données** (structure et couleur), **entrée** (valeurs) et vue, règle ou action (exploitation).
 
-## Direction et état de livraison (T01 à T32 et T34 à T54 livrés ; T33 reportée à la version 2)
+## Direction et état de livraison (T01 à T32 et T34 à T55 livrés ; T33 reportée à la version 2)
 
 Garder la collection comme conteneur unique. Les objets et objets-variables appartiennent d'abord à une collection ; leur copie, partage ou déplacement vers une autre collection, comme celui d'un format de données, exige un choix explicite de la cible. Ne pas créer de « types de collection » permanents ni promettre de conformité légale, médicale, fiscale ou industrielle.
 

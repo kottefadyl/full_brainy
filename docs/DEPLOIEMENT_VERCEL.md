@@ -32,7 +32,8 @@ Les dépôts sont séparés : `kottefadyl/api_brainy` (dossier `api/`) et `kotte
    Déployer, puis noter l’adresse, par exemple `https://api-brainy.vercel.app`.
 3. **Projet web** — importer `brainy_web_next` (cadre Next.js). Variable : `GRAPHQL_API_URL` = adresse de l’API + `/graphql`. Facultatif : `NEXT_PUBLIC_FIREBASE_VAPID_KEY`. Déployer.
 4. **Application Flutter** — construire avec les adresses de production : `flutter build apk --release --dart-define=API_URL=https://ADRESSE-API/graphql --dart-define=WEB_APP_URL=https://ADRESSE-WEB` (le second sert aux liens d’invitation des collaborateurs).
-5. **Contrôle** — ouvrir le site, créer un compte, une collection et une entrée ; joindre une photo doit être refusé avec le message « Les images, vidéos, sons et fichiers PDF ne sont pas enregistrés sur cet hébergement ».
+5. **Temps réel (T55)** — dans la console Firebase du projet `brainy-6d65c` : *Firestore Database → Créer une base de données*, mode production, emplacement européen (par exemple `eur3`). Puis onglet *Règles* : coller le contenu de `firestore.rules` (racine du dépôt) et *Publier*. Le compte de service déjà prévu pour les notifications (`FIREBASE_SERVICE_ACCOUNT_JSON`) suffit à l'API ; rien d'autre à configurer. Les WebSockets de Vercel ne sont pas utilisés : une connexion ouverte consommerait le quota mémoire gratuit (voir `docs/tasks/T55.md`).
+6. **Contrôle** — ouvrir le site, créer un compte, une collection et une entrée ; joindre une photo doit être refusé avec le message « Les images, vidéos, sons et fichiers PDF ne sont pas enregistrés sur cet hébergement ».
 
 ## À surveiller
 
