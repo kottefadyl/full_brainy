@@ -260,10 +260,10 @@ Ajouté le 11 novembre 2026 à partir des limites des fiches `docs/tasks/T46.md`
 * **`T52/2` : Décider qui modifie les vues enregistrées** d'une collection partagée : aujourd'hui un collaborateur en lecture et écriture peut les créer et les supprimer.
 * ~~**`T52/3` : Masquer l'onglet « Formats de données » et les actions de structure**~~ — livré le 12 novembre 2026 (web et Flutter, y compris la colonne du tableur et les actions d'écriture en lecture seule).
 * **`T52/5` : Rappels d'un collaborateur** sur une entrée partagée : l'API cherche l'entrée parmi celles de l'appelant et refuse (« Entry not found ») alors que le bouton « Rappel » est proposé. Décider si un collaborateur peut poser ses propres rappels, puis corriger l'API ou masquer le bouton. La modification et la suppression d'une entrée par un collaborateur, qui échouaient pour la même raison, sont corrigées depuis le 12 novembre 2026.
-* **`T52/4` : Remplacer l'adresse e-mail par le choix d'un collaborateur** dans le panneau de sensibilité (accès aux champs protégés, T28).
+* ~~**`T52/4` : Remplacer l'adresse e-mail par le choix d'un collaborateur**~~ — livré le 12 novembre 2026 (web : liste des collaborateurs dans « Accès des membres » ; Flutter réglait déjà seulement les membres existants).
 
 ### Auteurs des entrées (T53)
-* **`T53/1` : Afficher l'auteur des entrées hors ligne** dès leur création (aujourd'hui seulement après synchronisation).
+* ~~**`T53/1` : Afficher l'auteur des entrées hors ligne**~~ — livré le 12 novembre 2026 (web et Flutter : l'utilisateur courant est auteur et modificateur d'une entrée gardée hors ligne).
 * **`T53/2` : Auteurs dans la vue livre** (T47), si le produit le souhaite.
 * **`T53/3` : Historique des modifications de format de données** par personne, si un jour d'autres personnes que le propriétaire peuvent modifier la structure.
 
@@ -272,8 +272,8 @@ Ajouté le 11 novembre 2026 à partir des limites des fiches `docs/tasks/T46.md`
 * **`T47/1` : Impression et PDF du livre sur Flutter** (nouvelle dépendance d'impression).
 * **`T47/2` : Livre web paginé à l'écran** et index renvoyant aux numéros de page.
 * **`T47/3` : Vue livre pour les anciennes collections Livre** (Chapitre/Scène/Note) et pour les formats de données ajoutés par l'utilisateur.
-* **`T47/4` : Règle « une seule entrée » modifiable dans l'éditeur de format de données** (aujourd'hui seulement par l'API).
-* **`T48/1` : Aperçus pour les collections « Liens conservés » créées avant le 11 novembre 2026** (sans provenance de modèle).
-* **`T49/1` : Saisie rapide Flutter adaptée à la Répétition** des tâches.
+* ~~**`T47/4` : Règle « une seule entrée » modifiable dans l'éditeur de format de données**~~ — livré le 12 novembre 2026 (case « Une seule entrée » dans l'éditeur de format de données, web et Flutter).
+* ~~**`T48/1` : Aperçus pour les collections « Liens conservés » créées avant le 11 novembre 2026**~~ — livré le 12 novembre 2026 (migration au démarrage de l'API : provenance `links` rendue aux collections dont le format de données a encore la structure du modèle).
+* ~~**`T49/1` : Saisie rapide Flutter adaptée à la Répétition**~~ — livré le 12 novembre 2026 (champs masqués selon la Répétition, jours de la semaine par puces).
 * **`T49/2` : Fuseaux horaires à demi-heure** inconnus de Dart (retombent aujourd'hui sur UTC).
 * **`T50/1` : Les 24 couleurs dans le guide de bienvenue Flutter** (12 aujourd'hui).
