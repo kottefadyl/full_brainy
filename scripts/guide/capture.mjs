@@ -1,6 +1,6 @@
 // T51: captures the guide screenshots from the running web app (http://localhost:3001) with demo data,
 // in French and English, into brainy_web_app/public/guide/<lang>/ and brainy/assets/guide/<lang>/.
-// Needs Microsoft Edge and playwright-core: PLAYWRIGHT_CORE=<path to playwright-core> node scripts/guide/capture.mjs [name…]
+// Needs Microsoft Edge and playwright-core: PLAYWRIGHT_CORE=<path to playwright-core> [GUIDE_LANGS=fr|en] node scripts/guide/capture.mjs [name…]
 import { copyFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -12,7 +12,7 @@ const base = process.env.WEB_URL ?? 'http://localhost:3001';
 const browser = await chromium.launch({ executablePath: process.env.EDGE_PATH ?? 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
 const day = (offset) => { const date = new Date(); date.setDate(date.getDate() + offset); return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`; };
 
-for (const lang of ['fr', 'en']) {
+for (const lang of (process.env.GUIDE_LANGS ?? 'fr,en').split(',')) {
   const fr = lang === 'fr';
   const T = (french, english) => (fr ? french : english);
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, locale: lang });
@@ -39,8 +39,9 @@ for (const lang of ['fr', 'en']) {
   const expenses = fr
     ? [['Pain et lait', 1500], ['Électricité', 12000], ['Taxi', 2500], ['Cinéma', 4000], ['Marché', 8500], ['Eau', 6000], ['Bus', 800], ['Livres', 7000], ['Riz', 9000], ['Essence', 15000]]
     : [['Bread and milk', 4.5], ['Electricity', 48], ['Taxi', 12], ['Cinema', 18], ['Market', 32], ['Water', 21], ['Bus', 2.5], ['Books', 25], ['Rice', 9], ['Fuel', 60]];
+  const expenseIds = [];
   for (const [index, [title, amount]] of expenses.entries()) {
-    await entry(home.id, expense.id, [{ fieldId: field(expense, 'TITLE'), value: title }, { fieldId: field(expense, 'NUMBER'), value: String(amount) }, { fieldId: field(expense, 'SELECT'), value: categories[index % 4] }, { fieldId: field(expense, 'DATE'), value: day(-index * 6) }, { fieldId: field(expense, 'BOOLEAN'), value: index % 3 ? 'true' : 'false' }]);
+    expenseIds.push((await entry(home.id, expense.id, [{ fieldId: field(expense, 'TITLE'), value: title }, { fieldId: field(expense, 'NUMBER'), value: String(amount) }, { fieldId: field(expense, 'SELECT'), value: categories[index % 4] }, { fieldId: field(expense, 'DATE'), value: day(-index * 6) }, { fieldId: field(expense, 'BOOLEAN'), value: index % 3 ? 'true' : 'false' }])).createEntry.id);
   }
   await entry(home.id, note.id, [{ fieldId: field(note, 'TITLE'), value: T('Idées de menus', 'Menu ideas') }, { fieldId: field(note, 'LONG_TEXT'), value: T('Lundi : soupe. Mardi : riz sauce arachide.', 'Monday: soup. Tuesday: rice and peanut stew.') }]);
   await gql('mutation($id:String!,$input:SavedCollectionViewInput!){saveCollectionView(collectionId:$id,input:$input){id}}', { id: home.id, input: { name: T('Tableau des dépenses', 'Expense table'), layout: 'TABLE', formatIds: [expense.id], columnFieldIds: expense.fields.map((item) => item.id), sort: 'NEWEST', groupByFormat: false } });
@@ -79,6 +80,23 @@ for (const lang of ['fr', 'en']) {
   await entry(book.id, role('COVER').id, [{ fieldId: bookField('COVER', 'TITLE'), value: T('Le Jardin des heures', 'The Garden of Hours') }, { fieldId: bookField('COVER', 'TEXT', 1), value: name }]);
   const chapter = (await entry(book.id, role('CHAPTER').id, [{ fieldId: bookField('CHAPTER', 'TITLE'), value: T('Le retour', 'Coming back') }, { fieldId: bookField('CHAPTER', 'NUMBER'), value: '1' }, { fieldId: bookField('CHAPTER', 'LONG_TEXT'), value: T('Le matin, la maison dormait encore. **Élise** ouvrit la fenêtre et laissa entrer *l’odeur des tilleuls*.\n\nElle descendit au jardin. Rien n’avait changé, et pourtant tout semblait plus petit.\n\n> Il faut cultiver notre jardin.', 'In the morning the house was still asleep. **Elise** opened the window and let in *the smell of the lime trees*.\n\nShe went down to the garden. Nothing had changed, and yet everything looked smaller.\n\n> We must cultivate our garden.') }])).createEntry.id;
   void chapter;
+
+  // Collaborator (T52, T53): a second person accepts the personal link, then writes in the shared Home collection.
+  const partnerContext = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, locale: lang });
+  const partner = await partnerContext.newPage();
+  await partner.addInitScript(([language]) => { localStorage.setItem('brainy_language', language); localStorage.setItem('brainy_theme', 'light'); }, [lang]);
+  await partner.goto(base);
+  const partnerGql = (query, variables = {}) => partner.evaluate(async ([query, variables]) => { const response = await fetch('/api/graphql', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ query, variables }) }); const body = await response.json(); if (body.errors) throw new Error(JSON.stringify(body.errors)); return body.data; }, [query, variables]);
+  const partnerEmail = `guide-shots-partner-${lang}-${Date.now()}@example.test`;
+  const partnerId = (await partnerGql('mutation($input:RegisterInput!){register(input:$input){token user{id}}}', { input: { name: T('Awa Diallo', 'Alex Morgan'), email: partnerEmail, password: 'temporary-test-password' } })).register.user.id;
+  await partnerGql('mutation($input:ProfileInput!){updateProfile(input:$input){id}}', { input: { name: T('Awa Diallo', 'Alex Morgan'), profession: '', job: '', fieldOfStudy: '', interests: [T('Voyages', 'Travel')], hobbies: [] } });
+  await partnerGql('mutation($input:LoginInput!){login(input:$input){token user{id}}}', { input: { email: partnerEmail, password: 'temporary-test-password' } });
+  await partnerGql('mutation{setOnboardingCompleted(completed:true){id}}');
+  const { collaborationInviteToken: inviteToken } = await gql('query{collaborationInviteToken}');
+  await partnerGql('mutation($t:String!){acceptCollaboration(token:$t){userId}}', { t: inviteToken });
+  await gql('mutation($c:String!,$u:String,$r:CollectionRole!){addCollectionMember(collectionId:$c,memberUserId:$u,role:$r){id}}', { c: home.id, u: partnerId, r: 'EDITOR' });
+  await partnerGql('mutation($id:String!,$input:SaveEntryInput!){createEntry(collectionId:$id,input:$input){id}}', { id: home.id, input: { formatId: expense.id, values: [{ fieldId: field(expense, 'TITLE'), value: T('Gaz de cuisine', 'Cooking gas') }, { fieldId: field(expense, 'NUMBER'), value: fr ? '6500' : '27' }, { fieldId: field(expense, 'SELECT'), value: categories[1] }, { fieldId: field(expense, 'DATE'), value: day(0) }] } });
+  await partnerGql('mutation($id:String!,$input:SaveEntryInput!){updateEntry(id:$id,input:$input){id}}', { id: expenseIds[0], input: { values: [{ fieldId: field(expense, 'TITLE'), value: expenses[0][0] }, { fieldId: field(expense, 'NUMBER'), value: String(expenses[0][1]) }, { fieldId: field(expense, 'SELECT'), value: categories[0] }, { fieldId: field(expense, 'DATE'), value: day(0) }, { fieldId: field(expense, 'BOOLEAN'), value: 'true' }] } });
 
   // Screenshots
   const shots = [];
@@ -164,6 +182,25 @@ for (const lang of ['fr', 'en']) {
   await page.locator('.book-chapter').first().scrollIntoViewIfNeeded();
   await page.waitForTimeout(500);
   await save('book');
+
+  await page.goto(base);
+  await page.waitForTimeout(2000);
+  await page.locator('.sidebar-more summary').click();
+  await page.getByRole('button', { name: T('Collaborateurs', 'Collaborators') }).first().click();
+  await page.waitForTimeout(1500);
+  await save('collaborators');
+  await page.locator('.collab-page .analysis-back').click();
+  await open(T('Maison', 'Home'));
+  await page.getByRole('button', { name: T('Partager', 'Share'), exact: true }).first().click();
+  await page.waitForTimeout(1200);
+  await save('share', page.locator('.modal').first());
+  await closeDialog();
+  await partner.reload();
+  await partner.waitForTimeout(2500);
+  await partner.getByRole('button', { name: new RegExp(`^${T('Maison', 'Home')} · `) }).first().click();
+  await partner.waitForTimeout(2000);
+  await save('shared-collection', partner);
+  await partnerContext.close();
   console.log(lang, shots.join(', '));
   await context.close();
 }

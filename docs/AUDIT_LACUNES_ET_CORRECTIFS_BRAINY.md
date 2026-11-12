@@ -40,7 +40,7 @@ Chaque chantier est décomposé en sous-tâches normalisées (ex: `T02/1`, `T21/
 | **T39** | Classifications | 🟠 Modéré | Listes plates locales limitées à 3 niveaux | Ingestion de référentiels normalisés (ISO, NAF, communes). |
 | **T43** | Protection de la vie privée | 🟢 Faible | Masquage visuel et seuil statique | Règle formelle de k-anonymat et bruit laplacien contrôlé. |
 | **AND** | Android (T46 à T53) | 🟠 Fort | Rien n'a été vérifié sur un appareil Android | Parcours complet sur Android, voir `AND/1`. |
-| **T52** | Collaborateurs | 🟡 Moyen | Le lien ouvre le site, pas l'application | App Links et finitions, voir `T52/1` à `T52/4`. |
+| **T52** | Collaborateurs | 🟡 Moyen | Le lien ouvre le site, pas l'application | App Links et finitions, voir `T52/1`, `T52/2`, `T52/4` et `T52/5`. |
 | **T53** | Auteurs des entrées | 🟢 Faible | Hors ligne et vue livre sans auteur | Voir `T53/1` à `T53/3`. |
 
 ---
@@ -253,12 +253,13 @@ Ajouté le 11 novembre 2026 à partir des limites des fiches `docs/tasks/T46.md`
 
 ### À vérifier
 * **`AND/1` : Parcours Android réel** de T46 à T53 (tableur, livre, aperçus de liens, tâches, guide de bienvenue, guide et formation, collaborateurs, auteurs), avec grandes listes, pincement, `T23/1` et photo de profil.
-* **`T51/1` : Recapturer le guide** (`scripts/guide/capture.mjs`) quand l'interface change ; ajouter des captures en thème sombre et des captures Flutter natives.
+* **`T51/1` : Recapturer le guide** (`scripts/guide/capture.mjs`) quand l'interface change ; ajouter des captures en thème sombre et des captures Flutter natives. Recapturé le 12 novembre 2026 (17 captures par langue, dont collaborateurs, partage et collection partagée).
 
 ### Collaborateurs (T52)
 * **`T52/1` : Ouvrir l'application Android depuis le lien** `/invite/<jeton>` (App Links, `assetlinks.json` sur le domaine de production). Bloqué tant que le domaine n'est pas connu ; aujourd'hui le lien ouvre le site et Flutter accepte un lien collé.
 * **`T52/2` : Décider qui modifie les vues enregistrées** d'une collection partagée : aujourd'hui un collaborateur en lecture et écriture peut les créer et les supprimer.
-* **`T52/3` : Masquer l'onglet « Formats de données » et les actions de structure** pour un collaborateur, sur le web et Flutter (l'API les refuse déjà) ; masquer aussi, dans Flutter, la modification et la suppression d'entrées en lecture seule.
+* ~~**`T52/3` : Masquer l'onglet « Formats de données » et les actions de structure**~~ — livré le 12 novembre 2026 (web et Flutter, y compris la colonne du tableur et les actions d'écriture en lecture seule).
+* **`T52/5` : Rappels d'un collaborateur** sur une entrée partagée : l'API cherche l'entrée parmi celles de l'appelant et refuse (« Entry not found ») alors que le bouton « Rappel » est proposé. Décider si un collaborateur peut poser ses propres rappels, puis corriger l'API ou masquer le bouton. La modification et la suppression d'une entrée par un collaborateur, qui échouaient pour la même raison, sont corrigées depuis le 12 novembre 2026.
 * **`T52/4` : Remplacer l'adresse e-mail par le choix d'un collaborateur** dans le panneau de sensibilité (accès aux champs protégés, T28).
 
 ### Auteurs des entrées (T53)
