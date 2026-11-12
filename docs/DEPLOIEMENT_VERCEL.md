@@ -17,6 +17,10 @@ Les pièces jointes passent dans la requête en base64 (un tiers de plus) : sur 
 
 Pour dégeler un module, définir `BRAINY_FROZEN_MODULES` dans l’API avec la liste à garder gelée (`""` pour aucun) ; `BRAINY_MAX_ENTRY_ATTACHMENT_BYTES` règle la limite des pièces jointes. Un module dégelé sur Vercel ne fonctionnera pas pour autant tant que sa boucle n’a pas de processus pour tourner. La fumée `npm run smoke:platform-freeze` vérifie le gel contre une API lancée avec `VERCEL=1`.
 
+## Rappels sur Vercel (dégel)
+
+Depuis le 12 novembre 2026, les rappels peuvent tourner sur Vercel : l’API expose `GET /cron/reminders`, protégé par `Authorization: Bearer <CRON_SECRET>` (absent tant que `CRON_SECRET` n’est pas défini), qui envoie les rappels dus. Un planificateur externe gratuit (cron-job.org, toutes les minutes) l’appelle. Variables : `CRON_SECRET`, `BRAINY_FROZEN_MODULES=backgroundJobs,dataSources,largeFiles`, `FIREBASE_PROJECT_ID`, `FIREBASE_SERVICE_ACCOUNT_JSON` ; e-mail facultatif avec `SMTP_*`. Sur Vercel, la boucle interne ne démarre pas (`VERCEL`). Les notifications Android utilisent le canal « brainy_reminders » (importance haute, son et vibration).
+
 ## À prévoir pour la mise en ligne
 
 - MongoDB : Vercel n’héberge pas MongoDB ; une offre gratuite externe (MongoDB Atlas M0, 512 Mo) convient.
