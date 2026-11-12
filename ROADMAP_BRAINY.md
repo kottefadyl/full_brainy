@@ -110,6 +110,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T51 | Guide et formation (12 chapitres EN/FR, recherche, captures) | Dépendances : T50. | terminée le 2026-11-11 (Android à vérifier) | [T51](docs/tasks/T51.md) |
 | T52 | Collaborateurs par lien et collections partagées (lecture seule, lecture et écriture) | Dépendances : T28. | terminée le 2026-11-11 (Android et liens d'application à faire) | [T52](docs/tasks/T52.md) |
 | T53 | Auteur et dernier modificateur des entrées et formats de données (collections partagées) | Dépendances : T52. | terminée le 2026-11-11 (Android à vérifier) | [T53](docs/tasks/T53.md) |
+| T54 | Champ « Collaborateur » : une ou plusieurs personnes (propriétaire et ses collaborateurs) dans une entrée | Dépendances : T52, T53. | terminée le 2026-11-12 (Android à vérifier) | [T54](docs/tasks/T54.md) |
 
 ## Ordre d'exécution fusionné recommandé (après T27)
 
