@@ -27,6 +27,8 @@ Chaque chantier est décomposé en sous-tâches normalisées (ex: `T02/1`, `T21/
 
 ## 1. Matrice des priorités et synthèse globale
 
+> **Mise à jour du 12 novembre 2026.** Les sections 2 à 11 décrivent l'état du début novembre ; le code a depuis livré T25 (suite Flutter verte, 270 tests environ), ENV/1 (`fitness-smoke.mjs` lit `PORT`, défaut 3000), T21/1 à T21/6 (éditeurs web et Flutter avec catalogue de fonctions, autocomplétion et aperçu), T22/2, T23/1, T23/3 à T23/6, T38 (tuiles OSM, cache, pointage et position), T39 (référentiels, arbres, grandes listes) et T43/1, T43/3 : voir les fiches `docs/tasks/Txx.md`. Restent ouverts : T20 (identifiants SMTP/FCM réels), AND/1 (Android réel), T52/1 (domaine de production), T53/3 (conditionnelle), T43/2 et T22/1 (reportés ou abandonnés, section 13), T23/2 double axe (abandonné).
+
 | Identifiant | Domaine | Sévérité / Impact | Statut actuel | Objectif de perfectionnement |
 | :--- | :--- | :---: | :--- | :--- |
 | **T25 & Tests** | Tests Flutter & Qualité | 🔴 Critique | 3 tests compilation + 1 test widget KO | Rétablir 100 % de tests verts sur mobile/desktop. |
@@ -257,23 +259,23 @@ Ajouté le 11 novembre 2026 à partir des limites des fiches `docs/tasks/T46.md`
 
 ### Collaborateurs (T52)
 * **`T52/1` : Ouvrir l'application Android depuis le lien** `/invite/<jeton>` (App Links, `assetlinks.json` sur le domaine de production). Bloqué tant que le domaine n'est pas connu ; aujourd'hui le lien ouvre le site et Flutter accepte un lien collé.
-* **`T52/2` : Décider qui modifie les vues enregistrées** d'une collection partagée : aujourd'hui un collaborateur en lecture et écriture peut les créer et les supprimer.
+* ~~**`T52/2` : Décider qui modifie les vues enregistrées**~~ — livré le 12 novembre 2026 (décision : le propriétaire crée, modifie et supprime les vues ; chaque collaborateur les voit et les utilise ; API `OWNER`, boutons masqués web et Flutter, cas ajoutés à `smoke:collaborators`).
 * ~~**`T52/3` : Masquer l'onglet « Formats de données » et les actions de structure**~~ — livré le 12 novembre 2026 (web et Flutter, y compris la colonne du tableur et les actions d'écriture en lecture seule).
-* **`T52/5` : Rappels d'un collaborateur** sur une entrée partagée : l'API cherche l'entrée parmi celles de l'appelant et refuse (« Entry not found ») alors que le bouton « Rappel » est proposé. Décider si un collaborateur peut poser ses propres rappels, puis corriger l'API ou masquer le bouton. La modification et la suppression d'une entrée par un collaborateur, qui échouaient pour la même raison, sont corrigées depuis le 12 novembre 2026.
+* ~~**`T52/5` : Rappels d'un collaborateur**~~ — livré le 12 novembre 2026 (décision : un collaborateur en lecture et écriture pose ses propres rappels, reçus par lui seul ; `recipientUserId`, arrêt si l’accès est retiré ; bouton masqué en lecture seule).
 * ~~**`T52/4` : Remplacer l'adresse e-mail par le choix d'un collaborateur**~~ — livré le 12 novembre 2026 (web : liste des collaborateurs dans « Accès des membres » ; Flutter réglait déjà seulement les membres existants).
 
 ### Auteurs des entrées (T53)
 * ~~**`T53/1` : Afficher l'auteur des entrées hors ligne**~~ — livré le 12 novembre 2026 (web et Flutter : l'utilisateur courant est auteur et modificateur d'une entrée gardée hors ligne).
-* **`T53/2` : Auteurs dans la vue livre** (T47), si le produit le souhaite.
+* ~~**`T53/2` : Auteurs dans la vue livre**~~ — livré le 12 novembre 2026 (auteur et dernier modificateur de chaque partie dans la vue livre d’une collection partagée, web et Flutter, non imprimés).
 * **`T53/3` : Historique des modifications de format de données** par personne, si un jour d'autres personnes que le propriétaire peuvent modifier la structure.
 
 ### Tableur, livre, liens, tâches, bienvenue (T46 à T50)
-* **`T46/1` : Tableur** : copier-coller de plages, poignée de recopie, tri et largeur de colonne réglable ; test avec un vrai lecteur d'écran.
-* **`T47/1` : Impression et PDF du livre sur Flutter** (nouvelle dépendance d'impression).
-* **`T47/2` : Livre web paginé à l'écran** et index renvoyant aux numéros de page.
+* ~~**`T46/1` : Tableur**~~ — livré le 12 novembre 2026 (tri par colonne, largeur réglable et mémorisée, sélection de plages, copier-coller de plages en texte tabulé avec nouvelles lignes, recopie vers le bas Ctrl+D ou bouton, web et Flutter ; lecteur d’écran réel non essayé).
+* ~~**`T47/1` : Impression et PDF du livre sur Flutter**~~ — livré le 12 novembre 2026 (« Enregistrer en PDF » sur mobile et ordinateur avec le paquet `pdf`, réglages du livre respectés ; polices PDF intégrées limitées au Latin-1, les signes typographiques sont remplacés).
+* ~~**`T47/2` : Livre web paginé à l'écran**~~ — livré le 12 novembre 2026 (bouton « Pages » : le livre web découpé en pages numérotées à l’écran, table des matières et index en numéros de page ; l’impression garde sa propre pagination).
 * ~~**`T47/3` : Vue livre pour les anciennes collections Livre**~~ — livré le 12 novembre 2026 (migration au démarrage des anciennes collections Chapitre/Scène/Note vers la vue livre, désactivée par défaut ; mutation `setBookFormatRole` et liste « Formats de données dans le livre » pour placer tout format de données, web et Flutter ; `smoke:book-roles`).
 * ~~**`T47/4` : Règle « une seule entrée » modifiable dans l'éditeur de format de données**~~ — livré le 12 novembre 2026 (case « Une seule entrée » dans l'éditeur de format de données, web et Flutter).
 * ~~**`T48/1` : Aperçus pour les collections « Liens conservés » créées avant le 11 novembre 2026**~~ — livré le 12 novembre 2026 (migration au démarrage de l'API : provenance `links` rendue aux collections dont le format de données a encore la structure du modèle).
 * ~~**`T49/1` : Saisie rapide Flutter adaptée à la Répétition**~~ — livré le 12 novembre 2026 (champs masqués selon la Répétition, jours de la semaine par puces).
-* **`T49/2` : Fuseaux horaires à demi-heure** inconnus de Dart (retombent aujourd'hui sur UTC).
+* ~~**`T49/2` : Fuseaux horaires à demi-heure**~~ — livré le 12 novembre 2026 (décalages à la demi-heure ou au quart d’heure associés à un fuseau IANA, test `time_zone_offset_test.dart`).
 * ~~**`T50/1` : Les 24 couleurs dans le guide de bienvenue Flutter**~~ — livré le 12 novembre 2026 (24 couleurs nommées EN/FR, `lib/format_color_names.dart`).
