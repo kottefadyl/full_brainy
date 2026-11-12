@@ -82,7 +82,7 @@ Validation du 2026-10-27 : `docker compose exec -T api npm run smoke:stock-forec
 | T30 | Chargement massif et traitements asynchrones | Dépendances : T06, T07, T22, T26–T28. | terminée le 2026-10-29 | [T30](docs/tasks/T30.md) |
 | T31 | Mesures de charge et architecture adaptée | Dépendances : T30. | terminée le 2026-10-29 | [T31](docs/tasks/T31.md) |
 | T32 | Connecteurs et données industrielles | Dépendances : T28–T31, T36 (A6). | terminée le 2026-11-08 | [T32](docs/tasks/T32.md) |
-| T33 | Mise en relation entre personnes (axe séparé) | Dépendances : T28 et décision produit sur consentement. | prévue | [T33](docs/tasks/T33.md) |
+| T33 | Mise en relation entre personnes (axe séparé) | Dépendances : T28 et décision produit sur consentement. | reportée à la version 2 (décision du 2026-11-12) | [T33](docs/tasks/T33.md) |
 
 ## Étapes H à M — Brainy 1.1 : primitives universelles et paquets de domaine
 
