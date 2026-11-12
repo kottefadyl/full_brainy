@@ -32,7 +32,6 @@
   section { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 18px; margin: 0 0 20px; }
   .tag { display: inline-block; font-size: .8rem; font-weight: 600; padding: 2px 10px; border-radius: 999px; margin-bottom: 10px; }
   .tag.required { background: var(--accent-soft); color: var(--accent); }
-  .tag.later { background: var(--warn-soft); color: var(--warn); }
   .tag.optional { background: var(--ok-soft); color: var(--ok); }
   ol { padding-left: 1.4em; margin: 8px 0; }
   ol > li { margin: 0 0 12px; }
@@ -53,70 +52,75 @@
 </head>
 <body>
 <main>
-  <h1>Brainy notifications: setup procedure</h1>
-  <p class="lead">How to make reminders ring on Android phones (free, with Firebase Cloud Messaging) and, if you wish, send them by email (free, with Brevo). Written on 12 November 2026.</p>
+  <h1>Brainy on Vercel: notifications, ringing reminders and live updates</h1>
+  <p class="lead">Every step below works with Vercel’s free Hobby plan and free services only: Firebase Cloud Messaging and Cloud Firestore (free quota), cron-job.org (free) and, if you want e-mails, Brevo (free). Updated on 12 November 2026.</p>
 
   <section>
-    <h2>Already done in the code</h2>
-    <div class="done">
-      <ul>
-        <li>Reminder notifications are sent with <strong>high priority and sound</strong>.</li>
-        <li>The Android app creates a <strong>“Rappels / Reminders”</strong> channel that rings, vibrates and pops up on screen, and asks for the notification permission required by Android 13 and later.</li>
-        <li>The API has a protected address, <code>/cron/reminders</code>, that a free outside service can call every minute so reminders also work on Vercel’s free plan.</li>
-        <li>The Firebase project <code>brainy-6d65c</code> exists and the Android app is registered in it (<code>google-services.json</code> is in the app).</li>
-      </ul>
-    </div>
-    <p>What is left needs your accounts and a real phone: follow the parts below.</p>
+    <h2>What the free Vercel plan allows, and what Brainy does about it</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Need</th><th>Free plan limit</th><th>How Brainy handles it</th></tr>
+      <tr><td>Reminders at the right minute</td><td>Vercel’s own scheduled tasks run once a day only</td><td>A free outside scheduler (cron-job.org) calls Brainy every minute. Without it, reminders stay switched off.</td></tr>
+      <tr><td>Live updates between people</td><td>An open connection keeps a function billable; the free memory quota would run out</td><td>Live updates go through Cloud Firestore (Google), not through Vercel.</td></tr>
+      <tr><td>Push notifications that ring</td><td>Allowed</td><td>Sent through Firebase Cloud Messaging, high priority, with sound.</td></tr>
+      <tr><td>Pictures, videos, sound, PDF</td><td>4.5 MB per request; no file storage</td><td>Never stored. Other files up to 2 MB.</td></tr>
+      <tr><td>Background processing, data sources, large files</td><td>No process running between requests</td><td>Switched off automatically on Vercel.</td></tr>
+      <tr><td>Commercial use</td><td>Not allowed on Hobby</td><td>Personal use only until you move to a paid plan.</td></tr>
+    </table></div>
+    <div class="done">Already done in the code: the switches above are automatic on Vercel, reminders ring on Android (“Rappels / Reminders” channel, high importance, sound, vibration), and live updates start by themselves once Part 3 is done.</div>
   </section>
 
   <section>
     <span class="tag required">Part 1 · Required</span>
-    <h2>Push notifications on your computer and phone</h2>
+    <h2>Get the Firebase key</h2>
+    <p>Your Firebase project <code>brainy-6d65c</code> already exists, with the Android app registered. One key is missing: it lets the API send notifications and open live updates.</p>
     <ol>
-      <li>Open <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> and choose the project <strong>brainy-6d65c</strong>.</li>
+      <li>Open <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> and choose <strong>brainy-6d65c</strong>.</li>
       <li>Click the ⚙ gear, then <strong>Project settings</strong>, then the <strong>Service accounts</strong> tab.</li>
       <li>Click <strong>Generate new private key</strong>, then <strong>Generate key</strong>. A <code>.json</code> file is downloaded.
-        <div class="note">This file is a password for your Firebase project. Never send it to anyone and never put it inside the project folder.</div>
+        <div class="note">This file is a password for your Firebase project. Never send it to anyone and never put it in a Git repository. Keep it in a private folder.</div>
       </li>
-      <li>Move it to a private folder, for example <code>C:\Users\carefull\secrets\brainy-firebase.json</code>.</li>
-      <li>Open <code>d:\projects\brainy\api\.env</code> and add these two lines:
-<pre><code>FIREBASE_PROJECT_ID=brainy-6d65c
-GOOGLE_APPLICATION_CREDENTIALS=C:\Users\carefull\secrets\brainy-firebase.json</code></pre>
-      </li>
-      <li>Restart the API: close it, then run <code>node scripts/dev-local.mjs</code> again from <code>d:\projects\brainy</code>.</li>
-      <li>Install the app on an Android phone, with <code>flutter run</code> or with the APK
-        <code>d:\projects\brainy\brainy\build\app\outputs\flutter-apk\app-debug.apk</code>.</li>
-      <li>In the app: sign in, open an entry that has a date, tap <strong>⋯ → Reminders</strong>, choose <strong>Push</strong> and tap <strong>Allow</strong> when Android asks.</li>
-      <li>Set a reminder for 2 minutes from now and lock the phone. <span class="check">It should ring.</span></li>
     </ol>
-    <h3>If it stays silent</h3>
-    <ul>
-      <li>On the phone: <strong>Settings → Apps → Brainy → Notifications</strong>, check that <strong>Rappels / Reminders</strong> is on, with sound.</li>
-      <li>Check that the phone and the computer running the API are on the same network, and that the API was restarted after editing <code>.env</code>.</li>
-    </ul>
   </section>
 
   <section>
-    <span class="tag later">Part 2 · When the API is online on Vercel</span>
-    <h2>Reminders on the free hosting</h2>
+    <span class="tag required">Part 2 · Required</span>
+    <h2>Settings of the API project on Vercel</h2>
     <ol>
-      <li>Create a secret code: run this in PowerShell and copy the result.
+      <li>Create a secret code for the reminder scheduler: run this in PowerShell and copy the result.
 <pre><code>[Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Maximum 256 }))</code></pre>
       </li>
-      <li>In your API project on Vercel, open <strong>Settings → Environment Variables</strong> and add:
+      <li>In the API project on Vercel (repository <code>api_brainy</code>), open <strong>Settings → Environment Variables</strong> and add:
         <div class="table-wrap"><table>
           <tr><th>Name</th><th>Value</th></tr>
           <tr><td><code>FIREBASE_PROJECT_ID</code></td><td><code>brainy-6d65c</code></td></tr>
-          <tr><td><code>FIREBASE_SERVICE_ACCOUNT_JSON</code></td><td>The <strong>entire content</strong> of the <code>.json</code> file (open it in Notepad, copy everything, paste).</td></tr>
-          <tr><td><code>CRON_SECRET</code></td><td>The code from step 1. Setting it is what switches reminders on: do <strong>not</strong> add <code>BRAINY_FROZEN_MODULES</code>, which would also unfreeze the pictures/PDF rule.</td></tr>
+          <tr><td><code>FIREBASE_SERVICE_ACCOUNT_JSON</code></td><td>The <strong>entire content</strong> of the <code>.json</code> file from Part 1 (open it in Notepad, copy everything, paste).</td></tr>
+          <tr><td><code>CRON_SECRET</code></td><td>The code from step 1. Setting it is what switches reminders on.</td></tr>
         </table></div>
+        <div class="note">Do <strong>not</strong> add <code>BRAINY_FROZEN_MODULES</code>: it replaces the automatic list and would switch back on features the free plan cannot run, including storing pictures and PDF files.</div>
       </li>
-      <li>Click <strong>Redeploy</strong>.</li>
+      <li>Open <strong>Deployments</strong>, click <strong>⋯</strong> on the latest one, then <strong>Redeploy</strong>, so the new settings are used.</li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="tag required">Part 3 · Required</span>
+    <h2>Live updates with Cloud Firestore</h2>
+    <p>Changes made by other people appear without refreshing. Free quota: 50,000 reads and 20,000 writes a day. It uses the key from Part 1; nothing else to set on Vercel.</p>
+    <ol>
+      <li>In the Firebase console of <strong>brainy-6d65c</strong>, open <strong>Firestore Database → Create database</strong>, choose <strong>production mode</strong> and a European location (for example <code>eur3</code>).</li>
+      <li>Open the <strong>Rules</strong> tab, replace everything with the content of the file <code>firestore.rules</code> (at the root of the Brainy folder), then click <strong>Publish</strong>. These rules let a person read only the signals of collections shared with them, and nobody but the API can write.</li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="tag required">Part 4 · Required</span>
+    <h2>The reminder scheduler (cron-job.org)</h2>
+    <ol>
       <li>Create a free account on <a href="https://cron-job.org" target="_blank" rel="noopener">cron-job.org</a>.</li>
       <li>Click <strong>Create cronjob</strong> and fill in:
         <ul>
-          <li><strong>URL:</strong> <code>https://YOUR-API-ADDRESS/cron/reminders</code></li>
-          <li><strong>Schedule:</strong> every 1 minute</li>
+          <li><strong>URL:</strong> <code>https://YOUR-API-ADDRESS/cron/reminders</code> (your API address on Vercel)</li>
+          <li><strong>Schedule:</strong> every 1 minute (every 5 minutes also works and uses less of the free quota)</li>
           <li><strong>Advanced → Headers:</strong> name <code>Authorization</code>, value <code>Bearer YOUR-CODE</code> (with a space after “Bearer”)</li>
         </ul>
       </li>
@@ -126,49 +130,57 @@ GOOGLE_APPLICATION_CREDENTIALS=C:\Users\carefull\secrets\brainy-firebase.json</c
   </section>
 
   <section>
-    <span class="tag required">Part 2b · Required for live updates</span>
-    <h2>Real-time synchronisation (Firestore)</h2>
-    <p>Changes made by other people appear without refreshing thanks to Cloud Firestore (free quota: 50,000 reads and 20,000 writes a day). It uses the same Firebase key as Part 1.</p>
+    <span class="tag required">Part 5 · Required</span>
+    <h2>The Android app and the first ringing reminder</h2>
     <ol>
-      <li>In the Firebase console of <strong>brainy-6d65c</strong>, open <strong>Firestore Database → Create database</strong>, choose <strong>production mode</strong> and a European location (for example <code>eur3</code>).</li>
-      <li>Open the <strong>Rules</strong> tab, replace everything with the content of <code>firestore.rules</code> (at the root of the Brainy folder), then click <strong>Publish</strong>.</li>
-      <li>That’s all: the API already has the key from Part 1. Open the same shared collection on two devices; a change on one appears on the other within about a second.</li>
+      <li>Build the app with your Vercel addresses (in the <code>brainy</code> folder of the project):
+<pre><code>flutter build apk --release --dart-define=API_URL=https://YOUR-API-ADDRESS/graphql --dart-define=WEB_APP_URL=https://YOUR-WEB-ADDRESS</code></pre>
+        The file is <code>build\app\outputs\flutter-apk\app-release.apk</code>; install it on the phone.</li>
+      <li>In the app: sign in, open an entry that has a date, tap <strong>⋯ → Reminders</strong>, choose <strong>Push</strong> and tap <strong>Allow</strong> when Android asks.</li>
+      <li>Set a reminder for 2 minutes from now and lock the phone. <span class="check">It rings.</span></li>
+      <li>Live updates: open the same shared collection on the phone and on the web, change an entry on one; it appears on the other within about a second.</li>
     </ol>
+    <h3>If it stays silent</h3>
+    <ul>
+      <li>On the phone: <strong>Settings → Apps → Brainy → Notifications</strong>, check that <strong>Rappels / Reminders</strong> is on, with sound.</li>
+      <li>On cron-job.org, the History shows <strong>200 OK</strong> every minute.</li>
+      <li>On Vercel, the three settings of Part 2 are present and the API was redeployed after adding them.</li>
+    </ul>
   </section>
 
   <section>
-    <span class="tag optional">Part 3 · Optional</span>
-    <h2>Email reminders (free)</h2>
-    <p>If you skip this part, leave the <code>SMTP_</code> lines empty: only push is used.</p>
-    <h3>Recommended: Brevo (300 emails a day, made for apps)</h3>
+    <span class="tag optional">Part 6 · Optional</span>
+    <h2>E-mail reminders (free)</h2>
+    <p>If you skip this part, only push notifications are used.</p>
     <ol>
-      <li>Sign up at <a href="https://www.brevo.com" target="_blank" rel="noopener">brevo.com</a>.</li>
+      <li>Sign up at <a href="https://www.brevo.com" target="_blank" rel="noopener">brevo.com</a> (free: 300 e-mails a day).</li>
       <li>Under <strong>Senders</strong>, add and confirm the address reminders will come from.</li>
       <li>Go to <strong>SMTP &amp; API → SMTP</strong> and click <strong>Generate a new SMTP key</strong>.</li>
-      <li>Add these lines to <code>api\.env</code> locally, and to the Vercel environment variables:
-<pre><code>SMTP_HOST=smtp-relay.brevo.com
-SMTP_PORT=587
-SMTP_USER=the login shown on that Brevo page
-SMTP_PASSWORD=the SMTP key
-SMTP_FROM=Brainy &lt;your confirmed address&gt;</code></pre>
+      <li>Add these variables to the API project on Vercel, then redeploy:
+        <div class="table-wrap"><table>
+          <tr><th>Name</th><th>Value</th></tr>
+          <tr><td><code>SMTP_HOST</code></td><td><code>smtp-relay.brevo.com</code></td></tr>
+          <tr><td><code>SMTP_PORT</code></td><td><code>587</code></td></tr>
+          <tr><td><code>SMTP_USER</code></td><td>The login shown on that Brevo page</td></tr>
+          <tr><td><code>SMTP_PASSWORD</code></td><td>The SMTP key</td></tr>
+          <tr><td><code>SMTP_FROM</code></td><td><code>Brainy &lt;your confirmed address&gt;</code></td></tr>
+        </table></div>
       </li>
-      <li>Restart the API (or redeploy on Vercel), then choose <strong>Email</strong> when setting a reminder.</li>
+      <li>Choose <strong>Email</strong> when setting a reminder.</li>
     </ol>
-    <h3>Alternative: a Gmail app password</h3>
-    <p>Also free (500 emails a day), but it uses your personal address and emails land in spam more often. It needs 2-step verification on the Google account; then create an app password at <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener">myaccount.google.com/apppasswords</a> and use <code>SMTP_HOST=smtp.gmail.com</code>, <code>SMTP_PORT=587</code>, your Gmail address as <code>SMTP_USER</code> and the app password as <code>SMTP_PASSWORD</code>.</p>
   </section>
 
   <section>
     <h2>Good to know</h2>
     <ul>
-      <li>The Android package name is still <code>com.example.brainy</code>. That is fine for testing; before publishing on the Play Store it must change, and the app must then be registered again in Firebase.</li>
-      <li>iPhone notifications are not set up (they need an Apple developer account).</li>
-      <li>When the app is open on screen, Android does not show the notification banner; it appears when the app is in the background or the phone is locked.</li>
-      <li>Technical details for developers: <code>docs/DEPLOIEMENT_VERCEL.md</code> and <code>docs/tasks/T20.md</code>.</li>
+      <li>The Android package name is still <code>com.example.brainy</code>: fine for testing; before the Play Store it must change and the app must be registered again in Firebase.</li>
+      <li>iPhone notifications are not set up (they need a paid Apple developer account).</li>
+      <li>When the app is open on screen, Android shows no banner; the reminder appears when the app is in the background or the phone is locked.</li>
+      <li>Putting the API and the web online on Vercel (MongoDB Atlas, the two projects): <code>docs/DEPLOIEMENT_VERCEL.md</code>.</li>
     </ul>
   </section>
 
-  <footer>Brainy · notification setup procedure</footer>
+  <footer>Brainy · notifications and live updates on Vercel’s free plan</footer>
 </main>
 </body>
 </html>

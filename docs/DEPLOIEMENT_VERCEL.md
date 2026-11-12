@@ -20,7 +20,7 @@ Pour changer la liste, définir `BRAINY_FROZEN_MODULES` (`""` pour aucun) — **
 
 ## Mise en ligne : pousser sur GitHub suffit
 
-Les dépôts sont séparés : `kottefadyl/api_brainy` (dossier `api/`) et `kottefadyl/brainy_web_next` (dossier `brainy_web_app/`). Chacun devient un projet Vercel qui se redéploie à chaque `git push` sur `main`. Les fichiers `vercel.json` fixent le cadre (`nestjs`, `nextjs`) et la région Paris (`cdg1`).
+Les dépôts sont séparés : `kottefadyl/api_brainy` (dossier `api/`) et `kottefadyl/brainy_web_next` (dossier `brainy_web_app/`). Chacun devient un projet Vercel qui se redéploie à chaque `git push` sur `main`. Les fichiers `vercel.json` fixent le cadre (`nestjs`, `nextjs`) et la région Paris (`cdg1`) ; `package.json` fixe Node 24 (`engines.node: "24.x"`, version testée ; sans cela Vercel prendrait Node 26). Notifications, rappels qui sonnent et temps réel : `docs/notifications-setup.html`.
 
 1. **Base de données** — créer un cluster gratuit **MongoDB Atlas M0**, de préférence AWS Paris (`eu-west-3`) près de la région Vercel. Créer un utilisateur, autoriser l’accès réseau `0.0.0.0/0` (Vercel n’a pas d’adresse fixe sur Hobby) et copier l’URI `mongodb+srv://…/brainy`.
 2. **Projet API** — sur vercel.com : *Add New → Project*, importer `api_brainy`, laisser le cadre détecté (NestJS). Variables d’environnement :
