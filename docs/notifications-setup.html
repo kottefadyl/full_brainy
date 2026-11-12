@@ -131,7 +131,7 @@ GOOGLE_APPLICATION_CREDENTIALS=C:\Users\carefull\secrets\brainy-firebase.json</c
     <p>Changes made by other people appear without refreshing thanks to Cloud Firestore (free quota: 50,000 reads and 20,000 writes a day). It uses the same Firebase key as Part 1.</p>
     <ol>
       <li>In the Firebase console of <strong>brainy-6d65c</strong>, open <strong>Firestore Database → Create database</strong>, choose <strong>production mode</strong> and a European location (for example <code>eur3</code>).</li>
-      <li>Open the <strong>Rules</strong> tab, replace everything with the content of <code>d:\projectsrainyirestore.rules</code>, then click <strong>Publish</strong>.</li>
+      <li>Open the <strong>Rules</strong> tab, replace everything with the content of <code>firestore.rules</code> (at the root of the Brainy folder), then click <strong>Publish</strong>.</li>
       <li>That’s all: the API already has the key from Part 1. Open the same shared collection on two devices; a change on one appears on the other within about a second.</li>
     </ol>
   </section>

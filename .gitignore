@@ -13,3 +13,7 @@
 /api/
 /brainy/
 /brainy_web_app/
+
+# Firebase emulator logs
+firestore-debug.log
+*-debug.log
