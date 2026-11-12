@@ -253,7 +253,7 @@ Ajouté le 11 novembre 2026 à partir des limites des fiches `docs/tasks/T46.md`
 
 ### À vérifier
 * **`AND/1` : Parcours Android réel** de T46 à T53 (tableur, livre, aperçus de liens, tâches, guide de bienvenue, guide et formation, collaborateurs, auteurs), avec grandes listes, pincement, `T23/1` et photo de profil.
-* **`T51/1` : Recapturer le guide** (`scripts/guide/capture.mjs`) quand l'interface change ; ajouter des captures en thème sombre et des captures Flutter natives. Recapturé le 12 novembre 2026 (17 captures par langue, dont collaborateurs, partage et collection partagée).
+* **`T51/1` : Recapturer le guide** (`scripts/guide/capture.mjs`) quand l'interface change ; ajouter des captures en thème sombre et des captures Flutter natives. Recapturé le 12 novembre 2026 (17 captures par langue, dont collaborateurs, partage et collection partagée). Recapturé de nouveau le 12 novembre 2026 après la barre latérale élargie et la vue livre ; restent les captures sombres et Flutter natives.
 
 ### Collaborateurs (T52)
 * **`T52/1` : Ouvrir l'application Android depuis le lien** `/invite/<jeton>` (App Links, `assetlinks.json` sur le domaine de production). Bloqué tant que le domaine n'est pas connu ; aujourd'hui le lien ouvre le site et Flutter accepte un lien collé.
@@ -271,9 +271,9 @@ Ajouté le 11 novembre 2026 à partir des limites des fiches `docs/tasks/T46.md`
 * **`T46/1` : Tableur** : copier-coller de plages, poignée de recopie, tri et largeur de colonne réglable ; test avec un vrai lecteur d'écran.
 * **`T47/1` : Impression et PDF du livre sur Flutter** (nouvelle dépendance d'impression).
 * **`T47/2` : Livre web paginé à l'écran** et index renvoyant aux numéros de page.
-* **`T47/3` : Vue livre pour les anciennes collections Livre** (Chapitre/Scène/Note) et pour les formats de données ajoutés par l'utilisateur.
+* ~~**`T47/3` : Vue livre pour les anciennes collections Livre**~~ — livré le 12 novembre 2026 (migration au démarrage des anciennes collections Chapitre/Scène/Note vers la vue livre, désactivée par défaut ; mutation `setBookFormatRole` et liste « Formats de données dans le livre » pour placer tout format de données, web et Flutter ; `smoke:book-roles`).
 * ~~**`T47/4` : Règle « une seule entrée » modifiable dans l'éditeur de format de données**~~ — livré le 12 novembre 2026 (case « Une seule entrée » dans l'éditeur de format de données, web et Flutter).
 * ~~**`T48/1` : Aperçus pour les collections « Liens conservés » créées avant le 11 novembre 2026**~~ — livré le 12 novembre 2026 (migration au démarrage de l'API : provenance `links` rendue aux collections dont le format de données a encore la structure du modèle).
 * ~~**`T49/1` : Saisie rapide Flutter adaptée à la Répétition**~~ — livré le 12 novembre 2026 (champs masqués selon la Répétition, jours de la semaine par puces).
 * **`T49/2` : Fuseaux horaires à demi-heure** inconnus de Dart (retombent aujourd'hui sur UTC).
-* **`T50/1` : Les 24 couleurs dans le guide de bienvenue Flutter** (12 aujourd'hui).
+* ~~**`T50/1` : Les 24 couleurs dans le guide de bienvenue Flutter**~~ — livré le 12 novembre 2026 (24 couleurs nommées EN/FR, `lib/format_color_names.dart`).
