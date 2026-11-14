@@ -7,7 +7,7 @@ import { chapters } from './content.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
-const icons = new Set(['compass', 'folder', 'shapes', 'pencil', 'layout', 'template', 'chart', 'boxes', 'warehouse', 'users', 'shield', 'database']);
+const icons = new Set(['compass', 'folder', 'shapes', 'pencil', 'layout', 'template', 'chart', 'boxes', 'warehouse', 'users', 'shield', 'database', 'rocket', 'briefcase']);
 const ids = new Set();
 for (const chapter of chapters) {
   if (ids.has(chapter.id) || !/^[a-z-]+$/.test(chapter.id)) throw new Error(`Bad or repeated chapter id ${chapter.id}`);
