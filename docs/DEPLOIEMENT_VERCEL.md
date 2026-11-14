@@ -28,6 +28,7 @@ Les dépôts sont séparés : `kottefadyl/api_brainy` (dossier `api/`) et `kotte
    - `JWT_SECRET` : longue valeur aléatoire (ne jamais réutiliser celle du poste local) ;
    - `FIREBASE_PROJECT_ID` = `brainy-6d65c` et, pour les notifications, `FIREBASE_SERVICE_ACCOUNT_JSON` (contenu complet du fichier de clé) ;
    - `CRON_SECRET` : pour les rappels (voir `docs/notifications-setup.html`) ;
+   - `BRAINY_ADMIN_EMAILS` : adresse(s) e-mail de l’administrateur, séparées par des virgules ; seule(s) elle(s) ouvre(nt) l’administration `/admin` du site web (liste des comptes et stockage utilisé, blocage, effacement des données, suppression de compte). Sans cette variable, personne n’y a accès ;
    - facultatif : `SMTP_*` pour les e-mails, `CORS_ORIGIN` seulement si un navigateur appelle l’API directement (le web passe par son propre serveur).
    Déployer, puis noter l’adresse, par exemple `https://api-brainy.vercel.app`.
 3. **Projet web** — importer `brainy_web_next` (cadre Next.js). Variable : `GRAPHQL_API_URL` = adresse de l’API + `/graphql`. Facultatif : `NEXT_PUBLIC_FIREBASE_VAPID_KEY`. Déployer.
