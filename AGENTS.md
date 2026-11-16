@@ -49,6 +49,7 @@ Le terme visible dans l'interface est **« data format »** en anglais et **« f
 - Pour toute tâche UI/UX, lire et appliquer `.agents/skills/brainy-ui-ux/SKILL.md` ; vérifier le rendu clair/sombre et le parcours principal, puis signaler les vérifications non exécutées.
 - Permettre aux novices de commencer avec un champ ; garder les choix avancés progressifs et masquer le jargon technique (ex. « objet-variable ») derrière des libellés naturels. Fournir interface, erreurs et dates en anglais et français ; accepter la virgule décimale française et normaliser le stockage.
 - Séparer **format de données** (structure et couleur), **entrée** (valeurs) et vue, règle ou action (exploitation).
+- **Calculs et statistiques** : choix par collection (`calculations`), proposé à la création (coché par défaut pour Dépenses, KT personal, Commerce et stock, Entraînement ; décoché sinon et pour une création manuelle) et modifiable par le propriétaire dans « Gérer » (`setCollectionCalculations`). Désactivé, aucun calcul n'apparaît : bouton « Calculs », calculs et graphiques, formules, totaux par période, stock, unités et conversions, seuils d'analyse. Les collections existantes ont été réglées selon leur contenu (formules, règles de stock, unités locales, totaux ou modèle chiffré). Fumée : `npm run smoke:calculations`.
 
 ## Direction et état de livraison (T01 à T32 et T34 à T55 livrés ; T33 reportée à la version 2)
 
