@@ -112,6 +112,7 @@ Lire la section 8 des [principes communs](docs/tasks/_PRINCIPES.md) pour les rè
 | T53 | Auteur et dernier modificateur des entrées et formats de données (collections partagées) | Dépendances : T52. | terminée le 2026-11-11 (Android à vérifier) | [T53](docs/tasks/T53.md) |
 | T54 | Champ « Collaborateur » : une ou plusieurs personnes (propriétaire et ses collaborateurs) dans une entrée | Dépendances : T52, T53. | terminée le 2026-11-12 (Android à vérifier) | [T54](docs/tasks/T54.md) |
 | T55 | Synchronisation des données en temps réel (signaux Cloud Firestore, compatible Vercel Hobby) | Dépendances : T52. | terminée le 2026-11-12 (Android et Windows à vérifier à l'écran) | [T55](docs/tasks/T55.md) |
+| T56 | Cartes à deux faces (recto/verso) et révision espacée par personne | Dépendances : T47, T49, T52. | terminée le 2026-11-16 (Android et Windows à vérifier à l'écran) | [T56](docs/tasks/T56.md) |
 
 ## Ordre d'exécution fusionné recommandé (après T27)
 
