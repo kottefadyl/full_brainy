@@ -10,7 +10,7 @@ Prochaine action, dans l'ordre :
 4) T20 rappels : vrais identifiants SMTP/FCM et Android physique.
 5) App Links Android pour `/invite/` (T52/1) dès que le domaine de production est connu.
 Hors liste : T33 reportée à la version 2 ; T53/3 seulement si d'autres que le propriétaire modifient la structure.
-Vercel Hobby : modules gelés (`docs/DEPLOIEMENT_VERCEL.md`). Non commités par l'utilisateur : `brainy_web_app/app/entry-card.tsx`, `entry-item.css`.
+Vercel Hobby : modules gelés (`docs/DEPLOIEMENT_VERCEL.md`).
 
 ## Session B
 Aucune tâche en cours. Le watch de l’API ne voit pas les modifications du montage Windows : redémarrer le service `api` avant les fumées.
