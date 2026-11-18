@@ -4,7 +4,7 @@ description: Concevoir, implémenter et auditer les interfaces Brainy Next.js et
 ---
 
 # Brainy UI & UX
-
+    
 ## Contrat de travail
 
 1. Lire les instructions du dépôt, puis uniquement les extraits utiles de `docs/EXPERIENCE_BRAINY.md`, du composant concerné et de ses tokens. Respecter la reprise et les réservations de fichiers du projet. Ne pas supposer que les fichiers cités existent ; signaler les absences utiles. Ne pas demander de décision pour un choix visuel réversible couvert ici.
