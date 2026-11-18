@@ -1,11 +1,11 @@
 # Journal de coordination et reprise Multi-IA
 
 ## Session A
-Aucune tâche en cours. Reprise prévue le 18 nov. 2026 (plan validé par l'utilisateur).
-Précédent : 16 nov. : T56 cartes à deux faces et révision espacée ; calculs et statistiques par collection (`smoke:calculations`) ; unités de durée et durées des tâches ; case à cocher sur les lignes ; collaborateurs (enregistrement des liens, liste paginée des membres) ; détails « Créée par / Modifiée par » ; choix renommables (`smoke:format-choices`). Flutter : clone `C:\projects\brainy\brainy` (D: en panne).
+Aucune tâche en cours.
+Précédent : 18 nov. : T57 (statistiques, objectif quotidien, voix) ; cartes qui se retournent ; liens image/son/vidéo affichés ; formats de données en cartes (6 au plus) dans « Nouvelle entrée ». Flutter : clone `C:\projectsrainyrainy` (D: en panne).
 Prochaine action, dans l'ordre :
-1) T57 en 3 étapes poussées une à une : a) API + web (statistiques, objectif quotidien) ; b) Flutter ; c) voix. Demander d'abord si les statistiques restent visibles quand « Calculs et statistiques » est désactivé (proposition : oui).
-2) Parcours Android réel (AND/1 : T46 à T56, grandes listes, PDF du livre, photo de profil).
+1) Mise à jour Next.js 16.4.6 (avis « modéré », sans effet sur Brainy) si l'utilisateur l'accepte.
+2) Parcours Android réel (AND/1 : T46 à T57, grandes listes, PDF du livre, photo de profil).
 3) Guide : captures sombres et Flutter natives (T51/1).
 4) T20 rappels : vrais identifiants SMTP/FCM et Android physique.
 5) App Links Android pour `/invite/` (T52/1) dès que le domaine de production est connu.
