@@ -4,7 +4,7 @@
 Aucune tâche en cours.
 Précédent : 18 nov. : T57 (statistiques, objectif quotidien, voix) ; cartes qui se retournent ; liens image/son/vidéo affichés ; formats de données en cartes (6 au plus) dans « Nouvelle entrée ». Flutter : clone `C:\projectsrainyrainy` (D: en panne).
 Prochaine action, dans l'ordre :
-1) Mise à jour Next.js 16.4.6 (avis « modéré », sans effet sur Brainy) si l'utilisateur l'accepte.
+1) Fait : Next.js 16.4.6 (18 nov.). Proposé : passe de finition UI (en-tête de collection plus court, barre latérale plus calme).
 2) Parcours Android réel (AND/1 : T46 à T57, grandes listes, PDF du livre, photo de profil).
 3) Guide : captures sombres et Flutter natives (T51/1).
 4) T20 rappels : vrais identifiants SMTP/FCM et Android physique.
