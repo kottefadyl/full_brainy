@@ -2,7 +2,7 @@
 
 ## Session A
 Aucune tâche en cours.
-Précédent : 25 nov. : session renouvelée à l'usage (30 j, `renewSession`). 18 nov. : T57 (statistiques, objectif quotidien, voix) ; cartes qui se retournent ; liens image/son/vidéo affichés ; formats de données en cartes (6 au plus) dans « Nouvelle entrée ». Flutter : clone `C:\projectsrainyrainy` (D: en panne).
+Précédent : 25 nov. : T58 (18 modèles de la vie quotidienne, choix par thème) ; session renouvelée à l'usage (30 j, `renewSession`). 18 nov. : T57 (statistiques, objectif quotidien, voix) ; cartes qui se retournent ; liens image/son/vidéo affichés ; formats de données en cartes (6 au plus) dans « Nouvelle entrée ». Flutter : clone `C:\projectsrainyrainy` (D: en panne).
 Prochaine action, dans l'ordre :
 1) Fait le 18 nov. : Next.js 16.4.6 ; finition UI web + Flutter (icône par genre de collection, icônes ; barre latérale et en-tête remis à leur style d'origine à la demande de l'utilisateur). Reste possible : animations de réussite, états vides illustrés, autres écrans (outils, profil).
 2) Parcours Android réel (AND/1 : T46 à T57, grandes listes, PDF du livre, photo de profil).
