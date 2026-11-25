@@ -48,7 +48,7 @@ mutation {
 }
 ```
 
-Use `login(input: {email: "ada@example.com", password: "strongpass123"})` to sign in. Send the returned token as `Authorization: Bearer <token>` for `me`, collections, entries, and notes operations. Tokens expire after seven days. Passwords are salted and hashed with scrypt. Data is scoped to the signed-in account; anonymous notes from the earlier demo are not shown.
+Use `login(input: {email: "ada@example.com", password: "strongpass123"})` to sign in. Send the returned token as `Authorization: Bearer <token>` for `me`, collections, entries, and notes operations. Tokens expire 30 days after they were issued; `renewSession` exchanges a valid token for a fresh one. The web proxy renews the session cookie once a day of use and the Flutter app at startup and every 12 hours, so regular use never signs a person out. Passwords are salted and hashed with scrypt. Data is scoped to the signed-in account; anonymous notes from the earlier demo are not shown.
 
 ## Google sign-in with Firebase
 
